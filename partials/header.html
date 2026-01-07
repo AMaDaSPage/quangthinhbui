@@ -1,22 +1,25 @@
 <header class="site-header" id="top">
   <div class="container header-inner">
-    <a class="brand" href="/index.html#home" aria-label="Homepage">
+    <!-- Brand: dùng URL sạch -->
+    <a class="brand" href="/#home" aria-label="Homepage">
       <span class="brand-mark" aria-hidden="true">
         <img class="brand-logo" src="/img/logo-NBG.png" alt="ThinhBui logo" loading="eager" />
       </span>
       <span class="brand-text">thinhbui's homepage</span>
     </a>
 
-
     <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
       <span></span><span></span><span></span>
     </button>
 
     <nav class="nav" id="primaryNav" aria-label="Primary">
-        <a class="nav-link" href="/index.html#home" data-section="home">Home</a>
-        <a class="nav-link" href="/partials/publications.html#publications" data-section="publications">Publications</a>
-        <a class="nav-link" href="/partials/project.html#projects" data-section="projects">Projects</a>
-        <a class="nav-link" href="/partials/contact.html#contact" data-section="contact">Contact</a>
+      <!-- Home -->
+      <a class="nav-link" href="/#home" data-section="home">Home</a>
+
+      <!-- URL sạch: /publications, /projects, /contact -->
+      <a class="nav-link" href="/publications#publications" data-section="publications">Publications</a>
+      <a class="nav-link" href="/projects#projects" data-section="projects">Projects</a>
+      <a class="nav-link" href="/contact#contact" data-section="contact">Contact</a>
 
       <div class="nav-actions">
         <button class="icon-btn" id="searchBtn" aria-label="Search publications">
