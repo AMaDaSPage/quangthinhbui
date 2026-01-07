@@ -329,7 +329,6 @@
   flex-wrap: wrap;
 
   font-size: 15px;
-  font-weight: 520;
   line-height: 1.6;       /* đều với mô tả */
   color: var(--text);
 }
