@@ -308,7 +308,6 @@
 .contact-desc{
   margin: 0;
   font-size: 15px;
-  font-weight: 520;
   line-height: 1.6;       /* quan trọng: dòng wrap không bị sát */
   color: var(--text);     /* muốn nhạt hơn thì đổi thành var(--muted) */
 }

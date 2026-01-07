@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+
+    { "source": "/partials/project.html", "destination": "/projects", "permanent": true },
+    { "source": "/partials/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/partials/publications.html", "destination": "/publications", "permanent": true },
+
+    { "source": "/partials/project.html/:hash*", "destination": "/projects", "permanent": true },
+    { "source": "/partials/contact.html/:hash*", "destination": "/contact", "permanent": true },
+    { "source": "/partials/publications.html/:hash*", "destination": "/publications", "permanent": true }
+  ]
+}
