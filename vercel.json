@@ -1,16 +1,31 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+
   "redirects": [
+    { "source": "/index", "destination": "/", "permanent": true },
     { "source": "/index.html", "destination": "/", "permanent": true },
 
+    { "source": "/partials/publications", "destination": "/publications", "permanent": true },
+    { "source": "/partials/publications/", "destination": "/publications", "permanent": true },
+    { "source": "/partials/publications.html", "destination": "/publications", "permanent": true },
+
+    { "source": "/partials/project", "destination": "/projects", "permanent": true },
+    { "source": "/partials/project/", "destination": "/projects", "permanent": true },
     { "source": "/partials/project.html", "destination": "/projects", "permanent": true },
+
+    { "source": "/partials/contact", "destination": "/contact", "permanent": true },
+    { "source": "/partials/contact/", "destination": "/contact", "permanent": true },
     { "source": "/partials/contact.html", "destination": "/contact", "permanent": true },
-    { "source": "/partials/publications.html", "destination": "/publications", "permanent": true }
+
+    { "source": "/publications/", "destination": "/publications", "permanent": true },
+    { "source": "/projects/", "destination": "/projects", "permanent": true },
+    { "source": "/contact/", "destination": "/contact", "permanent": true }
   ],
+
   "rewrites": [
+    { "source": "/publications", "destination": "/partials/publications.html" },
     { "source": "/projects", "destination": "/partials/project.html" },
-    { "source": "/contact", "destination": "/partials/contact.html" },
-    { "source": "/publications", "destination": "/partials/publications.html" }
+    { "source": "/contact", "destination": "/partials/contact.html" }
   ]
 }
