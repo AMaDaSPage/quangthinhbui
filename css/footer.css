@@ -1,0 +1,14 @@
+.site-footer{
+  border-top: 1px solid var(--border);
+  padding: 18px 0;
+}
+.footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.site-footer a{
+  text-decoration: none;
+  font-weight: 800;
+}

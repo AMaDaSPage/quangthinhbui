@@ -1,0 +1,450 @@
+.contact-page .section-subtitle{
+  max-width: 72ch;
+}
+
+.contact-layout{
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.contact-aside{
+  display: grid;
+  gap: 14px;
+}
+
+/* Improve text rendering (especially on macOS/Chrome) */
+.contact-card,
+.contact-form-card{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.contact-card{
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-card-head{
+  display: flex;
+  align-items: center;
+  gap: 8px;            /* was 10px */
+  margin-bottom: 10px; /* was 8px */
+}
+
+.contact-icon{
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(127,127,127,.08);
+  font-size: 16px;
+  flex: 0 0 38px;
+}
+
+/* If you have .card-title in your global CSS, this still helps as a page-level refinement */
+.contact-card .card-title{
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: .01em;
+  line-height: 1.2;
+}
+
+.contact-primary{
+  margin: 6px 0 0;
+}
+.contact-primary a{
+  font-weight: 650; /* was 900 */
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  border-bottom: 0;
+  word-break: break-word;
+}
+
+.contact-note{
+  margin: 8px 0 0; /* was 10px */
+  min-height: 18px;
+}
+
+.contact-links{
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.contact-list{
+  margin: 10px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-weight: 520;  /* was 700 */
+  line-height: 1.55; /* was 1.5 */
+}
+
+.contact-actions{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px; /* was 14px */
+  align-items: stretch;
+}
+
+.contact-actions .btn{
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  border-radius: 14px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13.5px;     /* was 14px */
+  font-weight: 650;      /* was 800 */
+  line-height: 1;
+  letter-spacing: .01em; /* was .2px */
+
+  white-space: nowrap;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.contact-actions button.btn{
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.contact-form-card{
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-card .form{
+  margin-top: 10px;
+  display: grid;
+  gap: 12px;
+}
+
+.contact-form-card .label{
+  gap: 8px;
+}
+
+.contact-form-card .input,
+.contact-form-card .textarea{
+  width: 100%;
+}
+
+.contact-form-card .textarea{
+  min-height: 241px;
+}
+
+.contact-form-card .contact-actions{
+  margin-top: 4px;
+}
+
+/* =========================
+   Profile summary block
+   ========================= */
+.contact-profile-name{
+  margin: 6px 0 0;                 /* was 4px */
+  font-size: clamp(18px, 2.1vw, 22px); /* was 20px fixed */
+  font-weight: 750;                /* was 900 */
+  letter-spacing: -0.015em;        /* was .2px */
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.contact-profile-title{
+  margin: 4px 0 0;      /* was 6px */
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 520;     /* was 800 */
+  line-height: 1.45;
+}
+
+.contact-email-inline{
+  margin: 8px 0 0;      /* was 10px */
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 520;     /* was 800 */
+}
+.contact-email-inline a{
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  border-bottom: 0;     /* replace border with underline */
+}
+
+/* =========================
+   Roles
+   ========================= */
+.role-list{
+  margin: 12px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.role-item{
+  display: grid;
+  gap: 6px; /* was 10px */
+  align-items: start;
+
+  padding-left: 12px;
+  border-left: 2px solid rgba(127,127,127,.18);
+}
+
+.role-dash{
+  opacity: .75;
+  font-weight: 650; /* was 900 */
+  line-height: 1.2;
+}
+
+.role-main{
+  min-width: 0;
+}
+
+.role-main strong{
+  display: block;
+  font-size: 13.5px;
+  font-weight: 650;     /* was 900 */
+  letter-spacing: .005em;
+  line-height: 1.25;
+}
+
+.role-sub{
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 500; /* was 800 */
+  line-height: 1.5; /* was 1.35 */
+}
+
+/* =========================
+   Map
+   ========================= */
+.map-embed{
+  margin-top: 10px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.map-embed iframe{
+  display: block;
+  width: 100%;
+  height: 260px;
+  border: 0;
+}
+
+@media (min-width: 861px){
+  .contact-aside .contact-card{
+    min-height: 180px;
+  }
+  .contact-aside .contact-card.map-card{
+    min-height: 0;
+  }
+}
+
+/* Mobile */
+@media (max-width: 860px){
+  .contact-layout{
+    grid-template-columns: 1fr;
+  }
+
+  .contact-actions{
+    grid-template-columns: 1fr;
+  }
+
+  .contact-actions .btn{
+    white-space: normal;
+    text-align: center;
+  }
+
+  .map-embed iframe{
+    height: 220px;
+  }
+}
+/* ===== Profile text block (compact + elegant) ===== */
+.contact-profile-name{
+  margin: 6px 0 0;
+  font-size: clamp(18px, 2.0vw, 22px);
+  font-weight: 800;                
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+
+.contact-profile-lines{
+  margin-top: 5px;
+  display: grid;
+  row-gap: 18px;       
+}
+
+.role-block{
+  display: grid;
+}
+
+/* Dòng chức vụ (đậm) */
+.contact-role{
+  margin: 0;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+/* Dòng mô tả (wrap xuống hàng vẫn đều) */
+.contact-desc{
+  margin: 0;
+  font-size: 15px;
+  font-weight: 520;
+  line-height: 1.6;       /* quan trọng: dòng wrap không bị sát */
+  color: var(--text);     /* muốn nhạt hơn thì đổi thành var(--muted) */
+}
+
+/* University (đậm) */
+.contact-uni{
+  margin: 0;
+  font-size: 18px;
+  font-weight: 850;
+  line-height: 1.25;
+  color: var(--text);
+}
+
+/* Address / Email: mỗi dòng là 1 "row", spacing được quản bởi row-gap ở trên */
+.contact-meta{
+  margin: 0;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+
+  font-size: 15px;
+  font-weight: 520;
+  line-height: 1.6;       /* đều với mô tả */
+  color: var(--text);
+}
+
+
+.contact-email{
+  font-weight: 520;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+/* University gần Address (stack dọc, gap nhỏ) */
+.contact-meta--stack{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 3px;      /* chỉnh 2–6px tuỳ bạn */
+  column-gap: 0;
+  line-height: 1.35; /* gọn hơn */
+}
+
+/* đảm bảo mỗi span chiếm 1 dòng */
+.contact-meta--stack > span{
+  display: block;
+}
+/* Role row: left title + right email button */
+.role-head{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Email pill button */
+.email-pill{
+  flex: 0 0 auto;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: rgba(127,127,127,.08);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.email-pill:hover{
+  background: rgba(127,127,127,.12);
+}
+
+/* Mobile: nếu hẹp quá thì cho button xuống dòng (vẫn đẹp) */
+@media (max-width: 420px){
+  .role-head{
+    align-items: flex-start;
+  }
+  .email-pill{
+    height: 32px;
+    padding: 0 10px;
+  }
+}
+/* =========================
+   Make Left/Right columns same height
+   ========================= */
+.contact-layout{
+  align-items: stretch; /* IMPORTANT: was start */
+}
+
+/* stretch both grid items to the same row height */
+.contact-aside,
+.contact-form-card{
+  height: 100%;
+  min-height: 0;
+}
+
+/* prevent the left aside grid from stretching its internal rows */
+.contact-aside{
+  align-content: start;
+  grid-auto-rows: max-content;
+}
+
+/* =========================
+   Keep right form card nice when stretched:
+   push actions to bottom
+   ========================= */
+.contact-form-card{
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-card .form{
+  flex: 1;
+  min-height: 0;
+  display: flex;              /* override previous grid */
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contact-form-card .contact-actions{
+  margin-top: auto;           /* buttons stick to bottom */
+}
+
+/* Mobile: back to natural height */
+@media (max-width: 860px){
+  .contact-aside,
+  .contact-form-card{
+    height: auto;
+  }
+}

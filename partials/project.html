@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Projects" />
+  <title>Project • thinhbui</title>
+
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <link rel="stylesheet" href="../css/project.css" />
+</head>
+
+<body>
+  <div data-include="/partials/header.html"></div>
+
+  <section class="section alt" id="projects" aria-label="Projects">
+    <div class="container">
+      <div class="section-head">
+        <div>
+        </div>
+
+        <div class="section-actions">
+          <div class="year-pill">
+            <span class="year-pill__label">Year:</span>
+            <select class="select year-pill__select" id="projYear" aria-label="Filter by year">
+              <option value="all">All</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div id="projList" class="proj-groups" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <div data-include="/partials/footer.html"></div>
+
+  <script src="../js/projects.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

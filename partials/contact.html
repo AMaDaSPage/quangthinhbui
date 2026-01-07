@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Contact" />
+  <title>Contact • thinhbui</title>
+
+  <link rel="stylesheet" href="/css/header.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/footer.css" />
+  <link rel="stylesheet" href="/css/contact.css" />
+</head>
+
+<body>
+  <div data-include="/partials/header.html"></div>
+
+  <main id="home">
+    <section class="section contact-page" id="contact" aria-label="Contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2 class="section-title">Quang-Thinh BUI, Ph.D.</h2>
+          </div>
+        </div>
+
+        <div class="contact-layout">
+          <aside class="contact-aside">
+            <div class="card contact-card">
+
+                <div class="contact-profile-lines">
+                  <!-- Role 1 -->
+                  <div class="role-block">
+                    <div class="role-head">
+                      <div class="contact-role">Acting Head</div>
+                    </div>
+
+                    <div class="contact-desc">
+                      Office of Research Management and International Cooperation
+                    </div>
+                  </div>
+
+
+                  <!-- Role 2 -->
+                  <div class="role-block">
+                    <div class="contact-role">Head</div>
+                    <div class="contact-desc">
+                      Applied Mathematics and Data Science (AMaDaS) Research Group
+                    </div>
+                  </div>
+
+                  <!-- Address -->
+                  <div class="contact-meta contact-meta--stack">
+                    <div class="contact-role"><strong>Tien Giang University</strong></div>
+
+                    <span class="contact-label">
+                     Than Binh Hamlet, Chau Thanh Commune, Dong Thap, Vietnam
+                    </span>
+                  </div>
+
+
+                </div>
+
+                <p class="contact-note muted" id="copyEmailNote" aria-live="polite"></p>
+                 <!-- Email button top-right -->
+                      <a class="email-pill" href="mailto:buiquangthinh@tgu.edu.vn" aria-label="Email">
+                        Email
+                      </a>
+              </div>
+
+
+            <div class="card contact-card map-card">
+              <div class="contact-card-head">
+                <span class="contact-icon" aria-hidden="true">📍</span>
+                <h3 class="card-title">Address</h3>
+              </div>
+
+              <div class="map-embed" aria-label="Tien Giang University map">
+                <iframe style="width: 100%;"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d80520.75534753523!2d106.28677440515388!3d10.433152845903587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310abb77abfeb299%3A0x3047216743107681!2zVHLGsOG7nW5nIMSQ4bqhaSBo4buNYyBUaeG7gW4gR2lhbmcgY8ahIHPhu58gMg!5e1!3m2!1svi!2s!4v1766425822127!5m2!1svi!2s"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Right: Form -->
+          <section class="card contact-card contact-form-card" aria-label="Send a message">
+            <div class="contact-card-head">
+              <span class="contact-icon" aria-hidden="true">📝</span>
+              <h3 class="card-title">Send a message</h3>
+            </div>
+
+            <form class="form" id="mailtoForm">
+              <label class="label">
+                Your name
+                <input class="input" id="mName" type="text" placeholder="Your name" autocomplete="name" />
+              </label>
+
+              <label class="label">
+                Your email
+                <input class="input" id="mEmail" type="email" placeholder="your@email.com" autocomplete="email" />
+              </label>
+
+              <label class="label">
+                Subject
+                <input class="input" id="mSubject" type="text" placeholder="Collaboration / talk / supervision..." />
+              </label>
+
+              <label class="label">
+                Message
+                <textarea class="textarea" id="mBody" rows="6" placeholder="Write your message..."></textarea>
+              </label>
+
+              <div class="contact-actions">
+                <button class="btn primary" type="submit">Send</button>
+                <button class="btn ghost" type="reset">Clear</button>
+              </div>
+            </form>
+          </section>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div data-include="/partials/footer.html"></div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/mailto.js"></script>
+</body>
+</html>
