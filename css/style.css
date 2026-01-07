@@ -390,11 +390,25 @@ html[data-theme="dark"] .hero-overlay{
   .contact-wrap{ grid-template-columns: 1fr; }
 }
 
-/* Lightning cursor overlay */
 .cursor-fx-canvas{
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
   pointer-events: none;
+}
+@media (min-width: 861px){
+  .hero-right{
+    justify-content: flex-end; 
+    justify-self: end;         
+  }
+
+  .avatar-wrap{
+    display: flex;
+    justify-content: flex-end;     
+  }
+
+  .avatar{
+    display: block;           
+  }
 }
