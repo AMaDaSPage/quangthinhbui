@@ -24,6 +24,44 @@ function enableCardClicks(container) {
   });
 }
 
+/* ===== NEW: click year-bar để thu gọn/mở rộng ===== */
+function enableYearBarCollapse(container, collapsedYears) {
+  if (!container) return;
+
+  const setExpanded = (barEl, expanded) => {
+    barEl.setAttribute("aria-expanded", expanded ? "true" : "false");
+  };
+
+  container.addEventListener("click", (e) => {
+    const bar = e.target.closest(".year-bar");
+    if (!bar || !container.contains(bar)) return;
+
+    const group = bar.closest(".year-group");
+    if (!group) return;
+
+    const yearKey = group.getAttribute("data-year") || "";
+    if (!yearKey) return;
+
+    // toggle state
+    const willCollapse = !group.classList.contains("is-collapsed");
+    if (willCollapse) collapsedYears.add(yearKey);
+    else collapsedYears.delete(yearKey);
+
+    group.classList.toggle("is-collapsed", willCollapse);
+    setExpanded(bar, !willCollapse);
+  });
+
+  // Keyboard: Enter/Space
+  container.addEventListener("keydown", (e) => {
+    const bar = e.target.closest(".year-bar");
+    if (!bar || !container.contains(bar)) return;
+
+    if (e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    bar.click();
+  });
+}
+
 /** gộp pub.tag (array) + pub.tags (array) → unique, giữ thứ tự */
 function normalizeTags(pub) {
   const a = Array.isArray(pub?.tag) ? pub.tag : [];
@@ -85,7 +123,7 @@ function getScopusQuartile(idx) {
   return normalizeQuartile(idx?.scopus_q);
 }
 
-/** ✅ NEW: chỉ coi là contrib badge nếu là 1st/corr */
+/** ✅ chỉ coi là contrib badge nếu là 1st/corr */
 function isContribStatus(status) {
   const s = String(status || "").trim().toLowerCase();
   if (!s) return false;
@@ -155,7 +193,7 @@ function pubCard(pub) {
     pub.details ? escapeHtml(cleanDetailsForMeta(pub.details)) : "",
   ].filter(Boolean).join(", ");
 
-  // ✅ meta-left now includes text + (1st/corr) badges right after it
+  // ✅ meta-left includes (1st/corr) badges
   const contribHtml = contribBadgeHtml
     ? `<div class="badges badges--inline">${contribBadgeHtml}</div>`
     : "";
@@ -312,28 +350,37 @@ function groupByYear(pubs, mode) {
   });
 }
 
-function yearSection(yearKey, items) {
+/* ✅ UPDATED: yearSection hỗ trợ collapsedYears */
+function yearSection(yearKey, items, collapsedYears) {
   const label = yearKey === "unknown" ? "Unknown" : yearKey;
   const count = items.length;
 
+  const isCollapsed = collapsedYears?.has(yearKey);
+  const gridId = `pubgrid-${yearKey}`;
+
   return `
-    <section class="year-group" aria-label="Year ${escapeHtml(label)}">
-      <div class="year-bar">
+    <section class="year-group ${isCollapsed ? "is-collapsed" : ""}" data-year="${escapeHtml(yearKey)}" aria-label="Year ${escapeHtml(label)}">
+      <div class="year-bar" role="button" tabindex="0"
+           aria-expanded="${isCollapsed ? "false" : "true"}"
+           aria-controls="${escapeHtml(gridId)}">
         <div class="year-bar__left">${escapeHtml(label)}</div>
-        <div class="year-bar__right">${count} item(s)</div>
+        <div class="year-bar__right">
+          ${count} item(s)
+          <span class="year-bar__chev" aria-hidden="true">▾</span>
+        </div>
       </div>
 
-      <div class="pub-grid">
+      <div id="${escapeHtml(gridId)}" class="pub-grid">
         ${items.map(pubCard).join("")}
       </div>
     </section>
   `;
 }
 
-function renderPubsByYear(targetEl, pubs, mode) {
+function renderPubsByYear(targetEl, pubs, mode, collapsedYears) {
   if (!targetEl) return;
   const groups = groupByYear(pubs, mode);
-  targetEl.innerHTML = groups.map((g) => yearSection(g.yearKey, g.items)).join("");
+  targetEl.innerHTML = groups.map((g) => yearSection(g.yearKey, g.items, collapsedYears)).join("");
 }
 
 (async function autoInitPublicationsIfStandalone() {
@@ -345,10 +392,15 @@ function renderPubsByYear(targetEl, pubs, mode) {
 
   if (!target) return;
 
+  // ✅ NEW: lưu trạng thái thu gọn theo năm
+  const collapsedYears = new Set();
+
   try {
     const pubsAll = await loadPublications();
     populateYearSelect(yearEl, pubsAll);
+
     enableCardClicks(target);
+    enableYearBarCollapse(target, collapsedYears);
 
     const redraw = () => {
       const q = filterEl?.value || "";
@@ -361,7 +413,7 @@ function renderPubsByYear(targetEl, pubs, mode) {
       const step2 = filterByYear(step1b, yearValue);
       const sorted = sortPubs(step2, mode);
 
-      renderPubsByYear(target, sorted, mode);
+      renderPubsByYear(target, sorted, mode, collapsedYears);
     };
 
     filterEl?.addEventListener("input", redraw);

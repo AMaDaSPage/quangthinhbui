@@ -304,3 +304,31 @@ html[data-theme="light"] .badge--tag{
     overflow-wrap: anywhere;
   }
 }
+
+/* ===== Collapse / Expand theo YEAR (Projects) ===== */
+.year-bar{
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Ẩn danh sách project khi thu gọn */
+.year-group.is-collapsed .proj-grid{
+  display: none;
+}
+
+/* Khi thu gọn thì bớt khoảng trống */
+.year-group.is-collapsed .year-bar{
+  margin-bottom: 0;
+}
+
+/* Mũi tên */
+.year-bar__chev{
+  display: inline-block;
+  margin-left: 10px;
+  transition: transform 160ms ease;
+}
+
+/* Thu gọn thì xoay mũi tên */
+.year-group.is-collapsed .year-bar__chev{
+  transform: rotate(-90deg);
+}

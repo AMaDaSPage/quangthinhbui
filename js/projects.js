@@ -1,4 +1,3 @@
-
 function escapeHtml(str) {
   return String(str ?? "")
     .replaceAll("&", "&amp;")
@@ -23,6 +22,45 @@ function enableCardClicks(container) {
     if (!card) return;
     const href = card.getAttribute("data-href");
     if (href) window.open(href, "_blank", "noreferrer");
+  });
+}
+
+/* ===== NEW: click year-bar để thu gọn/mở rộng (Projects) ===== */
+function enableYearBarCollapse(container, collapsedYears) {
+  if (!container) return;
+
+  const setExpanded = (barEl, expanded) => {
+    barEl.setAttribute("aria-expanded", expanded ? "true" : "false");
+  };
+
+  // Click toggle
+  container.addEventListener("click", (e) => {
+    const bar = e.target.closest(".year-bar");
+    if (!bar || !container.contains(bar)) return;
+
+    const group = bar.closest(".year-group");
+    if (!group) return;
+
+    const yearKey = group.getAttribute("data-year") || "";
+    if (!yearKey) return;
+
+    const willCollapse = !group.classList.contains("is-collapsed");
+
+    if (willCollapse) collapsedYears.add(yearKey);
+    else collapsedYears.delete(yearKey);
+
+    group.classList.toggle("is-collapsed", willCollapse);
+    setExpanded(bar, !willCollapse);
+  });
+
+  // Keyboard: Enter/Space
+  container.addEventListener("keydown", (e) => {
+    const bar = e.target.closest(".year-bar");
+    if (!bar || !container.contains(bar)) return;
+
+    if (e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    bar.click();
   });
 }
 
@@ -72,11 +110,6 @@ function shortAgencyName(agency) {
   return s.includes("(") ? s.split("(")[0].trim() : s;
 }
 
-/**
- * Tạo nhãn "agency_code" để code luôn nằm sau agency.
- * Ví dụ: agency="TGU", code="TN.CB-2425.20" -> "TGU_TN.CB-2425.20"
- * Nếu code đã có prefix agency (vd "TGU-..."), thì trả về code luôn (không lặp).
- */
 function fundingAgencyCode(funding, joiner = "_") {
   const agencyRaw = funding?.agency ? String(funding.agency).trim() : "";
   const agency = shortAgencyName(agencyRaw);
@@ -86,7 +119,7 @@ function fundingAgencyCode(funding, joiner = "_") {
   if (agency && code) {
     const aUp = agency.toUpperCase();
     const cUp = code.toUpperCase();
-    if (cUp.startsWith(aUp)) return code; // tránh lặp "TGU_TGU-..."
+    if (cUp.startsWith(aUp)) return code;
     return `${agency}${joiner}${code}`;
   }
   return agency || code;
@@ -97,7 +130,7 @@ function projCard(p) {
   const y = getYear(p);
 
   const funding = p.funding || {};
-  const agencyCode = fundingAgencyCode(funding); // <-- "TGU_TN.CB-2425.20"
+  const agencyCode = fundingAgencyCode(funding);
 
   const periodText =
     (p.period ? String(p.period).trim() : "") ||
@@ -109,7 +142,6 @@ function projCard(p) {
     ? `<a class="card-title-link" href="${escapeHtml(primaryHref)}" target="_blank" rel="noreferrer">${escapeHtml(p.name || "")}</a>`
     : `${escapeHtml(p.name || "")}`;
 
-  // (1) Title row badges: Period + Agency_Code
   const titleBadgesHtml =
     (periodText || agencyCode)
       ? `<div class="badges proj-card__title-badges">
@@ -118,7 +150,6 @@ function projCard(p) {
          </div>`
       : "";
 
-  // (2) PI row badge: Status
   const statusHtml = statusBadge(p.status);
 
   const actions = [];
@@ -163,7 +194,7 @@ function filterByText(projects, q) {
 
   return projects.filter((p) => {
     const funding = p.funding || {};
-    const agencyCode = fundingAgencyCode(funding); // <-- để search theo "TGU_TN..."
+    const agencyCode = fundingAgencyCode(funding);
 
     const blob = [
       p.id, p.name, p.status, p.period, p.year,
@@ -247,28 +278,40 @@ function groupByYear(items, mode) {
   return ordered.map((k) => ({ yearKey: k, items: map.get(k) || [] }));
 }
 
-function yearSection(yearKey, items) {
+/* ✅ UPDATED: yearSection có collapse state + chevron + aria */
+function yearSection(yearKey, items, collapsedYears) {
   const label = yearKey === "unknown" ? "Unknown" : yearKey;
   const count = items.length;
 
+  const isCollapsed = collapsedYears?.has(yearKey);
+  const gridId = `projgrid-${yearKey}`;
+
   return `
-    <section class="year-group" aria-label="Year ${escapeHtml(label)}">
-      <div class="year-bar">
+    <section class="year-group ${isCollapsed ? "is-collapsed" : ""}"
+             data-year="${escapeHtml(yearKey)}"
+             aria-label="Year ${escapeHtml(label)}">
+
+      <div class="year-bar" role="button" tabindex="0"
+           aria-expanded="${isCollapsed ? "false" : "true"}"
+           aria-controls="${escapeHtml(gridId)}">
         <div class="year-bar__left">${escapeHtml(label)}</div>
-        <div class="year-bar__right">${count} item(s)</div>
+        <div class="year-bar__right">
+          ${count} item(s)
+          <span class="year-bar__chev" aria-hidden="true">▾</span>
+        </div>
       </div>
 
-      <div class="proj-grid">
+      <div id="${escapeHtml(gridId)}" class="proj-grid">
         ${items.map(projCard).join("")}
       </div>
     </section>
   `;
 }
 
-function renderByYear(targetEl, items, mode) {
+function renderByYear(targetEl, items, mode, collapsedYears) {
   if (!targetEl) return;
   const groups = groupByYear(items, mode);
-  targetEl.innerHTML = groups.map((g) => yearSection(g.yearKey, g.items)).join("");
+  targetEl.innerHTML = groups.map((g) => yearSection(g.yearKey, g.items, collapsedYears)).join("");
 }
 
 (async function autoInitProjects() {
@@ -278,10 +321,15 @@ function renderByYear(targetEl, items, mode) {
 
   if (!target) return;
 
+  // ✅ NEW: lưu trạng thái thu gọn theo năm (giữ khi filter/sort redraw)
+  const collapsedYears = new Set();
+
   try {
     const all = await loadProjects();
     populateYearSelect(yearEl, all);
+
     enableCardClicks(target);
+    enableYearBarCollapse(target, collapsedYears);
 
     const redraw = () => {
       const q = filterEl?.value || "";
@@ -292,7 +340,7 @@ function renderByYear(targetEl, items, mode) {
       const step2 = filterByYear(step1, yearValue);
       const sorted = sortItems(step2, mode);
 
-      renderByYear(target, sorted, mode);
+      renderByYear(target, sorted, mode, collapsedYears);
     };
 
     filterEl?.addEventListener("input", redraw);
