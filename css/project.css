@@ -195,60 +195,6 @@
   border:1px solid rgba(255,255,255,.08);
 }
 
-@media (max-width: 560px){
-  /* cái bạn đang có */
-  .proj-card__meta{
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .proj-card__meta-left{
-    white-space: normal;
-  }
-
-  /* biến body thành flex để reorder được */
-  .proj-card__body{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  /* bỏ “box” của 2 hàng title-row và pi-row,
-     đưa con của nó thành item trực tiếp trong body */
-  .proj-card__title-row,
-  .proj-card__pi-row{
-    display: contents;
-  }
-
-  /* thứ tự hiển thị */
-  .proj-card__title{ order: 1; }
-  .proj-card__pi{ order: 2; margin-top: 0; }
-
-  /* 2 badge (period + agency_code) xuống dưới */
-  .proj-card__title-badges{
-    order: 3;
-    justify-self: auto;
-    align-self: flex-start;
-    margin-top: 6px;
-  }
-
-  /* status xuống dưới cùng */
-  .proj-card__pi-status{
-    order: 4;
-    justify-self: auto;
-    align-self: flex-start;
-    margin-top: 2px;
-  }
-
-  /* nếu có actions thì để sau cùng */
-  .proj-card__actions{ order: 5; }
-
-  /* đảm bảo badges không ép title */
-  .proj-card__title-badges.badges{
-    justify-content: flex-start;
-  }
-}
-
-
 html[data-theme="light"] .year-pill,
 html[data-theme="light"] .year-bar{
   border:1px solid rgba(0,0,0,.12);
@@ -320,4 +266,41 @@ html[data-theme="light"] .badge--tag{
 
 .proj-card__pi-status{
   justify-self:end;
+}
+/* ===== FIX MOBILE: đưa 3 badge/pill xuống dưới hết ===== */
+@media (max-width: 560px) {
+
+  /* Title row: đổi GRID -> FLEX dọc (badge xuống dưới title) */
+  .proj-card__title-row{
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .proj-card__title-badges{
+    width: 100%;
+    justify-content: flex-start !important;
+    justify-self: auto !important;
+  }
+
+  /* PI row: đổi GRID -> FLEX dọc (status xuống dưới PI) */
+  .proj-card__pi-row{
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .proj-card__pi-status{
+    width: 100%;
+    justify-self: auto !important;
+  }
+
+  /* (tuỳ chọn nhưng nên có) nếu badge code dài quá thì không tràn */
+  .badge--tag{
+    max-width: 100%;
+    white-space: normal;       /* cho xuống dòng trong pill nếu cần */
+    overflow-wrap: anywhere;
+  }
 }
