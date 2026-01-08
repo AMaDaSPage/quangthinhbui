@@ -1,248 +1,245 @@
- 
-    .contact-page{
-      padding-block: 22px; /* nhỏ lại */
-    }
+/* =========================
+   CONTACT (compact)
+   ========================= */
 
-    .contact-page .container{
-      max-width: 980px; /* gọn lại */
-    }
+.contact-page{
+  padding-block: 22px;
+}
 
-    .contact-page .section-head{
-      margin-bottom: 10px;
-    }
+.contact-page .container{
+  max-width: 980px;
+}
 
-    .contact-page .section-title{
-      margin: 0;
-      font-size: clamp(20px, 2.2vw, 26px);
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-    }
+.contact-page .section-head{
+  margin-bottom: 10px;
+}
 
-    /* card padding gọn lại (override nhẹ) */
-    .contact-page .card{
-      padding: 14px;
-    }
+.contact-page .section-title{
+  margin: 0;
+  font-size: clamp(20px, 2.2vw, 26px);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
 
-    .contact-layout{
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 12px;
-      align-items: start; /* bỏ stretch cho khỏi bung */
-    }
+/* cards */
+.contact-page .card{
+  padding: 14px;
+}
 
-    .contact-aside{
-      display: grid;
-      gap: 12px;
-    }
+.contact-layout{
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 12px;
+  align-items: start;
+}
 
-    .contact-card,
-    .contact-form-card{
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-    }
+.contact-aside{
+  display: grid;
+  gap: 12px;
+}
 
-    .contact-card{
-      display: flex;
-      flex-direction: column;
-    }
+.contact-card,
+.contact-form-card{
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
 
-    .contact-card-head{
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
+.contact-card{
+  display: flex;
+  flex-direction: column;
+}
 
-    .contact-icon{
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      border-radius: 11px;
-      border: 1px solid var(--border);
-      background: rgba(127,127,127,.08);
-      font-size: 15px;
-      flex: 0 0 34px;
-    }
+.contact-card-head{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
 
-    .contact-profile-lines{
-      display: grid;
-      row-gap: 12px; /* gọn hơn */
-    }
+.contact-icon{
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: rgba(127,127,127,.08);
+  font-size: 15px;
+  flex: 0 0 34px;
+}
 
-    .role-block{
-      display: grid;
-      gap: 3px;
-    }
+/* left column content */
+.contact-profile-lines{
+  display: grid;
+  row-gap: 12px;
+}
 
-    .contact-role{
-      margin: 0;
-      font-size: 14px;      /* nhỏ lại */
-      font-weight: 750;
-      line-height: 1.25;
-      color: var(--fg);
-    }
+.role-block{
+  display: grid;
+  gap: 3px;
+}
 
-    .contact-desc{
-      margin: 0;
-      font-size: 13.5px;    /* nhỏ lại */
-      line-height: 1.55;
-      color: var(--muted);
-    }
+.contact-role{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.25;
+  color: var(--fg);
+}
 
-    .contact-meta--stack{
-      display: grid;
-      gap: 4px;
-      font-size: 13.5px;
-      line-height: 1.55;
-      color: var(--muted);
-    }
+.contact-desc{
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
 
-    .contact-meta--stack .contact-role strong{
-      color: var(--fg);
-    }
+.contact-meta--stack{
+  display: grid;
+  gap: 4px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--muted);
+}
 
-    /* Email rows */
-    .email-row{
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
+.contact-meta--stack .contact-role strong{
+  color: var(--fg);
+}
 
-    .contact-email{
-      color: inherit;
-      text-decoration: underline;
-      text-decoration-style: dashed;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
-    }
+/* email rows */
+.email-row{
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
 
-    /* copy icon: NO background */
-    .copy-email{
-      background: transparent !important;
-      border: 0 !important;
-      box-shadow: none !important;
-      padding: 0 !important;
+.contact-email{
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
 
-      width: 22px;
-      height: 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+/* copy icon (no background) */
+.copy-email{
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
 
-      color: inherit;
-      cursor: pointer;
-      opacity: .9;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 
-      appearance: none;
-      -webkit-appearance: none;
-    }
+  color: inherit;
+  cursor: pointer;
+  opacity: .9;
 
-    .copy-email:hover{
-      opacity: 1;
-      color: var(--fg);
-    }
+  appearance: none;
+  -webkit-appearance: none;
+}
 
-    .copy-email:focus-visible{
-      outline: 2px solid rgba(255,255,255,.28);
-      outline-offset: 2px;
-      border-radius: 6px;
-    }
+.copy-email:hover{
+  opacity: 1;
+  color: var(--fg);
+}
 
-    .contact-note{
-      margin: 2px 0 0;
-      min-height: 16px;
-      font-size: 13px;
-      color: var(--muted);
-    }
+.copy-email:focus-visible{
+  outline: 2px solid rgba(255,255,255,.28);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
 
-    /* Map */
-    .map-embed{
-      margin-top: 8px;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
+.contact-note{
+  margin: 2px 0 0;
+  min-height: 16px;
+  font-size: 13px;
+  color: var(--muted);
+}
 
-    .map-embed iframe{
-      display: block;
-      width: 100%;
-      height: 220px; /* nhỏ lại */
-      border: 0;
-    }
+/* =========================
+   MAP (more compact)
+   ========================= */
 
-    /* Form */
-    .contact-form-card{
-      display: flex;
-      flex-direction: column;
-    }
-
-    .contact-form-card .form{
-      margin-top: 8px;
-      display: grid;
-      gap: 10px; /* gọn */
-    }
-
-    .contact-form-card .label{
-      gap: 6px;
-      font-size: 13.5px;
-      color: var(--fg);
-    }
-
-    .contact-form-card .input{
-      height: 40px;
-    }
-
-    .contact-form-card .textarea{
-      min-height: 170px; /* nhỏ lại */
-    }
-
-    .contact-actions{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .contact-actions .btn{
-      height: 40px;
-      padding: 0 12px;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 650;
-      line-height: 1;
-      white-space: nowrap;
-    }
-
-    @media (max-width: 860px){
-      .contact-layout{ grid-template-columns: 1fr; }
-      .contact-actions{ grid-template-columns: 1fr; }
-      .map-embed iframe{ height: 200px; }
-    }
-    /* Make map card compact */
 .contact-card.map-card{
-  padding: 12px;                 /* nhỏ hơn */
+  padding: 12px;
 }
 
 .contact-card.map-card .contact-card-head{
-  margin-bottom: 6px;            /* gọn header */
+  margin-bottom: 6px;
 }
 
-.contact-card.map-card .map-embed{
-  margin-top: 6px;               /* bớt khoảng cách */
-  border-radius: 12px;           /* gọn bo */
+.map-embed{
+  margin-top: 6px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
 }
 
-/* giảm chiều cao map để cột trái không bị dài */
-.contact-card.map-card .map-embed iframe{
-  height: 155px;                 /* chỉnh 140–180 tuỳ muốn */
+.map-embed iframe{
+  display: block;
+  width: 100%;
+  height: 155px; /* thu gọn để ngang cột phải */
+  border: 0;
 }
 
-/* Mobile giữ map cao hơn chút cho dễ nhìn */
+/* =========================
+   FORM (compact)
+   ========================= */
+
+.contact-form-card{
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form-card .form{
+  margin-top: 8px;
+  display: grid;
+  gap: 10px;
+}
+
+.contact-form-card .label{
+  gap: 6px;
+  font-size: 13.5px;
+  color: var(--fg);
+}
+
+.contact-form-card .input{
+  height: 40px;
+}
+
+.contact-form-card .textarea{
+  min-height: 170px;
+}
+
+.contact-actions{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.contact-actions .btn{
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 650;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* =========================
+   MOBILE
+   ========================= */
+
 @media (max-width: 860px){
-  .contact-card.map-card .map-embed iframe{
-    height: 200px;
-  }
+  .contact-layout{ grid-template-columns: 1fr; }
+  .contact-actions{ grid-template-columns: 1fr; }
+  .map-embed iframe{ height: 200px; }
 }
