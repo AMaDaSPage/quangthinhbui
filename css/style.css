@@ -18,24 +18,20 @@ body{
   flex-direction: column;
 }
 
-/* main của bạn là <main id="home"> ... </main> */
 main{
-  flex: 1 0 auto;              /* đẩy footer xuống */
-  display: flex;               /* để hero có thể giãn */
+  flex: 1 0 auto;             
+  display: flex;           
   flex-direction: column;
 }
 
-/* footer phải có class site-footer */
 .site-footer{
   margin-top: auto;
 }
 
-/* bù trừ header sticky khi scroll tới section */
 #home, #publications, #projects, #contact{
-  scroll-margin-top: 86px; /* chỉnh 76–96px tùy header cao */
+  scroll-margin-top: 86px; 
 }
 
-/* Base UI */
 a{ color: inherit; }
 .muted{ color: var(--muted); }
 .section{
@@ -121,20 +117,30 @@ a{ color: inherit; }
   min-height: 0; 
 }
 
+
 .hero-bg{
-  position:absolute;
+  position: absolute;
   inset: 0;
-  background-image: url("../images/hero.jpg");
   background-size: cover;
   background-position: center;
   filter: saturate(1.05);
 }
+
+/* Light: BG_White */
+html[data-theme="light"] .hero-bg{
+  background-image: url("/img/BG_White.png");
+}
+
+/* Dark: BG_Black */
+html[data-theme="dark"] .hero-bg{
+  background-image: url("/img/BG_Black.png");
+}
+
+
 .hero-overlay{
-  position:absolute;
-  inset: 0;
-  background:
-    radial-gradient(900px 600px at 15% 40%, rgba(0,0,0,.55), transparent 60%),
-    linear-gradient(90deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.22) 55%, rgba(0,0,0,.08) 100%);
+position: absolute;
+inset: 0px;
+background: linear-gradient(rgba(0, 0, 0, 0.55), transparent 51.26%), linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.08));
 }
 html[data-theme="dark"] .hero-overlay{
   background:
