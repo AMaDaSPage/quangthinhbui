@@ -85,11 +85,101 @@
       });
 
     function getDriverFactory(){
-      // Driver.js CDN exposes window.driver.js.driver (not window.driver())
       const factory = window.driver?.js?.driver || window.driver?.driver || window.driver;
       return (typeof factory === "function") ? factory : null;
     }
 
+    // async function startTour(){
+    //   const driverFactory = getDriverFactory();
+    //   if (!driverFactory){
+    //     console.error("Driver.js not loaded correctly. window.driver =", window.driver);
+    //     return;
+    //   }
+
+    //   const headerEl = await waitFor(() =>
+    //     $("header") || $(".site-header") || $(".header") || $("[data-include*='header']")
+    //   );
+
+    //   const heroEl = await waitFor(() =>
+    //     $(".hero") || $("#hero") || $("main#home")
+    //   );
+
+    //   const themeBtn = find(
+    //     "#themeToggle",
+    //     ".theme-toggle",
+    //     "[data-theme-toggle]",
+    //     "button[aria-label*='theme' i]"
+    //   );
+
+    //   const projectsEl = find(
+    //     "#projects",
+    //     ".projects",
+    //     "[data-section='projects']"
+    //   );
+
+    //   const steps = [];
+
+    //   if (headerEl) steps.push({
+    //     element: headerEl,
+    //     popover: {
+    //       title: "Navigation",
+    //       description: "Use the menu/tabs to switch between Home, Projects, Publications, and Contact.",
+    //       side: "bottom",
+    //       align: "start"
+    //     }
+    //   });
+
+    //   if (themeBtn) steps.push({
+    //     element: themeBtn,
+    //     popover: {
+    //       title: "Theme",
+    //       description: "Turn Light/Dark on/off here.",
+    //       side: "bottom",
+    //       align: "center"
+    //     }
+    //   });
+
+    //   if (heroEl) steps.push({
+    //     element: heroEl,
+    //     popover: {
+    //       title: "Overview",
+    //       description: "This is the main introduction.",
+    //       side: "bottom",
+    //       align: "start"
+    //     }
+    //   });
+
+    //   if (projectsEl) steps.push({
+    //     element: projectsEl,
+    //     popover: {
+    //       title: "Projects",
+    //       description: "The list of projects is located in this area.",
+    //       side: "top",
+    //       align: "start"
+    //     }
+    //   });
+
+    //   if (!steps.length) {
+    //     steps.push({
+    //       popover: {
+    //         title: "Tour",
+    //         description: "Không bắt được selector để highlight. Gửi mình header.html để mình gắn selector chuẩn."
+    //       }
+    //     });
+    //   }
+
+    //   const d = driverFactory({
+    //     showProgress: true,
+    //     animate: true,
+    //     smoothScroll: true,
+    //     allowClose: true,
+    //     overlayOpacity: 0.6,
+    //     steps
+    //   });
+
+    //   d.drive();
+    //   localStorage.setItem("seenTour", "1");
+    // }
     async function startTour(){
       const driverFactory = getDriverFactory();
       if (!driverFactory){
@@ -97,37 +187,76 @@
         return;
       }
 
-      // wait injected partials (because you use data-include)
       const headerEl = await waitFor(() =>
-        $("header") || $(".site-header") || $(".header") || $("[data-include*='header']")
+        document.querySelector("header") ||
+        document.querySelector(".site-header") ||
+        document.querySelector(".header")
       );
 
       const heroEl = await waitFor(() =>
-        $(".hero") || $("#hero") || $("main#home")
+        document.querySelector(".hero") ||
+        document.querySelector("#hero") ||
+        document.querySelector("main#home")
       );
 
-      const themeBtn = find(
-        "#themeToggle",
-        ".theme-toggle",
-        "[data-theme-toggle]",
-        "button[aria-label*='theme' i]"
-      );
+      const scope = headerEl || document;
 
-      const projectsEl = find(
-        "#projects",
-        ".projects",
-        "[data-section='projects']"
-      );
+      const findByText = (label) => {
+        const t = label.trim().toLowerCase();
+        return Array.from(scope.querySelectorAll("a,button"))
+          .find(el => (el.textContent || "").trim().toLowerCase() === t) || null;
+      };
+
+      const tabHome = findByText("Home");
+      const tabPublications = findByText("Publications");
+      const tabProjects = findByText("Projects");
+      const tabContact = findByText("Contact");
+
+      const themeBtn =
+        scope.querySelector("#themeToggle") ||
+        scope.querySelector(".theme-toggle") ||
+        scope.querySelector("[data-theme-toggle]") ||
+        scope.querySelector("button[aria-label*='theme' i]");
 
       const steps = [];
 
-      if (headerEl) steps.push({
-        element: headerEl,
+      if (tabHome) steps.push({
+        element: tabHome,
         popover: {
-          title: "Navigation",
-          description: "Use the menu/tabs to switch between Home, Projects, Publications, and Contact.",
+          title: "Home",
+          description: "Go back to the main overview section.",
           side: "bottom",
-          align: "start"
+          align: "center"
+        }
+      });
+
+      if (tabPublications) steps.push({
+        element: tabPublications,
+        popover: {
+          title: "Publications",
+          description: "Browse my papers and academic publications.",
+          side: "bottom",
+          align: "center"
+        }
+      });
+
+      if (tabProjects) steps.push({
+        element: tabProjects,
+        popover: {
+          title: "Projects",
+          description: "See selected projects and brief descriptions.",
+          side: "bottom",
+          align: "center"
+        }
+      });
+
+      if (tabContact) steps.push({
+        element: tabContact,
+        popover: {
+          title: "Contact",
+          description: "Find my email and send me a message.",
+          side: "bottom",
+          align: "center"
         }
       });
 
@@ -135,8 +264,8 @@
         element: themeBtn,
         popover: {
           title: "Theme",
-          description: "Turn Light/Dark on/off here.",
-          side: "bottom",
+          description: "Toggle between light and dark mode.",
+          side: "left",
           align: "center"
         }
       });
@@ -145,18 +274,8 @@
         element: heroEl,
         popover: {
           title: "Overview",
-          description: "This is the main introduction.",
+          description: "This is the main introduction area. Scroll down for more sections.",
           side: "bottom",
-          align: "start"
-        }
-      });
-
-      if (projectsEl) steps.push({
-        element: projectsEl,
-        popover: {
-          title: "Projects",
-          description: "The list of projects is located in this area.",
-          side: "top",
           align: "start"
         }
       });
@@ -165,7 +284,7 @@
         steps.push({
           popover: {
             title: "Tour",
-            description: "Không bắt được selector để highlight. Gửi mình header.html để mình gắn selector chuẩn."
+            description: "No elements found to highlight. Check your header markup/selectors."
           }
         });
       }
