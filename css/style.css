@@ -390,13 +390,7 @@ html[data-theme="dark"] .hero-overlay{
   .contact-wrap{ grid-template-columns: 1fr; }
 }
 
-.cursor-fx-canvas{
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-}
+
 @media (min-width: 861px){
   .hero-right{
     justify-content: flex-end; 
@@ -411,4 +405,13 @@ html[data-theme="dark"] .hero-overlay{
   .avatar{
     display: block;           
   }
+}
+
+/* chuột */
+.cursor-fx-canvas{
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
 }

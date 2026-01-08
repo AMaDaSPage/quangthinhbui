@@ -6,8 +6,8 @@
   --border: rgba(11,18,32,.12);
   --shadow: 0 10px 30px rgba(0,0,0,.10);
 
-  --accent: #0b66c3;
-  --accent-2: #00a3a3;
+  --accent: #31B332;
+  --accent-2: #1F5430;
 
   --header-bg: rgba(255,255,255,.78);
   --header-border: rgba(11,18,32,.10);
@@ -21,8 +21,8 @@ html[data-theme="dark"]{
   --border: rgba(232,238,252,.14);
   --shadow: 0 14px 40px rgba(0,0,0,.35);
 
-  --accent: #67b0ff;
-  --accent-2: #58e1d5;
+  --accent: #31B332;
+  --accent-2: #1F5430;
 
   --header-bg: rgba(10,14,22,.65);
   --header-border: rgba(232,238,252,.10);
