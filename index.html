@@ -89,98 +89,7 @@
       return (typeof factory === "function") ? factory : null;
     }
 
-    // async function startTour(){
-    //   const driverFactory = getDriverFactory();
-    //   if (!driverFactory){
-    //     console.error("Driver.js not loaded correctly. window.driver =", window.driver);
-    //     return;
-    //   }
-
-    //   const headerEl = await waitFor(() =>
-    //     $("header") || $(".site-header") || $(".header") || $("[data-include*='header']")
-    //   );
-
-    //   const heroEl = await waitFor(() =>
-    //     $(".hero") || $("#hero") || $("main#home")
-    //   );
-
-    //   const themeBtn = find(
-    //     "#themeToggle",
-    //     ".theme-toggle",
-    //     "[data-theme-toggle]",
-    //     "button[aria-label*='theme' i]"
-    //   );
-
-    //   const projectsEl = find(
-    //     "#projects",
-    //     ".projects",
-    //     "[data-section='projects']"
-    //   );
-
-    //   const steps = [];
-
-    //   if (headerEl) steps.push({
-    //     element: headerEl,
-    //     popover: {
-    //       title: "Navigation",
-    //       description: "Use the menu/tabs to switch between Home, Projects, Publications, and Contact.",
-    //       side: "bottom",
-    //       align: "start"
-    //     }
-    //   });
-
-    //   if (themeBtn) steps.push({
-    //     element: themeBtn,
-    //     popover: {
-    //       title: "Theme",
-    //       description: "Turn Light/Dark on/off here.",
-    //       side: "bottom",
-    //       align: "center"
-    //     }
-    //   });
-
-    //   if (heroEl) steps.push({
-    //     element: heroEl,
-    //     popover: {
-    //       title: "Overview",
-    //       description: "This is the main introduction.",
-    //       side: "bottom",
-    //       align: "start"
-    //     }
-    //   });
-
-    //   if (projectsEl) steps.push({
-    //     element: projectsEl,
-    //     popover: {
-    //       title: "Projects",
-    //       description: "The list of projects is located in this area.",
-    //       side: "top",
-    //       align: "start"
-    //     }
-    //   });
-
-    //   if (!steps.length) {
-    //     steps.push({
-    //       popover: {
-    //         title: "Tour",
-    //         description: "Không bắt được selector để highlight. Gửi mình header.html để mình gắn selector chuẩn."
-    //       }
-    //     });
-    //   }
-
-    //   const d = driverFactory({
-    //     showProgress: true,
-    //     animate: true,
-    //     smoothScroll: true,
-    //     allowClose: true,
-    //     overlayOpacity: 0.6,
-    //     steps
-    //   });
-
-    //   d.drive();
-    //   localStorage.setItem("seenTour", "1");
-    // }
-    async function startTour(){
+   async function startTour(){
       const driverFactory = getDriverFactory();
       if (!driverFactory){
         console.error("Driver.js not loaded correctly. window.driver =", window.driver);
@@ -299,18 +208,22 @@
       });
 
       d.drive();
-      localStorage.setItem("seenTour", "1");
+      // localStorage.setItem("seenTour", "1");
     }
 
     document.addEventListener("click", (e) => {
       if (e.target.closest("#tourBtn")) startTour();
     });
-
+    
     window.addEventListener("load", () => {
-      if (localStorage.getItem("seenTour") !== "1") {
-        setTimeout(startTour, 900);
-      }
+      setTimeout(startTour, 700);
     });
+
+    // window.addEventListener("load", () => {
+    //   if (localStorage.getItem("seenTour") !== "1") {
+    //     setTimeout(startTour, 900);
+    //   }
+    // });
   })();
   </script>
 </body>
