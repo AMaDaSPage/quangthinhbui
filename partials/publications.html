@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="../css/publication.css" />
   <link rel="icon" href="../img/favicon.png" type="image/x-icon">
   <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
-
 </head>
 
 <body>
@@ -23,13 +22,25 @@
     <div class="container">
       <div class="section-head">
         <div>
-           <div class="year-pill">
-            <span class="year-pill__label">Type:</span>
-            <select class="select year-pill__select" id="pubType" aria-label="Filter by type">
-              <option value="all">All</option>
-              <option value="conference">Conference</option>
-              <option value="journal">Journal</option>
-            </select>
+          <!-- Left filters: Type + Index -->
+          <div style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;">
+            <div class="year-pill">
+              <span class="year-pill__label">Type:</span>
+              <select class="select year-pill__select" id="pubType" aria-label="Filter by type">
+                <option value="all">All</option>
+                <option value="conference">Conference</option>
+                <option value="journal">Journal</option>
+              </select>
+            </div>
+
+            <div class="year-pill">
+              <span class="year-pill__label">Index:</span>
+              <select class="select year-pill__select" id="pubIndex" aria-label="Filter by indexing">
+                <option value="all">All</option>
+                <option value="wos">WoS (ISI)</option>
+                <option value="scopus">Scopus</option>
+              </select>
+            </div>
           </div>
         </div>
 

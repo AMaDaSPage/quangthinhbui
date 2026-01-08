@@ -24,7 +24,6 @@ function enableCardClicks(container) {
   });
 }
 
-/* ===== NEW: click year-bar để thu gọn/mở rộng ===== */
 function enableYearBarCollapse(container, collapsedYears) {
   if (!container) return;
 
@@ -42,7 +41,6 @@ function enableYearBarCollapse(container, collapsedYears) {
     const yearKey = group.getAttribute("data-year") || "";
     if (!yearKey) return;
 
-    // toggle state
     const willCollapse = !group.classList.contains("is-collapsed");
     if (willCollapse) collapsedYears.add(yearKey);
     else collapsedYears.delete(yearKey);
@@ -51,7 +49,6 @@ function enableYearBarCollapse(container, collapsedYears) {
     setExpanded(bar, !willCollapse);
   });
 
-  // Keyboard: Enter/Space
   container.addEventListener("keydown", (e) => {
     const bar = e.target.closest(".year-bar");
     if (!bar || !container.contains(bar)) return;
@@ -62,7 +59,6 @@ function enableYearBarCollapse(container, collapsedYears) {
   });
 }
 
-/** gộp pub.tag (array) + pub.tags (array) → unique, giữ thứ tự */
 function normalizeTags(pub) {
   const a = Array.isArray(pub?.tag) ? pub.tag : [];
   const b = Array.isArray(pub?.tags) ? pub.tags : [];
@@ -77,7 +73,6 @@ function normalizeTags(pub) {
   return out;
 }
 
-/** ===== normalize publication type ===== */
 function getPubType(pub) {
   const tags = normalizeTags(pub).map((t) => t.toLowerCase());
   const type = String(pub?.type ?? "").trim().toLowerCase();
@@ -101,7 +96,6 @@ function cleanDetailsForMeta(details) {
   return String(details ?? "").replace(/\s*\(\s*\d{4}\s*\)\s*$/, "").trim();
 }
 
-/** ===== Scopus quartile support ===== */
 function normalizeQuartile(q) {
   const s = String(q ?? "").trim().toUpperCase();
   return /^Q[1-4]$/.test(s) ? s : "";
@@ -123,6 +117,14 @@ function getScopusQuartile(idx) {
   return normalizeQuartile(idx?.scopus_q);
 }
 
+function isWosIndexed(idx) {
+  if (idx?.jcr_q) return true;
+  const w = idx?.wos;
+  if (w === true) return true;
+  if (typeof w === "string" && w.trim() !== "") return true;
+  return false;
+}
+
 /** ✅ chỉ coi là contrib badge nếu là 1st/corr */
 function isContribStatus(status) {
   const s = String(status || "").trim().toLowerCase();
@@ -142,7 +144,6 @@ function pubCard(pub) {
   const scopusOn = isScopusIndexed(idx);
   const scopusQ = getScopusQuartile(idx);
 
-  // ---- status badge tách 2 loại: (1st/corr) vs còn lại
   const statusRaw = String(pub.status || "").trim();
   const statusBadgeHtml = statusRaw
     ? `<span class="badge badge--status">${escapeHtml(statusRaw)}</span>`
@@ -151,7 +152,6 @@ function pubCard(pub) {
   const contribBadgeHtml = statusRaw && isContribStatus(statusRaw) ? statusBadgeHtml : "";
   const otherStatusBadgeHtml = statusRaw && !isContribStatus(statusRaw) ? statusBadgeHtml : "";
 
-  // ---- indexing badges
   const idxBadges = [
     idx.jcr_q ? `<span class="badge badge--isi">${escapeHtml(wosLabel)}/${escapeHtml(idx.jcr_q)}</span>` : "",
     !idx.jcr_q && idx.wos ? `<span class="badge badge--wos">WoS/${escapeHtml(idx.wos)}</span>` : "",
@@ -160,16 +160,13 @@ function pubCard(pub) {
       : "",
   ].filter(Boolean).join("");
 
-  // ---- tag badges (trừ journal/conference)
   const tags = normalizeTags(pub);
   const extraTags = tags.filter((t) => !["journal", "conference"].includes(String(t).toLowerCase()));
   const tagBadges = extraTags.map((t) => `<span class="badge badge--tag">${escapeHtml(t)}</span>`).join("");
 
-  // ✅ badges bên phải: status khác (nếu có) + indexing + tags
   const rightBadgesInner = [otherStatusBadgeHtml, idxBadges, tagBadges].filter(Boolean).join("");
   const rightBadgesHtml = rightBadgesInner ? `<div class="badges">${rightBadgesInner}</div>` : "";
 
-  // ---- actions links
   const actions = [
     links.paper
       ? `<a class="link" href="${escapeHtml(links.paper)}" target="_blank" rel="noreferrer">Paper</a>`
@@ -182,18 +179,15 @@ function pubCard(pub) {
       : "",
   ].filter(Boolean).join("");
 
-  // ---- title
   const titleHtml = primaryHref
     ? `<a class="card-title-link" href="${escapeHtml(primaryHref)}" target="_blank" rel="noreferrer">${escapeHtml(pub.title || "")}</a>`
     : `${escapeHtml(pub.title || "")}`;
 
-  // ---- meta-left text
   const metaLeftText = [
     pub.venue ? escapeHtml(pub.venue) : "",
     pub.details ? escapeHtml(cleanDetailsForMeta(pub.details)) : "",
   ].filter(Boolean).join(", ");
 
-  // ✅ meta-left includes (1st/corr) badges
   const contribHtml = contribBadgeHtml
     ? `<div class="badges badges--inline">${contribBadgeHtml}</div>`
     : "";
@@ -239,6 +233,7 @@ function filterByText(pubs, q) {
       p.title, p.authors, p.venue, p.year, p.type, p.status,
       p.details,
 
+      isWosIndexed(idx) ? "wos isi" : "",
       idx.wos ? `wos ${idx.wos}` : "",
       idx.jcr_q ? `${wosKey} ${idx.jcr_q}` : "",
 
@@ -260,14 +255,25 @@ function filterByYear(pubs, yearValue) {
   return pubs.filter((p) => Number(p.year) === y);
 }
 
-/** filter by type (conference/journal/preprint/other) */
 function filterByType(pubs, typeValue) {
   if (!typeValue || typeValue === "all") return pubs;
   const t = String(typeValue).toLowerCase();
   return pubs.filter((p) => getPubType(p) === t);
 }
 
-/** ===== helpers for order sorting ===== */
+function filterByIndex(pubs, indexValue) {
+  if (!indexValue || indexValue === "all") return pubs;
+
+  const v = String(indexValue).toLowerCase();
+  if (v === "wos") {
+    return pubs.filter((p) => isWosIndexed(p.indexing || {}));
+  }
+  if (v === "scopus") {
+    return pubs.filter((p) => isScopusIndexed(p.indexing || {}));
+  }
+  return pubs;
+}
+
 function safeOrder(pub) {
   const v = Number(pub?.order);
   return Number.isFinite(v) ? v : Number.POSITIVE_INFINITY;
@@ -350,7 +356,6 @@ function groupByYear(pubs, mode) {
   });
 }
 
-/* ✅ UPDATED: yearSection hỗ trợ collapsedYears */
 function yearSection(yearKey, items, collapsedYears) {
   const label = yearKey === "unknown" ? "Unknown" : yearKey;
   const count = items.length;
@@ -388,11 +393,11 @@ function renderPubsByYear(targetEl, pubs, mode, collapsedYears) {
   const filterEl = document.getElementById("pubFilter");
   const sortEl = document.getElementById("pubSort");
   const yearEl = document.getElementById("pubYear");
-  const typeEl = document.getElementById("pubType"); // optional
+  const typeEl = document.getElementById("pubType");  
+  const indexEl = document.getElementById("pubIndex");
 
   if (!target) return;
 
-  // ✅ NEW: lưu trạng thái thu gọn theo năm
   const collapsedYears = new Set();
 
   try {
@@ -407,10 +412,12 @@ function renderPubsByYear(targetEl, pubs, mode, collapsedYears) {
       const mode = sortEl?.value || "year_desc";
       const yearValue = yearEl?.value || "all";
       const typeValue = typeEl?.value || "all";
+      const indexValue = indexEl?.value || "all";
 
       const step1 = filterByText(pubsAll, q);
       const step1b = filterByType(step1, typeValue);
-      const step2 = filterByYear(step1b, yearValue);
+      const step1c = filterByIndex(step1b, indexValue);
+      const step2 = filterByYear(step1c, yearValue);
       const sorted = sortPubs(step2, mode);
 
       renderPubsByYear(target, sorted, mode, collapsedYears);
@@ -420,6 +427,7 @@ function renderPubsByYear(targetEl, pubs, mode, collapsedYears) {
     sortEl?.addEventListener("change", redraw);
     yearEl?.addEventListener("change", redraw);
     typeEl?.addEventListener("change", redraw);
+    indexEl?.addEventListener("change", redraw); 
 
     redraw();
   } catch (e) {
