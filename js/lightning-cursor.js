@@ -17,7 +17,6 @@
     canvas.style.height = window.innerHeight + "px";
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-    // clear khi resize để không bị “mảng”
     ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
   }
   window.addEventListener("resize", resize, { passive: true });
@@ -70,12 +69,12 @@
     ctx.lineJoin = "round";
 
     // glow
-    ctx.strokeStyle = "rgba(120,170,255,0.22)";
+    ctx.strokeStyle = "rgba(255, 172, 120, 0.22)";
     ctx.lineWidth = 6;
     ctx.stroke();
 
     // core
-    ctx.strokeStyle = "rgba(200,230,255,0.75)";
+    ctx.strokeStyle = "rgba(181, 136, 39, 0.75)";
     ctx.lineWidth = 2;
     ctx.stroke();
   }
