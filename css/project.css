@@ -187,6 +187,10 @@
   background:#1f7a2f; 
   color:#fff;
 }
+.badge--apletion{
+  background:#be7f09; 
+  color:#fff;
+}
 
 /* Tag pills */
 .badge--tag{

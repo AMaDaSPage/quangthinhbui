@@ -304,15 +304,13 @@
   color: var(--text);
 }
 
-/* Dòng mô tả (wrap xuống hàng vẫn đều) */
 .contact-desc{
   margin: 0;
   font-size: 15px;
-  line-height: 1.6;       /* quan trọng: dòng wrap không bị sát */
-  color: var(--text);     /* muốn nhạt hơn thì đổi thành var(--muted) */
+  line-height: 1.6;    
+  color: var(--text);
 }
 
-/* University (đậm) */
 .contact-uni{
   margin: 0;
   font-size: 18px;
@@ -321,7 +319,6 @@
   color: var(--text);
 }
 
-/* Address / Email: mỗi dòng là 1 "row", spacing được quản bởi row-gap ở trên */
 .contact-meta{
   margin: 0;
   display: flex;
@@ -329,8 +326,30 @@
   flex-wrap: wrap;
 
   font-size: 15px;
-  line-height: 1.6;       /* đều với mô tả */
+  line-height: 1.6;    
   color: var(--text);
+}
+/* bỏ nền sau icon */
+.copy-email{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 0 !important;
+
+  color: inherit;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+/* optional: hover/focus nhẹ cho đẹp */
+.copy-email:hover{ opacity: .85; }
+.copy-email:focus-visible{
+  outline: 2px solid rgba(255,255,255,.35);
+  outline-offset: 2px;
 }
 
 
@@ -342,17 +361,15 @@
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
-/* University gần Address (stack dọc, gap nhỏ) */
 .contact-meta--stack{
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  row-gap: 3px;      /* chỉnh 2–6px tuỳ bạn */
+  row-gap: 3px;      
   column-gap: 0;
-  line-height: 1.35; /* gọn hơn */
+  line-height: 1.35;
 }
 
-/* đảm bảo mỗi span chiếm 1 dòng */
 .contact-meta--stack > span{
   display: block;
 }

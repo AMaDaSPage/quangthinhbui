@@ -89,6 +89,7 @@ function statusBadge(status) {
   const cls =
     low.includes("in progress") ? "badge--inprogress" :
     low.includes("finished") ? "badge--finished" :
+    low.includes("approaching completion") ? "badge--apletion" :
     "badge--status";
 
   return `<span class="badge ${cls}">${escapeHtml(s)}</span>`;
