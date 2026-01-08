@@ -140,7 +140,7 @@ html[data-theme="dark"] .hero-bg{
 .hero-overlay{
 position: absolute;
 inset: 0px;
-background: linear-gradient(rgba(0, 0, 0, 0.55), transparent 51.26%), linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.08));
+background: linear-gradient(rgba(0, 0, 0, 0.55), transparent 92.02%), linear-gradient(to right, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.08) 0%);
 }
 html[data-theme="dark"] .hero-overlay{
   background:
