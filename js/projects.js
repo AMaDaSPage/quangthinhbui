@@ -13,7 +13,6 @@ async function loadProjects() {
   return await res.json();
 }
 
-/** Optional: click cả card để mở url (không đè khi click link) */
 function enableCardClicks(container) {
   if (!container) return;
   container.addEventListener("click", (e) => {
@@ -25,7 +24,6 @@ function enableCardClicks(container) {
   });
 }
 
-/* ===== NEW: click year-bar để thu gọn/mở rộng (Projects) ===== */
 function enableYearBarCollapse(container, collapsedYears) {
   if (!container) return;
 
@@ -33,7 +31,6 @@ function enableYearBarCollapse(container, collapsedYears) {
     barEl.setAttribute("aria-expanded", expanded ? "true" : "false");
   };
 
-  // Click toggle
   container.addEventListener("click", (e) => {
     const bar = e.target.closest(".year-bar");
     if (!bar || !container.contains(bar)) return;
@@ -53,7 +50,6 @@ function enableYearBarCollapse(container, collapsedYears) {
     setExpanded(bar, !willCollapse);
   });
 
-  // Keyboard: Enter/Space
   container.addEventListener("keydown", (e) => {
     const bar = e.target.closest(".year-bar");
     if (!bar || !container.contains(bar)) return;
