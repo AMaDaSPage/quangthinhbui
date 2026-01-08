@@ -5,12 +5,43 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="description" content="Personal academic homepage" />
   <title>thinhbui's homepage</title>
+
   <link rel="icon" href="img/favicon.png" type="image/x-icon">
   <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 
   <link rel="stylesheet" href="css/header.css" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/footer.css" />
+
+  <!-- Driver.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.css"/>
+
+  <style>
+    .tour-btn{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid var(--border, rgba(255,255,255,.18));
+      background: var(--card, rgba(18,24,38,.8));
+      color: var(--fg, #fff);
+      box-shadow: var(--shadow, 0 14px 40px rgba(0,0,0,.35));
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      cursor: pointer;
+      z-index: 9999;
+      user-select: none;
+    }
+    .tour-btn:hover{ transform: translateY(-1px); }
+    .tour-btn:active{ transform: translateY(0); }
+    .tour-btn:focus-visible{
+      outline: 2px solid rgba(255,255,255,.28);
+      outline-offset: 3px;
+    }
+  </style>
 </head>
 
 <body>
@@ -21,15 +52,147 @@
 
   <!-- Home -->
   <main id="home">
-  <div data-include="partials/hero.html"></div>
+    <div data-include="partials/hero.html"></div>
   </main>
 
   <!-- Footer -->
-    <div data-include="partials/footer.html"></div>
-  
+  <div data-include="partials/footer.html"></div>
+
+  <!-- Help / Tour button -->
+  <button id="tourBtn" class="tour-btn" type="button" aria-label="Website guide">?</button>
+
   <script src="js/projects.js"></script>
   <script src="js/main.js"></script>
   <script src="js/lightning-cursor.js"></script>
 
+  <!-- Driver.js (IIFE) -->
+  <script src="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.js.iife.js"></script>
+
+  <script>
+  (() => {
+    const $ = (sel) => document.querySelector(sel);
+    const find = (...sels) => sels.map(s => $(s)).find(Boolean) || null;
+
+    const waitFor = (fn, timeout = 7000, interval = 50) =>
+      new Promise((resolve) => {
+        const t0 = Date.now();
+        (function tick(){
+          const v = fn();
+          if (v) return resolve(v);
+          if (Date.now() - t0 > timeout) return resolve(null);
+          setTimeout(tick, interval);
+        })();
+      });
+
+    function getDriverFactory(){
+      // Driver.js CDN exposes window.driver.js.driver (not window.driver())
+      const factory = window.driver?.js?.driver || window.driver?.driver || window.driver;
+      return (typeof factory === "function") ? factory : null;
+    }
+
+    async function startTour(){
+      const driverFactory = getDriverFactory();
+      if (!driverFactory){
+        console.error("Driver.js not loaded correctly. window.driver =", window.driver);
+        return;
+      }
+
+      // wait injected partials (because you use data-include)
+      const headerEl = await waitFor(() =>
+        $("header") || $(".site-header") || $(".header") || $("[data-include*='header']")
+      );
+
+      const heroEl = await waitFor(() =>
+        $(".hero") || $("#hero") || $("main#home")
+      );
+
+      const themeBtn = find(
+        "#themeToggle",
+        ".theme-toggle",
+        "[data-theme-toggle]",
+        "button[aria-label*='theme' i]"
+      );
+
+      const projectsEl = find(
+        "#projects",
+        ".projects",
+        "[data-section='projects']"
+      );
+
+      const steps = [];
+
+      if (headerEl) steps.push({
+        element: headerEl,
+        popover: {
+          title: "Navigation",
+          description: "Use the menu/tabs to switch between Home, Projects, Publications, and Contact.",
+          side: "bottom",
+          align: "start"
+        }
+      });
+
+      if (themeBtn) steps.push({
+        element: themeBtn,
+        popover: {
+          title: "Theme",
+          description: "Turn Light/Dark on/off here.",
+          side: "bottom",
+          align: "center"
+        }
+      });
+
+      if (heroEl) steps.push({
+        element: heroEl,
+        popover: {
+          title: "Overview",
+          description: "This is the main introduction.",
+          side: "bottom",
+          align: "start"
+        }
+      });
+
+      if (projectsEl) steps.push({
+        element: projectsEl,
+        popover: {
+          title: "Projects",
+          description: "The list of projects is located in this area.",
+          side: "top",
+          align: "start"
+        }
+      });
+
+      if (!steps.length) {
+        steps.push({
+          popover: {
+            title: "Tour",
+            description: "Không bắt được selector để highlight. Gửi mình header.html để mình gắn selector chuẩn."
+          }
+        });
+      }
+
+      const d = driverFactory({
+        showProgress: true,
+        animate: true,
+        smoothScroll: true,
+        allowClose: true,
+        overlayOpacity: 0.6,
+        steps
+      });
+
+      d.drive();
+      localStorage.setItem("seenTour", "1");
+    }
+
+    document.addEventListener("click", (e) => {
+      if (e.target.closest("#tourBtn")) startTour();
+    });
+
+    window.addEventListener("load", () => {
+      if (localStorage.getItem("seenTour") !== "1") {
+        setTimeout(startTour, 900);
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
