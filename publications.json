@@ -121,6 +121,9 @@
     
   },
 
+
+
+
   {
     "title": "U-MobileViT: A Lightweight Vision Transformer-based Backbone for Panoptic Driving Segmentation",
     "authors": "",
@@ -202,7 +205,18 @@
     "url": "https://doi.org/10.1109/KSE68178.2025.11309606",
     "order": 5
   },
-  
+  {
+  "title": "V-Math: An Agentic Approach to the Vietnamese National High School Graduation Mathematics Exams",
+  "authors": "",
+  "venue": "arXiv:2509.12251",
+  "year": 2025,
+  "type": "preprint",
+  "details": "arXiv preprint arXiv:2509.12251",
+  "tag": [""],
+  "indexing": { "scopus": false, "wos": false, "jcr_q": "" },
+  "url": "https://doi.org/10.48550/arXiv.2509.12251",
+  "order": 6
+},
   {
     "title": "A Hybrid Atrous CNN-SVM Model for Rice Leaf Disease Classification",
     "authors": "",
@@ -213,7 +227,7 @@
     "details": "Vol. 8, No. S2, 351–359, 2025",
     "tag": ["Journal"],
     "url": "https://doi.org/10.55401/hyzp8z13",
-    "order": 6
+    "order": 7
   },
 
    {
@@ -227,7 +241,7 @@
     "status": "corr",
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q4" },
     "url": "https://doi.org/10.1177/18758967251383573",
-    "order": 7
+    "order": 8
 
   },
   {
@@ -241,7 +255,7 @@
     "tag": ["Journal"],
     "url": "https://doi.org/10.1016/j.ins.2025.122592",
         "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
-    "order": 8
+    "order": 9
 
   },
   {
@@ -254,7 +268,7 @@
     "details": "",
     "tag": ["Conference"],
     "url": "https://ebook365.vn/ict2025-information-and-communication-technology-ky-yeu-hoi-thao-khoa-hoc-cong-nghe-thong-tin-va-truyen-thong-nam-2025-lam-dong-thang-7-nam-2025-bm1VW.html",
-    "order": 9
+    "order": 10
   
   },
  
@@ -270,7 +284,7 @@
         "indexing": { "scopus": true, "scopus_q": "Q3", "wos": "", "jcr_q": "" },
 
     "url": "https://doi.org/10.1142/S2196888825500174",
-    "order": 10
+    "order": 11
   },
    {
     "title": "Novel Neutrosophic Fuzzy Max-Min-Based Similarities and Their Application in Clustering for Educational Decision-Making Support",
@@ -283,7 +297,7 @@
     "tag": ["Journal"],
         "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.1007/s12190-025-02520-1",
-    "order": 11
+    "order": 12
   },
   
   {
@@ -296,7 +310,7 @@
     "tag": ["Journal"],
         "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
     "url": "https://doi.org/10.1002/widm.70023",
-    "order": 12
+    "order": 13
   },
   {
     "title": "Novel Distances for Fermatean Fuzzy Sets in Multi-Attribute Decision-Making Using Covering-Based Rough Sets",
@@ -310,7 +324,7 @@
     "url": "https://doi.org/10.1007/978-981-96-4603-6_6",
         "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
 
-    "order": 13
+    "order": 14
   },
   {
     "title": "Enhanced Medical Image Generation through Advanced Latent Space Diffusion",
@@ -322,7 +336,7 @@
     "status": "corr",
     "tag": ["Journal"],
     "url": "https://doi.org/10.1142/S3060932125500037",
-    "order": 14
+    "order": 15
   },
   {
     "title": "Graph-induced Topological Space: From Topologies to Separation Axioms",
@@ -335,7 +349,7 @@
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q3" },
     "url": "https://doi.org/10.1007/s00500-025-10633-9",
-    "order": 15
+    "order": 16
   },
 
 
