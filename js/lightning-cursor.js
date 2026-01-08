@@ -74,7 +74,7 @@
     ctx.stroke();
 
     // core
-    ctx.strokeStyle = "rgba(181, 136, 39, 0.75)";
+    ctx.strokeStyle = "rgba(255, 172, 120, 0.85)";
     ctx.lineWidth = 2;
     ctx.stroke();
   }
@@ -108,7 +108,7 @@
 
       const a = Math.max(0, p.life / 26);
       ctx.beginPath();
-      ctx.fillStyle = `rgba(180,220,255,${0.55 * a})`;
+      ctx.fillStyle = `rgba(255,172,120,${0.65 * a})`;
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
       ctx.fill();
 
