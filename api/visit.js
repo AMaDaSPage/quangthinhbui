@@ -1,51 +1,82 @@
-import { kv } from "@vercel/kv";
-
-const ONLINE_WINDOW_MS = 10_000;
-export default async function handler(request) {
+// api/visitors.js
+export default async function handler(req, res) {
   try {
-    const { searchParams } = new URL(request.url);
-    const id = (searchParams.get("id") || "").trim().slice(0, 128);
-    const hit = searchParams.get("hit") === "1";
+    if (req.method !== "POST") {
+      res.setHeader("Allow", "POST");
+      return res.status(405).json({ error: "Method not allowed" });
+    }
 
-    if (!id) {
-      return Response.json(
-        { error: "Missing id" },
-        { status: 400, headers: { "Cache-Control": "no-store" } }
-      );
+    const { sid } = req.body || {};
+    if (!sid) return res.status(400).json({ error: "Missing sid" });
+
+    const UPSTASH_REDIS_REST_URL = process.env.KV_REST_API_URL;
+    const UPSTASH_REDIS_REST_TOKEN = process.env.KV_REST_API_TOKEN;
+
+    if (!UPSTASH_REDIS_REST_URL || !UPSTASH_REDIS_REST_TOKEN) {
+      return res.status(500).json({
+        error: "Missing Upstash env vars",
+        hasUrl: !!UPSTASH_REDIS_REST_URL,
+        hasToken: !!UPSTASH_REDIS_REST_TOKEN,
+      });
     }
 
     const now = Date.now();
-    const cutoff = now - ONLINE_WINDOW_MS;
+    const windowMs = 60_000; 
 
-    await kv.zremrangebyscore("visitors:online", 0, cutoff);
+    const onlineKey = "amadas:online:zset";
+    const totalKey = "amadas:visits:total";
 
-    await kv.zadd("visitors:online", { score: now, member: id });
+    const date = new Date().toISOString().slice(0, 10);
+    const incOnceKey = `amadas:uniqueinc:${date}:${sid}`;
 
-    if (hit) await kv.incr("visitors:total");
+    const commands = [
+      ["ZADD", onlineKey, now, sid],
+      ["ZREMRANGEBYSCORE", onlineKey, 0, now - windowMs],
+      ["ZCARD", onlineKey],
 
-    const [totalRaw, onlineRaw] = await Promise.all([
-      kv.get("visitors:total"),
-      kv.zcard("visitors:online")
-    ]);
+      ["SET", incOnceKey, "1", "NX", "EX", 172800], 
+      ["INCR", totalKey],
+      ["GET", totalKey],
+    ];
 
-    return Response.json(
-      {
-        total: Number(totalRaw || 0),
-        online: Number(onlineRaw || 0),
-        windowMs: ONLINE_WINDOW_MS
+    const resp = await fetch(`${UPSTASH_REDIS_REST_URL}/pipeline`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${UPSTASH_REDIS_REST_TOKEN}`,
+        "Content-Type": "application/json",
       },
-      {
-        status: 200,
+      body: JSON.stringify(commands),
+    });
+
+    if (!resp.ok) {
+      const t = await resp.text();
+      return res.status(500).json({ error: "Upstash error", detail: t });
+    }
+
+    const data = await resp.json();
+
+    const online = Number(data?.[2]?.result ?? 0);
+
+    const setNxResult = data?.[3]?.result; 
+    let total = Number(data?.[5]?.result ?? 0);
+
+    if (setNxResult !== "OK") {
+      const fix = await fetch(`${UPSTASH_REDIS_REST_URL}/pipeline`, {
+        method: "POST",
         headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          "Cache-Control": "no-store"
-        }
-      }
-    );
+          Authorization: `Bearer ${UPSTASH_REDIS_REST_TOKEN}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify([["DECR", totalKey], ["GET", totalKey]]),
+      });
+
+      const fixData = await fix.json();
+      total = Number(fixData?.[1]?.result ?? total);
+    }
+
+    res.setHeader("Cache-Control", "no-store");
+    return res.status(200).json({ total, online });
   } catch (e) {
-    return Response.json(
-      { error: "Server error" },
-      { status: 500, headers: { "Cache-Control": "no-store" } }
-    );
+    return res.status(500).json({ error: "Server error", detail: String(e) });
   }
 }

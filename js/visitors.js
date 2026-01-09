@@ -1,74 +1,58 @@
-function getVisitorId() {
-  const key = "visitor_id";
-  let id = localStorage.getItem(key);
+// js/visitors.js
+(function () {
+  const TOTAL_ID = "total-visits";
+  const ONLINE_ID = "online-now";
 
-  if (!id) {
-    id =
-      (crypto?.randomUUID?.() ||
-        "v_" + Math.random().toString(16).slice(2) + Date.now().toString(16));
-    localStorage.setItem(key, id);
-  }
-  return id;
-}
-
-function setText(id, v) {
-  const el = document.getElementById(id);
-  if (el) el.textContent = String(v);
-}
-
-async function ping({ hit }) {
-  const id = getVisitorId();
-  const url = `/api/visit?id=${encodeURIComponent(id)}&hit=${hit ? "1" : "0"}`;
-
-  const r = await fetch(url, { cache: "no-store" });
-  if (!r.ok) return null;
-  return await r.json();
-}
-
-function waitForEl(selector, timeout = 7000, interval = 50) {
-  return new Promise((resolve) => {
-    const t0 = Date.now();
-    (function tick() {
-      const el = document.querySelector(selector);
-      if (el) return resolve(el);
-      if (Date.now() - t0 > timeout) return resolve(null);
-      setTimeout(tick, interval);
-    })();
-  });
-}
-
-(async function initVisitors() {
-  // vì bạn load partials async, phải đợi widget xuất hiện
-  const card = await waitForEl("#visitorsCard");
-  if (!card) return;
-
-  const countedKey = "pv_counted";
-  const firstHit = !sessionStorage.getItem(countedKey);
-  if (firstHit) sessionStorage.setItem(countedKey, "1");
-
-  // ping lần đầu
-  const d0 = await ping({ hit: firstHit });
-  if (d0) {
-    setText("totalVisits", d0.total);
-    setText("onlineNow", d0.online);
+  const KEY = "amadas_sid";
+  let sid = localStorage.getItem(KEY);
+  if (!sid) {
+    sid = (crypto?.randomUUID?.() || ("sid_" + Math.random().toString(16).slice(2)));
+    localStorage.setItem(KEY, sid);
   }
 
-  const HEARTBEAT_MS = 3_000;
-  setInterval(async () => {
-    const d = await ping({ hit: false });
-    if (d) {
-      setText("totalVisits", d.total);
-      setText("onlineNow", d.online);
-    }
-  }, HEARTBEAT_MS);
+  function findEls() {
+    const totalEl = document.getElementById(TOTAL_ID);
+    const onlineEl = document.getElementById(ONLINE_ID);
+    return { totalEl, onlineEl };
+  }
 
-  document.addEventListener("visibilitychange", async () => {
-    if (document.visibilityState === "visible") {
-      const d = await ping({ hit: false });
-      if (d) {
-        setText("totalVisits", d.total);
-        setText("onlineNow", d.online);
+  async function ping(totalEl, onlineEl) {
+    try {
+      const r = await fetch("/api/visitors", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sid }),
+      });
+
+      if (!r.ok) {
+        const t = await r.text();
+        throw new Error(`API failed ${r.status}: ${t}`);
       }
+
+      const data = await r.json();
+      totalEl.textContent = typeof data.total === "number" ? data.total.toLocaleString() : "...";
+      onlineEl.textContent = typeof data.online === "number" ? data.online.toLocaleString() : "...";
+    } catch (e) {
+      totalEl.textContent = "...";
+      onlineEl.textContent = "...";
+      console.error("[visitors] ping error:", e);
     }
-  });
+  }
+
+  function startWhenReady() {
+    const { totalEl, onlineEl } = findEls();
+    if (!totalEl || !onlineEl) {
+      setTimeout(startWhenReady, 200);
+      return;
+    }
+
+    ping(totalEl, onlineEl);
+    setInterval(() => ping(totalEl, onlineEl), 3000);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", startWhenReady);
+  } else {
+    startWhenReady();
+  }
 })();
