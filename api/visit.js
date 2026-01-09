@@ -23,11 +23,11 @@ export default async function handler(req, res) {
     const now = Date.now();
     const windowMs = 60_000; 
 
-    const onlineKey = "amadas:online:zset";
-    const totalKey = "amadas:visits:total";
+    const onlineKey = "thinhbui:online:zset";
+    const totalKey = "thinhbui:visits:total";
 
     const date = new Date().toISOString().slice(0, 10);
-    const incOnceKey = `amadas:uniqueinc:${date}:${sid}`;
+    const incOnceKey = `thinhbui:uniqueinc:${date}:${sid}`;
 
     const commands = [
       ["ZADD", onlineKey, now, sid],
