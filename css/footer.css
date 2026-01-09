@@ -1,14 +1,60 @@
 .site-footer{
   border-top: 1px solid var(--border);
-  padding: 18px 0;
+  padding: 12px 0;                
 }
+
 .footer-inner{
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
+  flex-wrap: wrap;                
 }
+
 .site-footer a{
   text-decoration: none;
   font-weight: 800;
+}
+
+#visitorsCard{
+  margin-top: 0 !important;        
+  max-width: none !important;      
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+
+  background: var(--card, rgba(18,24,38,.55));
+  backdrop-filter: blur(8px);
+}
+
+#visitorsCard > h3{
+  margin: 0;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+#visitorsCard > p{
+  margin: 0;
+  font-size: 13px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+#visitorsCard strong{
+  font-weight: 800;
+}
+
+@media (max-width: 560px){
+  .footer-inner{
+    justify-content: center;
+  }
+  #visitorsCard{
+    width: 100%;
+    justify-content: center;
+  }
 }
