@@ -18,7 +18,7 @@
 
   async function ping(totalEl, onlineEl) {
     try {
-      const r = await fetch("/api/visitors", {
+      const r = await fetch("/api/visit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sid }),
