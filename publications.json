@@ -1,5 +1,17 @@
 [
- 
+  {
+    "title": "A Novel Zigzag-Persistence-Based Framework for Topology-Enhanced Time-Series Forecasting",
+    "authors": "",
+    "venue": "The 2nd International Conference On Computational Intelligence In Engineering Science (ICCIES 2026)",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "corr",
+    "tag": ["Conference"],
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+    "url": "",
+    "order": 1
+  },
   {
     "title": "Information Measures Based on Similarity Under Neutrosophic Fuzzy Environment and Multi-criteria Decision Problems",
     "authors": "",
