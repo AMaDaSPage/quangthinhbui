@@ -1,0 +1,510 @@
+[{
+    "title": "A CNN-Vision Transformer Hybrid Framework for Brain Tumor MRI Image Classification",
+    "authors": "",
+    "venue": "The 2026 Fisu Joint Conference on Artificial Intelligence (FJCAI 2026), 27-28 March, Vietnam",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "corr",
+    "tag": ["Conference"],
+    "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
+    "url": "",
+    "order": 1
+  },
+
+  {
+    "title": "Hotspot Detection on Distribution-Mapper Graphs",
+    "authors": "",
+    "venue": "The 2026 Fisu Joint Conference on Artificial Intelligence (FJCAI 2026), 27-28 March, Vietnam",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "corr",
+    "tag": ["Conference"],
+    "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
+    "url": "",
+    "order": 2
+  },
+
+  {
+    "title": "A Novel Zigzag-Persistence-Based Framework for Topology-Enhanced Time-Series Forecasting",
+    "authors": "",
+    "venue": "The 2nd International Conference on Computational Intelligence in Engineering Science (ICCIES 2026)",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "corr",
+    "tag": ["Conference"],
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+    "url": "",
+    "order": 3
+  },
+
+
+  {
+    "title": "Information Measures Based on Similarity Under Neutrosophic Fuzzy Environment and Multi-criteria Decision Problems",
+    "authors": "",
+    "venue": "Engineering Applications of Artificial Intelligence",
+    "year": 2023,
+    "type": "journal",
+    "details": "Vol. 122, 106026, 2023",
+    "status": "1st",
+    "tag": ["Journal"],
+        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "url": "https://doi.org/10.1016/j.engappai.2023.106026",
+    "order": 1
+  },
+  
+  {
+    "title": "New Similarity Measures for Single-Valued Neutrosophic Sets with Applications in Pattern Recognition and Medical Diagnosis Problems",
+    "authors": "",
+    "venue": "Complex & Intelligent Systems",
+    "year": 2020,
+    "type": "journal",
+    "details": "Vol. 7, 703-723, 2021",
+    "tag": ["Journal"],
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
+    "url": "https://doi.org/10.1007/s40747-020-00220-w",
+    "order": 1
+
+  },
+  {
+    "title": "SFCM: A Fuzzy Clustering Algorithm of Extracting the Shape Information of Data",
+    "authors": "",
+    "venue": "IEEE Transactions on Fuzzy Systems",
+    "year": 2020,
+    "type": "journal",
+    "details": "Vol. 29, No. 1, 75-89, 2021",
+    "status": "1st",
+    "tag": ["Journal"],
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+
+    "url": "https://doi.org/10.1109/TFUZZ.2020.3014662",
+    "order": 2
+
+  },
+  {
+    "title": "Entropy Measures for Plithogenic Sets and Applications in Multi-Attribute Decision Making",
+    "authors": "",
+    "venue": "Mathematics",
+    "year": 2020,
+    "type": "journal",
+    "details": "Vol. 8, No. 6, 965, 2020",
+    "tag": ["Journal"],
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "url": "https://doi.org/10.3390/math8060965",
+    "order": 3
+
+  },
+  {
+    "title": "An Efficient Topological-Based Clustering Method on Spatial Data in Network Space",
+    "authors": "",
+    "venue": "Expert Systems with Applications",
+    "year": 2022,
+    "type": "journal",
+    "details": "Vol. 215, 119395, 2023",
+    "tag": ["Journal"],
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+
+    "url": "https://doi.org/10.1016/j.eswa.2022.119395",
+    "order": 1
+  },
+  {
+    "title": "A New Approach for Operations on Neutrosophic Soft Sets Based on the Novel Norms for Constructing Topological Structures",
+    "authors": "",
+    "venue": "AIMS Mathematics",
+    "year": 2022,
+    "type": "journal",
+    "details": "Vol. 7, No. 6, 9603–9626, 2022",
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+
+    "tag": ["Journal"],
+    "url": "https://www.aimspress.com/article/doi/10.3934/math.2022534",
+    "order": 2
+    
+  },
+  
+  {
+    "title": "The Sequence of Neutrosophic Soft Sets and a Decision-Making Problem in Medical Diagnosis",
+    "authors": "",
+    "venue": "International Journal of Fuzzy Systems",
+    "year": 2022,
+    "type": "journal",
+    "details": "Vol. 24, No. 4, 2036–2053, 2022",
+    "status": "1st",
+    "tag": ["Journal"],
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
+    "url": "https://doi.org/10.1007/s40815-022-01257-4",
+    "order": 3
+  },
+  {
+    "title": "F-Mapper: A Fuzzy Mapper Clustering Algorithm",
+    "authors": "",
+    "venue": "Knowledge-Based Systems",
+    "year": 2019,
+    "type": "journal",
+    "details": "Vol.189, 105107, 2020",
+    "status": "1st",
+    "tag": ["Journal"],
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "url": "https://doi.org/10.1016/j.knosys.2019.105107"
+  },
+  {
+    "title": "Some p-Normal Properties of Topological Space",
+    "authors": "",
+    "venue": "Journal of Science of HCMUE (Natural Sciences and Technology)",
+    "year": 2017,
+    "type": "journal",
+    "details": "Vol. 14, No. 1, 227-27, 2017",
+    "status": "1st/corr",
+    "tag": ["Journal"],
+    "url": "https://journal.hcmue.edu.vn/index.php/hcmuejos/article/view/223"
+    
+  },
+
+
+
+
+  {
+    "title": "U-MobileViT: A Lightweight Vision Transformer-based Backbone for Panoptic Driving Segmentation",
+    "authors": "",
+    "venue": "Signal Processing: Image Communication",
+    "year": 2025,
+    "type": "journal",
+    "details": "Vol. 142, 117461, 2026",
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
+    "status": "corr",
+    "tag": ["Journal"],
+    "url": "https://doi.org/10.1016/j.image.2025.117461",
+    "order": 0
+  },
+    {
+    "title": "Enhanced Traffic Sign Recognition on Multi-Speed Expressways in Vietnam Using YOLO and Lightweight Polygon-Based Lane Detection",
+    "authors": "",
+    "venue": "The 11th EAI International Conference on Smart Objects and Technologies for Social Good (EAI GOODTECHS 2025)",
+    "year": 2025,
+    "type": "conference",
+    "details": "",
+    "status": "corr",
+    "tag": ["Conference"],
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+    "url": "",
+    "order": 1
+  },
+ 
+  {
+    "title": "An Novel Approach to Metaheuristic-Driven Threshold Optimization in Frequent High-Order Pattern Mining",
+    "authors": "",
+    "venue": "Materials and Emerging Technologies for Sustainability",
+    "year": 2025,
+    "type": "journal",
+    "details": "Vol, 1, No. 4, 2550020, 2025",
+    "status": "corr",
+    "tag": ["Journal"],
+    "url": "https://doi.org/10.1142/S3060932125500207",
+    "order": 2
+  },
+
+ {
+    "title": "Cross-Country Analysis of Discourse on Misinformation in the Digital Platform Using Topic Modeling",
+    "authors": "",
+    "venue": "The 7th IEEE International Conference on Cognitive Machine Intelligence (IEEE CogMI 2025)",
+    "year": 2025,
+    "type": "conference",
+    "status": "corr",
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+    "tag": ["Conference"],
+    "url": "",
+    "order": 3
+
+  },
+   {
+    "title": "Topological Framework for Exploring Imbalanced Time Series",
+    "authors": "",
+    "venue": "The 17th International Conference on Computational Collective Intelligence (ICCCI 2025)",
+    "year": 2025,
+    "type": "conference",
+    "details": "",
+    "status": "corr",
+    "tag": ["Conference"],
+        "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+
+    "url": "https://doi.org/10.1007/978-3-032-10202-7_23",
+    "order": 4
+  },
+   {
+    "title": "Reliability-Enhanced Approach for Neighborhood-Aware Possibilistic Semi-Supervised Fuzzy Clustering",
+    "authors": "",
+    "venue": "The 17th International Conference on Knowledge and Systems Engineering (KSE 2025)",
+    "year": 2025,
+    "type": "conference",
+    "details": "",
+    "status": "corr",
+    "tag": ["Conference"],
+        "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+
+    "url": "https://doi.org/10.1109/KSE68178.2025.11309606",
+    "order": 5
+  },
+  {
+  "title": "V-Math: An Agentic Approach to the Vietnamese National High School Graduation Mathematics Exams",
+  "authors": "",
+  "venue": "arXiv:2509.12251",
+  "year": 2025,
+  "type": "preprint",
+  "details": "",
+  "tag": [""],
+  "indexing": { "scopus": false, "wos": false, "jcr_q": "" },
+  "url": "https://doi.org/10.48550/arXiv.2509.12251",
+  "order": 6
+},
+  {
+    "title": "A Hybrid Atrous CNN-SVM Model for Rice Leaf Disease Classification",
+    "authors": "",
+    "venue": "Journal of Science and Technology - Nguyen Tat Thanh University",
+    "year": 2025,
+    "type": "journal",
+    "status": "corr",
+    "details": "Vol. 8, No. S2, 351–359, 2025",
+    "tag": ["Journal"],
+    "url": "https://doi.org/10.55401/hyzp8z13",
+    "order": 7
+  },
+
+   {
+    "title": "Two Novel Distances for Neutrosophic Fuzzy Sets with Applications in Decision-Making and Clustering",
+    "authors": "",
+    "venue": "Journal of Intelligent & Fuzzy Systems: Applications in Engineering and Technology",
+    "year": 2025,
+    "type": "journal",
+    "details": "",
+    "tag": ["Journal"],
+    "status": "corr",
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q4" },
+    "url": "https://doi.org/10.1177/18758967251383573",
+    "order": 8
+
+  },
+  {
+    "title": "A Novel Framework for Handling Uncertainty: Intuitionistic Fuzzy Rough Soft Sets",
+    "authors": "",
+    "venue": "Information Sciences",
+    "year": 2025,
+    "type": "journal",
+    "status": "1st",
+    "details": "Vol. 722, 122592, 2026",
+    "tag": ["Journal"],
+    "url": "https://doi.org/10.1016/j.ins.2025.122592",
+        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "order": 9
+
+  },
+  {
+    "title": "Improving Mapper-based Coverings Through Derivative Transformations in Rough Set",
+    "authors": "",
+    "venue": "The 10th Information and Communication Technology Conference (ICT 2025)",
+    "year": 2025,
+    "type": "conference",
+    "status": "1st/corr",
+    "details": "",
+    "tag": ["Conference"],
+    "url": "https://ebook365.vn/ict2025-information-and-communication-technology-ky-yeu-hoi-thao-khoa-hoc-cong-nghe-thong-tin-va-truyen-thong-nam-2025-lam-dong-thang-7-nam-2025-bm1VW.html",
+    "order": 10
+  
+  },
+ 
+  {
+    "title": "Novel Techniques for Trigonometric Aggregation in Single-Valued Neutrosophic Decision-Making",
+    "authors": "",
+    "venue": "Vietnam Journal of Computer Science",
+    "year": 2025,
+    "type": "journal",
+    "details": "",
+    "status": "corr",
+    "tag": ["Journal"],
+        "indexing": { "scopus": true, "scopus_q": "Q3", "wos": "", "jcr_q": "" },
+
+    "url": "https://doi.org/10.1142/S2196888825500174",
+    "order": 11
+  },
+   {
+    "title": "Novel Neutrosophic Fuzzy Max-Min-Based Similarities and Their Application in Clustering for Educational Decision-Making Support",
+    "authors": "",
+    "venue": "Journal of Applied Mathematics and Computing",
+    "year": 2025,
+    "type": "journal",
+    "details": "Vol. 71, 6549–6584, 2025",
+    "status": "1st",
+    "tag": ["Journal"],
+        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "url": "https://doi.org/10.1007/s12190-025-02520-1",
+    "order": 12
+  },
+  
+  {
+    "title": "Geospatial Data Clustering in Network Space: A Survey",
+    "authors": "",
+    "venue": "WIREs Data Mining and Knowledge Discovery",
+    "year": 2025,
+    "type": "journal",
+    "details": "Vol. 15, e70023, 2025",
+    "tag": ["Journal"],
+        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
+    "url": "https://doi.org/10.1002/widm.70023",
+    "order": 13
+  },
+  {
+    "title": "Novel Distances for Fermatean Fuzzy Sets in Multi-Attribute Decision-Making Using Covering-Based Rough Sets",
+    "authors": "",
+    "venue": "The 11th International Symposium on Integrated Uncertainty in Knowledge Modelling and Decision Making (IUKM 2025)",
+    "year": 2025,
+    "type": "conference",
+    "details": "",
+    "status": "1st",
+    "tag": ["Conference"],
+    "url": "https://doi.org/10.1007/978-981-96-4603-6_6",
+        "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+
+    "order": 14
+  },
+  {
+    "title": "Enhanced Medical Image Generation through Advanced Latent Space Diffusion",
+    "authors": "",
+    "venue": "Materials and Emerging Technologies for Sustainability",
+    "year": 2025,
+    "type": "journal",
+    "details": "Vol. 1, No. 1, 2550003, 2025",
+    "status": "corr",
+    "tag": ["Journal"],
+    "url": "https://doi.org/10.1142/S3060932125500037",
+    "order": 15
+  },
+  {
+    "title": "Graph-induced Topological Space: From Topologies to Separation Axioms",
+    "authors": "",
+    "venue": "Soft Computing",
+    "year": 2025,
+    "type": "journal",
+    "details": "Vol. 29, 4301–4316, 2025",
+    "status": "1st",
+    "tag": ["Journal"],
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q3" },
+    "url": "https://doi.org/10.1007/s00500-025-10633-9",
+    "order": 16
+  },
+
+
+
+
+
+
+
+
+
+  {
+    "title": "Efficient Strategies for Spatial Data Clustering using Topological Relations",
+    "authors": "",
+    "venue": "Applied Intelligence",
+    "year": 2024,
+    "type": "journal",
+    "details": "Vol. 55, 203, 2025",
+    "tag": ["Journal"],
+        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
+
+    "url": "https://doi.org/10.1007/s10489-024-05927-8",
+    "order": 1
+  },
+  {
+    "title": "Topological Data Analysis in Graph Neural Networks: Surveys and Perspectives",
+    "authors": "",
+    "venue": "IEEE Transactions on Neural Networks and Learning Systems",
+    "year": 2024,
+    "type": "journal",
+    "details": "Vol. 36, No. 6, 9758–9776, 2025",
+    "tag": ["Journal"],
+        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+
+    "url": "https://doi.org/10.1109/TNNLS.2024.3520147",
+    "order": 2
+  },
+  
+  {
+    "title": "A Novel Distance-based Evaluation Strategy for Spherical Neutrosophic Environments",
+    "authors": "",
+    "venue": "Journal of Applied Mathematics and Computing",
+    "year": 2024,
+    "status": "1st",
+    "type": "journal",
+    "details": "Vol. 71, 1809-1841, 2025",
+    "tag": ["Journal"],
+        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+
+    "url": "https://doi.org/10.1007/s12190-024-02291-1",
+    "order": 3
+  },
+  {
+    "title": "NS-IDBSCAN: An Efficient Incremental Clustering Method for Geospatial Data in Network Space",
+    "authors": "",
+    "venue": "Information Sciences",
+    "year": 2024,
+    "type": "journal",
+    "details": "Vol. 690, 121526, 2025",
+    "tag": ["Journal"],
+        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "url": "https://doi.org/10.1016/j.ins.2024.121526",
+    "order": 4
+  },
+  {
+    "title": "Method for Mining Multi-level High-efficiency Itemsets from the Taxonomy Database",
+    "authors": "",
+    "venue": "The 6th International Conference on Real-time Intelligent Systems (RTIS 2024)",
+    "year": 2024,
+    "type": "conference",
+    "details": "",
+    "status": "1st",
+    "tag": ["Conference"],
+    "url": "https://doi.org/10.1007/978-3-031-92545-0_45",
+        "indexing": { "scopus": true,  "wos": "", "jcr_q": "" },
+    "order": 5
+  },
+  {
+    "title": "Understanding Conventional Deep Learning Models Through the Lens of Topological Data Analysis Using the Mapper Algorithm",
+    "authors": "",
+    "venue": "The 6th International Conference on Real-time Intelligent Systems (RTIS 2024)",
+    "year": 2024,
+    "type": "conference",
+    "details": "",
+    "status": "1st",
+    "tag": ["Conference"],
+    "url": "https://doi.org/10.1007/978-3-031-92545-0_8",
+        "indexing": { "scopus": true,  "wos": "", "jcr_q": "" },
+
+    "order": 6
+  },
+  {
+    "title": "An Approach of Fuzzy-enhanced Multi-viewed Image Embedding Fusion for Spinal Disease Detection",
+    "authors": "",
+    "venue": "The 6th International Conference on Real-time Intelligent Systems (RTIS 2024)",
+    "year": 2024,
+    "type": "conference",
+    "details": "",
+    "status": "corr",
+    "tag": ["Conference"],
+    "url": "https://doi.org/10.1007/978-3-031-92545-0_6",
+        "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+
+    "order": 7
+  },
+  {
+    "title": "An Efficient Strategy for Mining High-efficiency Itemsets in Quantitative Databases",
+    "authors": "",
+    "venue": "Knowledge-Based Systems",
+    "year": 2024,
+    "type": "journal",
+    "details": "Vol. 299, 112035, 2024",
+    "tag": ["Journal"],
+    "url": "https://doi.org/10.1016/j.knosys.2024.112035",
+        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "order": 8
+  }
+]
