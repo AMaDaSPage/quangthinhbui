@@ -19,18 +19,69 @@
 //   return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 // }
 
-// function setTheme(theme) {
-//   document.documentElement.setAttribute("data-theme", theme);
-//   localStorage.setItem("theme", theme);
-// }
+// /* =========================
+//    THEME (FULL)
+//    ========================= */
+// const THEME_KEY = "theme"; // "light" | "dark" | null
 
-// function getInitialTheme() {
-//   const saved = localStorage.getItem("theme");
-//   if (saved === "light" || saved === "dark") return saved;
-//   const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+// function getSystemTheme() {
+//   const prefersDark =
+//     window.matchMedia &&
+//     window.matchMedia("(prefers-color-scheme: dark)").matches;
 //   return prefersDark ? "dark" : "light";
 // }
 
+// function getInitialTheme() {
+//   const saved = localStorage.getItem(THEME_KEY);
+//   if (saved === "light" || saved === "dark") return saved;
+//   return getSystemTheme();
+// }
+
+// function applyTheme(theme) {
+//   // theme: "light" | "dark"
+//   document.documentElement.setAttribute("data-theme", theme);
+// }
+
+// function setTheme(theme) {
+//   // set + persist (user forced)
+//   applyTheme(theme);
+//   localStorage.setItem(THEME_KEY, theme);
+// }
+
+// function clearThemePreference() {
+//   // optional: back to auto
+//   localStorage.removeItem(THEME_KEY);
+//   applyTheme(getSystemTheme());
+// }
+
+// function setupTheme() {
+//   // 1) init: saved > system
+//   applyTheme(getInitialTheme());
+
+//   // 2) toggle click
+//   const themeToggle = document.getElementById("themeToggle");
+//   themeToggle?.addEventListener("click", () => {
+//     const current = document.documentElement.getAttribute("data-theme") || getSystemTheme();
+//     const next = current === "dark" ? "light" : "dark";
+//     setTheme(next);
+//   });
+
+//   // 3) follow OS changes ONLY if user hasn't saved preference
+//   const mql = window.matchMedia("(prefers-color-scheme: dark)");
+//   const onSystemChange = () => {
+//     const saved = localStorage.getItem(THEME_KEY);
+//     if (saved !== "light" && saved !== "dark") {
+//       applyTheme(getSystemTheme());
+//     }
+//   };
+
+//   if (mql?.addEventListener) mql.addEventListener("change", onSystemChange);
+//   else if (mql?.addListener) mql.addListener(onSystemChange); // Safari cũ
+// }
+
+// /* =========================
+//    SCROLL / NAV
+//    ========================= */
 // function getHeaderHeight() {
 //   const header = document.querySelector(".site-header");
 //   return header ? header.getBoundingClientRect().height : 0;
@@ -48,7 +99,6 @@
 //     behavior: prefersReducedMotion() ? "auto" : "smooth",
 //   });
 // }
-
 
 // function canonicalPath(pathname) {
 //   if (pathname.length > 1 && pathname.endsWith("/")) pathname = pathname.slice(0, -1);
@@ -73,7 +123,6 @@
 //   const links = Array.from(document.querySelectorAll(".nav-link"));
 //   links.forEach((l) => l.classList.toggle("active", l.dataset.section === sectionId));
 // }
-
 
 // function setupScrollSpy() {
 //   const links = Array.from(document.querySelectorAll(".nav-link"));
@@ -102,7 +151,6 @@
 
 //   sections.forEach((sec) => obs.observe(sec));
 // }
-
 
 // function setupTabClickScroll() {
 //   const links = Array.from(document.querySelectorAll(".nav-link"));
@@ -182,13 +230,8 @@
 // (async function init() {
 //   await includePartials();
 
-//   // Theme init + toggle
-//   setTheme(getInitialTheme());
-//   const themeToggle = document.getElementById("themeToggle");
-//   themeToggle?.addEventListener("click", () => {
-//     const current = document.documentElement.getAttribute("data-theme");
-//     setTheme(current === "dark" ? "light" : "dark");
-//   });
+//   // Theme init + toggle + auto-follow OS (when not forced)
+//   setupTheme();
 
 //   // Year
 //   const y = document.getElementById("yearNow");
@@ -253,6 +296,9 @@
 //     }
 //   }
 // })();
+
+
+// main.js
 async function includePartials() {
   const nodes = document.querySelectorAll("[data-include]");
   await Promise.all([...nodes].map(async (el) => {
@@ -275,9 +321,31 @@ function prefersReducedMotion() {
 }
 
 /* =========================
-   THEME (FULL)
+   SAFE ROOT URL (fix /partials/... relative path issue)
+   - Works for:
+     + localhost root (/)
+     + pages in /partials/...
+     + GitHub Pages subfolder deployment (e.g. /THINHBUiHOMEPAGE/)
    ========================= */
-const THEME_KEY = "theme"; // "light" | "dark" | null
+function getRootPath() {
+  // Example:
+  //  /partials/project.html      -> "/"
+  //  /THINHBUiHOMEPAGE/partials/... -> "/THINHBUiHOMEPAGE/"
+  const parts = location.pathname.split("/").filter(Boolean);
+  const idx = parts.indexOf("partials");
+  const baseParts = idx >= 0 ? parts.slice(0, idx) : parts.slice(0, 0);
+  return "/" + (baseParts.length ? baseParts.join("/") + "/" : "");
+}
+
+function rootUrl(rel) {
+  // rel: "js/projects.js" or "projects.json"
+  return new URL(rel, location.origin + getRootPath()).href;
+}
+
+/* =========================
+   THEME
+   ========================= */
+const THEME_KEY = "theme";
 
 function getSystemTheme() {
   const prefersDark =
@@ -293,35 +361,25 @@ function getInitialTheme() {
 }
 
 function applyTheme(theme) {
-  // theme: "light" | "dark"
   document.documentElement.setAttribute("data-theme", theme);
 }
 
 function setTheme(theme) {
-  // set + persist (user forced)
   applyTheme(theme);
   localStorage.setItem(THEME_KEY, theme);
 }
 
-function clearThemePreference() {
-  // optional: back to auto
-  localStorage.removeItem(THEME_KEY);
-  applyTheme(getSystemTheme());
-}
-
 function setupTheme() {
-  // 1) init: saved > system
   applyTheme(getInitialTheme());
 
-  // 2) toggle click
   const themeToggle = document.getElementById("themeToggle");
   themeToggle?.addEventListener("click", () => {
-    const current = document.documentElement.getAttribute("data-theme") || getSystemTheme();
+    const current =
+      document.documentElement.getAttribute("data-theme") || getSystemTheme();
     const next = current === "dark" ? "light" : "dark";
     setTheme(next);
   });
 
-  // 3) follow OS changes ONLY if user hasn't saved preference
   const mql = window.matchMedia("(prefers-color-scheme: dark)");
   const onSystemChange = () => {
     const saved = localStorage.getItem(THEME_KEY);
@@ -331,7 +389,7 @@ function setupTheme() {
   };
 
   if (mql?.addEventListener) mql.addEventListener("change", onSystemChange);
-  else if (mql?.addListener) mql.addListener(onSystemChange); // Safari cũ
+  else if (mql?.addListener) mql.addListener(onSystemChange);
 }
 
 /* =========================
@@ -463,9 +521,6 @@ function adjustHeaderActionsForPage() {
   }
 }
 
-/* =========================
-   Handle hash on load (cùng trang)
-   ========================= */
 function handleInitialHash() {
   const id = (location.hash || "").replace("#", "");
   if (!id) return;
@@ -480,17 +535,37 @@ function handleInitialHash() {
 }
 
 /* =========================
+   SCRIPT LOADER (NO MODULE)
+   ========================= */
+const __loadedScripts = new Set();
+
+function loadScript(src) {
+  return new Promise((resolve, reject) => {
+    if (!src) return resolve();
+    if (__loadedScripts.has(src)) return resolve();
+
+    const s = document.createElement("script");
+    s.src = src;
+    s.defer = true;
+    s.onload = () => {
+      __loadedScripts.add(src);
+      resolve();
+    };
+    s.onerror = () => reject(new Error("Failed to load script: " + src));
+    document.head.appendChild(s);
+  });
+}
+
+/* =========================
    MAIN
    ========================= */
 (async function init() {
   await includePartials();
 
-  // Theme init + toggle + auto-follow OS (when not forced)
   setupTheme();
 
-  // Year
   const y = document.getElementById("yearNow");
-  if (y) y.textContent = new Date().getFullYear();
+  if (y) y.textContent = String(new Date().getFullYear());
 
   setupMobileNav();
   setupTabClickScroll();
@@ -499,55 +574,58 @@ function handleInitialHash() {
   adjustHeaderActionsForPage();
   handleInitialHash();
 
-  /* ===== Publications ===== */
-  const hasPubList = !!document.getElementById("pubList");
-  if (hasPubList && typeof loadPublications === "function") {
+  /* ===== Projects: main.js quản lí hết ===== */
+  if (document.getElementById("projList")) {
     try {
-      const pubs = await loadPublications();
+      await loadScript(rootUrl("js/projects.js"));
 
-      const pubList = document.getElementById("pubList");
-      const pubFilter = document.getElementById("pubFilter");
-      const pubSort = document.getElementById("pubSort");
-
-      const redraw = () => {
-        const q = pubFilter?.value || "";
-        const mode = pubSort?.value || "year_desc";
-        const filtered = filterPubs(pubs, q);
-        const sorted = sortPubs(filtered, mode);
-        renderPubs(pubList, sorted);
-      };
-
-      pubFilter?.addEventListener("input", redraw);
-      pubSort?.addEventListener("change", redraw);
-      redraw();
-
-      if (document.getElementById("searchDialog")) {
-        setupSearchDialog(pubs);
+      if (typeof window.initProjects === "function") {
+        await window.initProjects({
+          jsonUrl: rootUrl("projects.json"),
+          targetId: "projList",
+          filterId: "projFilter",
+          yearId: "projYear",
+        });
+      } else {
+        console.error("initProjects is not defined. Check projects.js global export.");
       }
     } catch (e) {
       console.error(e);
     }
   }
 
-  /* ===== Projects ===== */
-  const hasProjList = !!document.getElementById("projList");
-  if (hasProjList && typeof loadProjects === "function") {
+  /* ===== Publications: main.js quản lí hết ===== */
+  if (document.getElementById("pubList")) {
     try {
-      const projs = await loadProjects();
+      await loadScript(rootUrl("js/publications.js"));
 
-      const projList = document.getElementById("projList");
-      const projFilter = document.getElementById("projFilter");
-
-      const redraw = () => {
-        const q = projFilter?.value || "";
-        const filtered = filterProjects(projs, q);
-        renderProjects(projList, filtered);
-      };
-
-      projFilter?.addEventListener("input", redraw);
-      redraw();
+      if (typeof window.initPublications === "function") {
+        await window.initPublications({
+          jsonUrl: rootUrl("publications.json"),
+          targetId: "pubList",
+          filterId: "pubFilter",
+          sortId: "pubSort",
+          yearId: "pubYear",
+          typeId: "pubType",
+          indexId: "pubIndex",
+        });
+      } else {
+        console.error("initPublications is not defined. Check publications.js global export.");
+      }
     } catch (e) {
       console.error(e);
     }
   }
+
+  /* ===== Lightning Cursor ===== */
+  try {
+    await loadScript(rootUrl("js/lightning-cursor.js"));
+    if (typeof window.initLightningCursor === "function") {
+      window.initLightningCursor({});
+    }
+  } catch (e) {
+    console.error(e);
+  }
+
+
 })();
