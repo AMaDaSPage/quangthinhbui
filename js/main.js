@@ -298,7 +298,319 @@
 // })();
 
 
-// main.js
+// main.js (NO ES MODULE) + GUARD (right click / devtools hotkeys / devtools detect)
+
+/* =========================================================
+   SECURITY GUARD (based on your js/app.js)
+   - Add ?unlock=1 to bypass
+   ========================================================= */
+(function () {
+  "use strict";
+
+  const __URL__ = new URL(window.location.href);
+  const __LOCK__ = __URL__.searchParams.get("unlock") !== "1";
+
+  let __DEVTOOLS_OPEN__ = false;
+  let __OVERLAY_VISIBLE__ = false;
+
+  function domReady(cb) {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", cb, { once: true });
+    } else cb();
+  }
+
+  function ensureWarningOverlay() {
+    if (!document.body) return;
+    if (document.getElementById("amadasWarningOverlay")) return;
+
+    const style = document.createElement("style");
+    style.id = "amadasWarningOverlayStyle";
+    style.textContent = `
+      #amadasWarningOverlay{
+        position: fixed;
+        inset: 0;
+        z-index: 2147483647;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        background: rgba(0,0,0,0.72);
+        backdrop-filter: blur(6px);
+      }
+      #amadasWarningOverlay .amadas-card{
+        width: min(560px, 100%);
+        border-radius: 16px;
+        padding: 18px 18px 14px;
+        background: rgba(20,20,20,0.95);
+        border: 1px solid rgba(255,255,255,0.12);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+        color: #fff;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      }
+      #amadasWarningOverlay .amadas-title{
+        font-size: 18px;
+        font-weight: 700;
+        margin: 0 0 8px;
+      }
+      #amadasWarningOverlay .amadas-desc{
+        font-size: 14px;
+        line-height: 1.45;
+        opacity: 0.92;
+        margin: 0 0 12px;
+      }
+      #amadasWarningOverlay .amadas-reason{
+        font-size: 12px;
+        opacity: 0.75;
+        margin: 0 0 14px;
+        word-break: break-word;
+      }
+      #amadasWarningOverlay .amadas-actions{
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+      #amadasWarningOverlay .amadas-btn{
+        border: 0;
+        border-radius: 12px;
+        padding: 10px 12px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      #amadasWarningOverlay .amadas-btn.primary{
+        background: #ffffff;
+        color: #111;
+        font-weight: 700;
+      }
+      #amadasWarningOverlay .amadas-btn.ghost{
+        background: transparent;
+        color: #fff;
+        border: 1px solid rgba(255,255,255,0.18);
+      }
+      #amadasWarningOverlay .amadas-note{
+        margin-top: 8px;
+        font-size: 12px;
+        opacity: .75;
+      }
+    `;
+    document.head.appendChild(style);
+
+    const overlay = document.createElement("div");
+    overlay.id = "amadasWarningOverlay";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.innerHTML = `
+      <div class="amadas-card">
+        <div class="amadas-title">Cảnh báo</div>
+        <div class="amadas-desc">
+          Hành động này đang bị hạn chế để bảo vệ nội dung. Vui lòng dừng thao tác bị chặn hoặc đóng DevTools.
+        </div>
+        <div class="amadas-reason" id="amadasWarningReason">Lý do: —</div>
+        <div class="amadas-reason">Không sử dụng chuột phải hay phím tắt để mở DevTools</div>
+        <div class="amadas-actions">
+          <button class="amadas-btn ghost" id="amadasWarnClose">Đóng</button>
+          <button class="amadas-btn primary" id="amadasWarnReload">Tải lại trang</button>
+        </div>
+        <div class="amadas-note" id="amadasWarnNote"></div>
+      </div>
+    `;
+    document.body.appendChild(overlay);
+
+    overlay.addEventListener("click", (e) => {
+      if (e.target === overlay) hideWarningOverlay();
+    });
+
+    const btnClose = document.getElementById("amadasWarnClose");
+    const btnReload = document.getElementById("amadasWarnReload");
+    if (btnClose) btnClose.addEventListener("click", hideWarningOverlay);
+    if (btnReload) btnReload.addEventListener("click", () => window.location.reload());
+  }
+
+  function showWarningOverlay(reason) {
+    try {
+      ensureWarningOverlay();
+      const overlay = document.getElementById("amadasWarningOverlay");
+      const reasonEl = document.getElementById("amadasWarningReason");
+      const noteEl = document.getElementById("amadasWarnNote");
+
+      if (reasonEl) reasonEl.textContent = "Lý do: " + (reason || "—");
+
+      if (noteEl) {
+        noteEl.textContent = __LOCK__ ? "" : "Đang ở chế độ debug (unlock=1).";
+      }
+
+      if (overlay) overlay.style.display = "flex";
+      __OVERLAY_VISIBLE__ = true;
+    } catch (e) {}
+  }
+
+  function hideWarningOverlay() {
+    const overlay = document.getElementById("amadasWarningOverlay");
+    if (overlay) overlay.style.display = "none";
+    __OVERLAY_VISIBLE__ = false;
+  }
+
+  function isEditableTarget(target) {
+    if (!target) return false;
+    const el = target.closest
+      ? target.closest("input, textarea, select, [contenteditable='true']")
+      : null;
+    return !!el;
+  }
+
+  function isDevtoolsHotkey(e) {
+    const key = (e.key || "").toLowerCase();
+    const code = (e.code || "").toLowerCase();
+    const kc = e.keyCode;
+
+    // F12
+    if (key === "f12" || code === "f12" || kc === 123) return true;
+
+    // Ctrl + Shift + I/J/C/K
+    if (e.ctrlKey && e.shiftKey && ["i", "j", "c", "k"].includes(key)) return true;
+    if (e.ctrlKey && e.shiftKey && [73, 74, 67, 75].includes(kc)) return true;
+
+    // Cmd + Opt + I/J/C (macOS)
+    if (e.metaKey && e.altKey && ["i", "j", "c"].includes(key)) return true;
+
+    return false;
+  }
+
+  function installKeyGuards() {
+    document.addEventListener(
+      "keydown",
+      function (e) {
+        if (!__LOCK__) return;
+
+        // nếu đang gõ trong input/textarea thì vẫn chặn devtools
+        // (không return, vì devtools hotkey vẫn cần chặn)
+
+        // Chặn DevTools hotkeys
+        if (isDevtoolsHotkey(e)) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+          showWarningOverlay("Phím tắt DevTools đã bị chặn.");
+          return false;
+        }
+
+        // Context Menu key
+        if (e.key === "ContextMenu") {
+          e.preventDefault();
+          e.stopPropagation();
+          if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+          showWarningOverlay("Context Menu đã bị chặn.");
+          return false;
+        }
+
+        // Shift + F10
+        if (e.shiftKey && (e.key === "F10" || e.code === "F10")) {
+          e.preventDefault();
+          e.stopPropagation();
+          if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+          showWarningOverlay("Shift+F10 đã bị chặn.");
+          return false;
+        }
+
+        // (Tuỳ chọn) chặn Ctrl+U xem source, Ctrl+S save, Ctrl+P print
+        // Nếu bạn không muốn chặn các phím này thì xoá block dưới
+        if (!isEditableTarget(e.target)) {
+          const key = (e.key || "").toLowerCase();
+          if (e.ctrlKey && !e.shiftKey && !e.altKey && ["u", "s", "p"].includes(key)) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+            showWarningOverlay("Phím tắt đã bị chặn.");
+            return false;
+          }
+          if (e.metaKey && !e.shiftKey && !e.altKey && ["u", "s", "p"].includes(key)) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+            showWarningOverlay("Phím tắt đã bị chặn.");
+            return false;
+          }
+        }
+      },
+      { capture: true }
+    );
+  }
+
+  function installRightClickGuard() {
+    document.addEventListener(
+      "contextmenu",
+      function (e) {
+        if (!__LOCK__) return;
+        if (isEditableTarget(e.target)) return;
+        e.preventDefault();
+        e.stopPropagation();
+        showWarningOverlay("Chuột phải đã bị vô hiệu hóa.");
+      },
+      { capture: true }
+    );
+
+    document.addEventListener(
+      "auxclick",
+      function (e) {
+        if (!__LOCK__) return;
+        if (e.button === 2 && !isEditableTarget(e.target)) {
+          e.preventDefault();
+          e.stopPropagation();
+          showWarningOverlay("Chuột phải đã bị vô hiệu hóa.");
+        }
+      },
+      { capture: true }
+    );
+  }
+
+  function installDevtoolsDetect() {
+    if (!__LOCK__) return;
+
+    const TH = 160;
+    const POLL_MS = 300;
+
+    function isDevtoolsOpen() {
+      return (
+        Math.abs(window.outerWidth - window.innerWidth) > TH ||
+        Math.abs(window.outerHeight - window.innerHeight) > TH
+      );
+    }
+
+    function tick() {
+      const open = isDevtoolsOpen();
+      if (open && !__DEVTOOLS_OPEN__) {
+        __DEVTOOLS_OPEN__ = true;
+        showWarningOverlay("DevTools đang mở. Vui lòng đóng để tiếp tục.");
+      } else if (!open && __DEVTOOLS_OPEN__) {
+        __DEVTOOLS_OPEN__ = false;
+        if (__OVERLAY_VISIBLE__) hideWarningOverlay();
+      } else if (open && __DEVTOOLS_OPEN__) {
+        if (!__OVERLAY_VISIBLE__) {
+          showWarningOverlay("DevTools đang mở. Vui lòng đóng để tiếp tục.");
+        }
+      }
+    }
+
+    tick();
+    const timer = setInterval(tick, POLL_MS);
+
+    window.addEventListener("pagehide", () => clearInterval(timer), { once: true });
+    window.addEventListener("focus", tick);
+    window.addEventListener("resize", tick);
+  }
+
+  // Init guards as soon as DOM ready
+  domReady(() => {
+    ensureWarningOverlay();
+    hideWarningOverlay();
+    installKeyGuards();
+    installRightClickGuard();
+    installDevtoolsDetect();
+  });
+})();
+
+/* =========================
+   INCLUDE PARTIALS
+   ========================= */
 async function includePartials() {
   const nodes = document.querySelectorAll("[data-include]");
   await Promise.all([...nodes].map(async (el) => {
@@ -317,20 +629,16 @@ async function includePartials() {
 }
 
 function prefersReducedMotion() {
-  return window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  return (
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
 }
 
 /* =========================
-   SAFE ROOT URL (fix /partials/... relative path issue)
-   - Works for:
-     + localhost root (/)
-     + pages in /partials/...
-     + GitHub Pages subfolder deployment (e.g. /THINHBUiHOMEPAGE/)
+   SAFE ROOT URL
    ========================= */
 function getRootPath() {
-  // Example:
-  //  /partials/project.html      -> "/"
-  //  /THINHBUiHOMEPAGE/partials/... -> "/THINHBUiHOMEPAGE/"
   const parts = location.pathname.split("/").filter(Boolean);
   const idx = parts.indexOf("partials");
   const baseParts = idx >= 0 ? parts.slice(0, idx) : parts.slice(0, 0);
@@ -338,8 +646,24 @@ function getRootPath() {
 }
 
 function rootUrl(rel) {
-  // rel: "js/projects.js" or "projects.json"
   return new URL(rel, location.origin + getRootPath()).href;
+}
+
+/* =========================
+   HOME DETECT (for lightning only)
+   ========================= */
+function isHomePage() {
+  const parts = location.pathname.split("/").filter(Boolean);
+  if (parts.includes("partials")) return false;
+
+  const last = (parts[parts.length - 1] || "").toLowerCase();
+  const endsWithSlash = location.pathname.endsWith("/");
+
+  if (last === "index.html") return true;
+  if (endsWithSlash) return true;
+  if (!last.endsWith(".html")) return true;
+
+  return false;
 }
 
 /* =========================
@@ -405,7 +729,10 @@ function smoothScrollToId(id) {
   if (!target) return;
 
   const headerH = getHeaderHeight();
-  const y = window.scrollY + target.getBoundingClientRect().top - (headerH + 10);
+  const y =
+    window.scrollY +
+    target.getBoundingClientRect().top -
+    (headerH + 10);
 
   window.scrollTo({
     top: Math.max(0, y),
@@ -414,7 +741,8 @@ function smoothScrollToId(id) {
 }
 
 function canonicalPath(pathname) {
-  if (pathname.length > 1 && pathname.endsWith("/")) pathname = pathname.slice(0, -1);
+  if (pathname.length > 1 && pathname.endsWith("/"))
+    pathname = pathname.slice(0, -1);
 
   const map = {
     "/": "/",
@@ -434,7 +762,9 @@ function canonicalPath(pathname) {
 
 function setActiveTab(sectionId) {
   const links = Array.from(document.querySelectorAll(".nav-link"));
-  links.forEach((l) => l.classList.toggle("active", l.dataset.section === sectionId));
+  links.forEach((l) =>
+    l.classList.toggle("active", l.dataset.section === sectionId)
+  );
 }
 
 function setupScrollSpy() {
@@ -535,7 +865,7 @@ function handleInitialHash() {
 }
 
 /* =========================
-   SCRIPT LOADER (NO MODULE)
+   SCRIPT LOADER
    ========================= */
 const __loadedScripts = new Set();
 
@@ -574,7 +904,7 @@ function loadScript(src) {
   adjustHeaderActionsForPage();
   handleInitialHash();
 
-  /* ===== Projects: main.js quản lí hết ===== */
+  /* ===== Projects ===== */
   if (document.getElementById("projList")) {
     try {
       await loadScript(rootUrl("js/projects.js"));
@@ -594,7 +924,7 @@ function loadScript(src) {
     }
   }
 
-  /* ===== Publications: main.js quản lí hết ===== */
+  /* ===== Publications ===== */
   if (document.getElementById("pubList")) {
     try {
       await loadScript(rootUrl("js/publications.js"));
@@ -617,15 +947,15 @@ function loadScript(src) {
     }
   }
 
-  /* ===== Lightning Cursor ===== */
-  try {
-    await loadScript(rootUrl("js/lightning-cursor.js"));
-    if (typeof window.initLightningCursor === "function") {
-      window.initLightningCursor({});
+  /* ===== Lightning Cursor: chỉ chạy ở index/home ===== */
+  if (isHomePage()) {
+    try {
+      await loadScript(rootUrl("js/lightning-cursor.js"));
+      if (typeof window.initLightningCursor === "function") {
+        window.initLightningCursor({});
+      }
+    } catch (e) {
+      console.error(e);
     }
-  } catch (e) {
-    console.error(e);
   }
-
-
 })();
