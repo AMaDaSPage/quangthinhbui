@@ -946,14 +946,14 @@ function loadScript(src) {
   }
 
   /* ===== Lightning Cursor: chỉ chạy ở index/home ===== */
-  if (isHomePage()) {
-    try {
-      await loadScript(rootUrl("js/lightning-cursor.js"));
-      if (typeof window.initLightningCursor === "function") {
-        window.initLightningCursor({});
-      }
-    } catch (e) {
-      console.error(e);
-    }
-  }
+  // if (isHomePage()) {
+  //   try {
+  //     await loadScript(rootUrl("js/lightning-cursor.js"));
+  //     if (typeof window.initLightningCursor === "function") {
+  //       window.initLightningCursor({});
+  //     }
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // }
 })();
