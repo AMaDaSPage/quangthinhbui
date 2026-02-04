@@ -7,8 +7,9 @@
 //     .replaceAll("'", "&#039;");
 // }
 
-// async function loadPublications() {
-//   const res = await fetch("/publications.json", { cache: "no-store" });
+// async function loadPublications(jsonUrl) {
+//   const url = jsonUrl || "publications.json";
+//   const res = await fetch(url, { cache: "no-store" });
 //   if (!res.ok) throw new Error("Cannot load publications.json");
 //   return await res.json();
 // }
@@ -125,7 +126,7 @@
 //   return false;
 // }
 
-// /** ✅ chỉ coi là contrib badge nếu là 1st/corr */
+// /** ✅ only treat as contrib badge if 1st/corr */
 // function isContribStatus(status) {
 //   const s = String(status || "").trim().toLowerCase();
 //   if (!s) return false;
@@ -265,12 +266,8 @@
 //   if (!indexValue || indexValue === "all") return pubs;
 
 //   const v = String(indexValue).toLowerCase();
-//   if (v === "wos") {
-//     return pubs.filter((p) => isWosIndexed(p.indexing || {}));
-//   }
-//   if (v === "scopus") {
-//     return pubs.filter((p) => isScopusIndexed(p.indexing || {}));
-//   }
+//   if (v === "wos") return pubs.filter((p) => isWosIndexed(p.indexing || {}));
+//   if (v === "scopus") return pubs.filter((p) => isScopusIndexed(p.indexing || {}));
 //   return pubs;
 // }
 
@@ -388,22 +385,27 @@
 //   targetEl.innerHTML = groups.map((g) => yearSection(g.yearKey, g.items, collapsedYears)).join("");
 // }
 
-// (async function autoInitPublicationsIfStandalone() {
-//   const target = document.getElementById("pubList");
-//   const filterEl = document.getElementById("pubFilter");
-//   const sortEl = document.getElementById("pubSort");
-//   const yearEl = document.getElementById("pubYear");
-//   const typeEl = document.getElementById("pubType");  
-//   const indexEl = document.getElementById("pubIndex");
+// /* =========================
+//    ✅ PUBLIC ENTRYPOINT
+//    ========================= */
+// window.initPublications = async function initPublications(options) {
+//   const opt = options || {};
+
+//   const target = document.getElementById(opt.targetId || "pubList");
+//   const filterEl = document.getElementById(opt.filterId || "pubFilter");
+//   const sortEl = document.getElementById(opt.sortId || "pubSort");
+//   const yearEl = document.getElementById(opt.yearId || "pubYear");
+//   const typeEl = document.getElementById(opt.typeId || "pubType");
+//   const indexEl = document.getElementById(opt.indexId || "pubIndex");
 
 //   if (!target) return;
 
 //   const collapsedYears = new Set();
 
 //   try {
-//     const pubsAll = await loadPublications();
-//     populateYearSelect(yearEl, pubsAll);
+//     const pubsAll = await loadPublications(opt.jsonUrl);
 
+//     populateYearSelect(yearEl, pubsAll);
 //     enableCardClicks(target);
 //     enableYearBarCollapse(target, collapsedYears);
 
@@ -427,7 +429,7 @@
 //     sortEl?.addEventListener("change", redraw);
 //     yearEl?.addEventListener("change", redraw);
 //     typeEl?.addEventListener("change", redraw);
-//     indexEl?.addEventListener("change", redraw); 
+//     indexEl?.addEventListener("change", redraw);
 
 //     redraw();
 //   } catch (e) {
@@ -435,12 +437,7 @@
 //     target.innerHTML =
 //       `<div class="card"><h3 class="card-title">Publications</h3><p class="card-text">Cannot load publications.json</p></div>`;
 //   }
-// })();
-
-
-// publications.js (NO ES MODULE)
-// Expose: window.initPublications(options)
-
+// };
 function escapeHtml(str) {
   return String(str ?? "")
     .replaceAll("&", "&amp;")
@@ -822,15 +819,68 @@ function yearSection(yearKey, items, collapsedYears) {
   `;
 }
 
-function renderPubsByYear(targetEl, pubs, mode, collapsedYears) {
+
+function getDefaultOpenYearKey(pubsAll) {
+  const { years, hasUnknown } = getUniqueYears(pubsAll);
+  const nowY = new Date().getFullYear();
+
+  if (years.includes(nowY)) return String(nowY);
+  if (years.length > 0) return String(years[0]); // newest
+  return hasUnknown ? "unknown" : String(nowY);
+}
+
+
+function setDefaultCollapsedYears(collapsedYears, pubsAll, openYearKey) {
+  collapsedYears.clear();
+
+  const { years, hasUnknown } = getUniqueYears(pubsAll);
+  const keys = years.map(String);
+  if (hasUnknown) keys.push("unknown");
+
+  for (const k of keys) {
+    if (k !== openYearKey) collapsedYears.add(k);
+  }
+}
+
+function applyAutoCollapse(collapsedYears, groups, openYearKey, ctx) {
+  const visibleKeys = groups.map((g) => g.yearKey);
+
+  for (const k of [...collapsedYears]) {
+    if (!visibleKeys.includes(k)) collapsedYears.delete(k);
+  }
+
+  const qOn = String(ctx.q || "").trim() !== "";
+  const typeOn = String(ctx.typeValue || "all").toLowerCase() !== "all";
+  const indexOn = String(ctx.indexValue || "all").toLowerCase() !== "all";
+  const yearValue = String(ctx.yearValue || "all");
+
+  if (yearValue !== "all") {
+    const selectedKey = yearValue === "unknown" ? "unknown" : yearValue;
+    for (const k of visibleKeys) {
+      if (k === selectedKey) collapsedYears.delete(k);
+      else collapsedYears.add(k);
+    }
+    return;
+  }
+
+  if (qOn || typeOn || indexOn) {
+    for (const k of visibleKeys) collapsedYears.delete(k);
+    return;
+  }
+
+  const defaultKey = visibleKeys.includes(openYearKey) ? openYearKey : (visibleKeys[0] || openYearKey);
+  for (const k of visibleKeys) {
+    if (k === defaultKey) collapsedYears.delete(k);
+    else collapsedYears.add(k);
+  }
+}
+
+function renderGroups(targetEl, groups, collapsedYears) {
   if (!targetEl) return;
-  const groups = groupByYear(pubs, mode);
   targetEl.innerHTML = groups.map((g) => yearSection(g.yearKey, g.items, collapsedYears)).join("");
 }
 
-/* =========================
-   ✅ PUBLIC ENTRYPOINT
-   ========================= */
+
 window.initPublications = async function initPublications(options) {
   const opt = options || {};
 
@@ -847,6 +897,9 @@ window.initPublications = async function initPublications(options) {
 
   try {
     const pubsAll = await loadPublications(opt.jsonUrl);
+
+    const openYearKey = getDefaultOpenYearKey(pubsAll);
+    setDefaultCollapsedYears(collapsedYears, pubsAll, openYearKey);
 
     populateYearSelect(yearEl, pubsAll);
     enableCardClicks(target);
@@ -865,7 +918,10 @@ window.initPublications = async function initPublications(options) {
       const step2 = filterByYear(step1c, yearValue);
       const sorted = sortPubs(step2, mode);
 
-      renderPubsByYear(target, sorted, mode, collapsedYears);
+      const groups = groupByYear(sorted, mode);
+      applyAutoCollapse(collapsedYears, groups, openYearKey, { q, yearValue, typeValue, indexValue });
+
+      renderGroups(target, groups, collapsedYears);
     };
 
     filterEl?.addEventListener("input", redraw);
