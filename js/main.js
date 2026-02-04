@@ -666,9 +666,7 @@ function isHomePage() {
   return false;
 }
 
-/* =========================
-   THEME
-   ========================= */
+
 const THEME_KEY = "theme";
 
 function getSystemTheme() {
