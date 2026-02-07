@@ -1,4 +1,33 @@
-[{
+[
+  {
+    "title": "Topology-Driven Rough Set Classification Using Ball Mapper Coverings for Healthcare Intelligence",
+    "authors": "",
+    "venue": "The 18th Asian Conference on Intelligent Information and Database Systems (ACIIDS 2026), Taiwan",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "corr",
+    "tag": ["Conference"],
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "A"  },
+    "url": "",
+    "order": 1
+  },
+
+  {
+    "title": "Fast-NSTBC: A Scalable Topological-based Clustering Method for Large Network-constrained Geospatial Data",
+    "authors": "",
+    "venue": "The 18th Asian Conference on Intelligent Information and Database Systems (ACIIDS 2026), Taiwan",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "corr",
+    "tag": ["Conference"],
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "A" },
+    "url": "",
+    "order": 2
+  },
+
+  {
     "title": "A CNN-Vision Transformer Hybrid Framework for Brain Tumor MRI Image Classification",
     "authors": "",
     "venue": "The 2026 Fisu Joint Conference on Artificial Intelligence (FJCAI 2026), Vietnam",
@@ -9,7 +38,7 @@
     "tag": ["Conference"],
     "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
     "url": "",
-    "order": 1
+    "order": 3
   },
 
   {
@@ -23,7 +52,7 @@
     "tag": ["Conference"],
     "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
     "url": "",
-    "order": 2
+    "order": 5
   },
 
   {
@@ -37,7 +66,7 @@
     "tag": ["Conference"],
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
     "url": "",
-    "order": 3
+    "order": 6
   },
 
 
