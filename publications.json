@@ -259,7 +259,7 @@
     "details": "",
     "status": "corr",
     "tag": ["Conference"],
-        "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+        "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B" },
 
     "url": "https://doi.org/10.1007/978-3-032-10202-7_23",
     "order": 4
