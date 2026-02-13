@@ -307,8 +307,8 @@
 (function () {
   "use strict";
 
-  const __URL__ = new URL(window.location.href);
-  const __LOCK__ = __URL__.searchParams.get("unlock") !== "1";
+  // const __URL__ = new URL(window.location.href);
+  // const __LOCK__ = __URL__.searchParams.get("unlock") !== "0";
 
   let __DEVTOOLS_OPEN__ = false;
   let __OVERLAY_VISIBLE__ = false;
