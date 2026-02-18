@@ -434,19 +434,6 @@
 
 
   {
-    "title": "Efficient Strategies for Spatial Data Clustering using Topological Relations",
-    "authors": "",
-    "venue": "Applied Intelligence",
-    "year": 2024,
-    "type": "journal",
-    "details": "Vol. 55, 203, 2025",
-    "tag": ["Journal"],
-        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
-
-    "url": "https://doi.org/10.1007/s10489-024-05927-8",
-    "order": 1
-  },
-  {
     "title": "Topological Data Analysis in Graph Neural Networks: Surveys and Perspectives",
     "authors": "",
     "venue": "IEEE Transactions on Neural Networks and Learning Systems",
@@ -457,9 +444,8 @@
         "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
 
     "url": "https://doi.org/10.1109/TNNLS.2024.3520147",
-    "order": 2
+    "order": 1
   },
-  
   {
     "title": "A Novel Distance-based Evaluation Strategy for Spherical Neutrosophic Environments",
     "authors": "",
@@ -472,6 +458,19 @@
         "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
 
     "url": "https://doi.org/10.1007/s12190-024-02291-1",
+    "order": 2
+  },
+  {
+    "title": "Efficient Strategies for Spatial Data Clustering using Topological Relations",
+    "authors": "",
+    "venue": "Applied Intelligence",
+    "year": 2024,
+    "type": "journal",
+    "details": "Vol. 55, 203, 2025",
+    "tag": ["Journal"],
+        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
+
+    "url": "https://doi.org/10.1007/s10489-024-05927-8",
     "order": 3
   },
   {
