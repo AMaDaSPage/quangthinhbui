@@ -197,6 +197,31 @@
 
 
 
+  
+  {
+  "title": "V-Math: An Agentic Approach to the Vietnamese National High School Graduation Mathematics Exams",
+  "authors": "",
+  "venue": "arXiv:2509.12251",
+  "year": 2025,
+  "type": "preprint",
+  "details": "",
+  "tag": [""],
+  "indexing": { "scopus": false, "wos": false, "jcr_q": "" },
+  "url": "https://doi.org/10.48550/arXiv.2509.12251",
+  "order": 0
+  },
+  {
+    "title": "Improving Mapper-based Coverings Through Derivative Transformations in Rough Set",
+    "authors": "",
+    "venue": "The 10th Information and Communication Technology Conference (ICT 2025), Vietnam",
+    "year": 2025,
+    "type": "conference",
+    "status": "1st/corr",
+    "details": "",
+    "tag": ["Conference"],
+    "url": "https://ebook365.vn/ict2025-information-and-communication-technology-ky-yeu-hoi-thao-khoa-hoc-cong-nghe-thong-tin-va-truyen-thong-nam-2025-lam-dong-thang-7-nam-2025-bm1VW.html",
+    "order": 1
+  },
   {
     "title": "U-MobileViT: A Lightweight Vision Transformer-based Backbone for Panoptic Driving Segmentation",
     "authors": "",
@@ -208,9 +233,9 @@
     "status": "corr",
     "tag": ["Journal"],
     "url": "https://doi.org/10.1016/j.image.2025.117461",
-    "order": 0
+    "order": 2
   },
-    {
+  {
     "title": "Enhanced Traffic Sign Recognition on Multi-Speed Expressways in Vietnam Using YOLO and Lightweight Polygon-Based Lane Detection",
     "authors": "",
     "venue": "The 11th EAI International Conference on Smart Objects and Technologies for Social Good (EAI GOODTECHS 2025), Vietnam",
@@ -221,9 +246,8 @@
     "tag": ["Conference"],
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
     "url": "",
-    "order": 1
+    "order": 3
   },
- 
   {
     "title": "An Novel Approach to Metaheuristic-Driven Threshold Optimization in Frequent High-Order Pattern Mining",
     "authors": "",
@@ -234,10 +258,9 @@
     "status": "corr",
     "tag": ["Journal"],
     "url": "https://doi.org/10.1142/S3060932125500207",
-    "order": 2
+    "order": 4
   },
-
- {
+  {
     "title": "Cross-Country Analysis of Discourse on Misinformation in the Digital Platform Using Topic Modeling",
     "authors": "",
     "venue": "The 7th IEEE International Conference on Cognitive Machine Intelligence (IEEE CogMI 2025), USA",
@@ -247,24 +270,9 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
     "tag": ["Conference"],
     "url": "",
-    "order": 3
-
+    "order": 5
   },
-   {
-    "title": "Topological Framework for Exploring Imbalanced Time Series",
-    "authors": "",
-    "venue": "The 17th International Conference on Computational Collective Intelligence (ICCCI 2025), Vietnam",
-    "year": 2025,
-    "type": "conference",
-    "details": "",
-    "status": "corr",
-    "tag": ["Conference"],
-        "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B" },
-
-    "url": "https://doi.org/10.1007/978-3-032-10202-7_23",
-    "order": 4
-  },
-   {
+  {
     "title": "Reliability-Enhanced Approach for Neighborhood-Aware Possibilistic Semi-Supervised Fuzzy Clustering",
     "authors": "",
     "venue": "The 17th International Conference on Knowledge and Systems Engineering (KSE 2025), Vietnam",
@@ -276,20 +284,8 @@
         "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
 
     "url": "https://doi.org/10.1109/KSE68178.2025.11309606",
-    "order": 5
+    "order": 6
   },
-  {
-  "title": "V-Math: An Agentic Approach to the Vietnamese National High School Graduation Mathematics Exams",
-  "authors": "",
-  "venue": "arXiv:2509.12251",
-  "year": 2025,
-  "type": "preprint",
-  "details": "",
-  "tag": [""],
-  "indexing": { "scopus": false, "wos": false, "jcr_q": "" },
-  "url": "https://doi.org/10.48550/arXiv.2509.12251",
-  "order": 6
-},
   {
     "title": "A Hybrid Atrous CNN-SVM Model for Rice Leaf Disease Classification",
     "authors": "",
@@ -302,6 +298,7 @@
     "url": "https://doi.org/10.55401/hyzp8z13",
     "order": 7
   },
+
 
    {
     "title": "Two Novel Distances for Neutrosophic Fuzzy Sets with Applications in Decision-Making and Clustering",
@@ -332,20 +329,6 @@
 
   },
   {
-    "title": "Improving Mapper-based Coverings Through Derivative Transformations in Rough Set",
-    "authors": "",
-    "venue": "The 10th Information and Communication Technology Conference (ICT 2025), Vietnam",
-    "year": 2025,
-    "type": "conference",
-    "status": "1st/corr",
-    "details": "",
-    "tag": ["Conference"],
-    "url": "https://ebook365.vn/ict2025-information-and-communication-technology-ky-yeu-hoi-thao-khoa-hoc-cong-nghe-thong-tin-va-truyen-thong-nam-2025-lam-dong-thang-7-nam-2025-bm1VW.html",
-    "order": 10
-  
-  },
- 
-  {
     "title": "Novel Techniques for Trigonometric Aggregation in Single-Valued Neutrosophic Decision-Making",
     "authors": "",
     "venue": "Vietnam Journal of Computer Science",
@@ -357,22 +340,22 @@
         "indexing": { "scopus": true, "scopus_q": "Q3", "wos": "", "jcr_q": "" },
 
     "url": "https://doi.org/10.1142/S2196888825500174",
+    "order": 10
+  },
+  {
+    "title": "Topological Framework for Exploring Imbalanced Time Series",
+    "authors": "",
+    "venue": "The 17th International Conference on Computational Collective Intelligence (ICCCI 2025), Vietnam",
+    "year": 2025,
+    "type": "conference",
+    "details": "",
+    "status": "corr",
+    "tag": ["Conference"],
+        "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B" },
+
+    "url": "https://doi.org/10.1007/978-3-032-10202-7_23",
     "order": 11
   },
-   {
-    "title": "Novel Neutrosophic Fuzzy Max-Min-Based Similarities and Their Application in Clustering for Educational Decision-Making Support",
-    "authors": "",
-    "venue": "Journal of Applied Mathematics and Computing",
-    "year": 2025,
-    "type": "journal",
-    "details": "Vol. 71, 6549–6584, 2025",
-    "status": "1st",
-    "tag": ["Journal"],
-        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
-    "url": "https://doi.org/10.1007/s12190-025-02520-1",
-    "order": 12
-  },
-  
   {
     "title": "Geospatial Data Clustering in Network Space: A Survey",
     "authors": "",
@@ -383,9 +366,35 @@
     "tag": ["Journal"],
         "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
     "url": "https://doi.org/10.1002/widm.70023",
+    "order": 12
+  },
+     {
+    "title": "Novel Neutrosophic Fuzzy Max-Min-Based Similarities and Their Application in Clustering for Educational Decision-Making Support",
+    "authors": "",
+    "venue": "Journal of Applied Mathematics and Computing",
+    "year": 2025,
+    "type": "journal",
+    "details": "Vol. 71, No. 05, 6549–6584, 2025",
+    "status": "1st",
+    "tag": ["Journal"],
+        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "url": "https://doi.org/10.1007/s12190-025-02520-1",
     "order": 13
   },
+  
   {
+    "title": "Enhanced Medical Image Generation through Advanced Latent Space Diffusion",
+    "authors": "",
+    "venue": "Materials and Emerging Technologies for Sustainability",
+    "year": 2025,
+    "type": "journal",
+    "details": "Vol. 1, No. 1, 2550003, 2025",
+    "status": "corr",
+    "tag": ["Journal"],
+    "url": "https://doi.org/10.1142/S3060932125500037",
+    "order": 14
+  },
+   {
     "title": "Novel Distances for Fermatean Fuzzy Sets in Multi-Attribute Decision-Making Using Covering-Based Rough Sets",
     "authors": "",
     "venue": "The 11th International Symposium on Integrated Uncertainty in Knowledge Modelling and Decision Making (IUKM 2025), Vietnam",
@@ -397,18 +406,6 @@
     "url": "https://doi.org/10.1007/978-981-96-4603-6_6",
         "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
 
-    "order": 14
-  },
-  {
-    "title": "Enhanced Medical Image Generation through Advanced Latent Space Diffusion",
-    "authors": "",
-    "venue": "Materials and Emerging Technologies for Sustainability",
-    "year": 2025,
-    "type": "journal",
-    "details": "Vol. 1, No. 1, 2550003, 2025",
-    "status": "corr",
-    "tag": ["Journal"],
-    "url": "https://doi.org/10.1142/S3060932125500037",
     "order": 15
   },
   {
@@ -453,7 +450,7 @@
     "year": 2024,
     "status": "1st",
     "type": "journal",
-    "details": "Vol. 71, 1809-1841, 2025",
+    "details": "Vol. 71, No. 02, 1809-1841, 2025",
     "tag": ["Journal"],
         "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
 
@@ -466,7 +463,7 @@
     "venue": "Applied Intelligence",
     "year": 2024,
     "type": "journal",
-    "details": "Vol. 55, 203, 2025",
+    "details": "Vol. 55, No. 03, 203, 2025",
     "tag": ["Journal"],
         "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
 
