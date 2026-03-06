@@ -125,10 +125,11 @@ function formatAuthors(pub) {
     const escapedName = escapeHtml(name);
 
     html = html.replace(
-      new RegExp(`${escapedName}(\\*)?`, "g"),
-      (_match, star) => {
-        if (star) {
-          return `${escapedName}${star}`;
+      new RegExp(`${escapedName}(\\s*\\*)?`, "g"),
+      (_match, starPart) => {
+        const hasStar = Boolean(starPart && starPart.replace(/\s/g, ""));
+        if (hasStar) {
+          return `${escapedName}${starPart}`;
         }
         return `<span class="pub-item__author-me">${escapedName}</span>`;
       }
