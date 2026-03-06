@@ -151,17 +151,34 @@ function statusText(pub) {
   return `(${s})`;
 }
 
+function highlightConferenceAcronym(text) {
+  if (!text) return "";
+
+  return text.replace(/\(([^)]+)\)/g, (match, inside) => {
+    const cleaned = inside.trim();
+
+    // nếu trong ngoặc có chữ viết tắt (>=2 chữ hoa)
+    if (/[A-Z]{2,}/.test(cleaned)) {
+      return `(<strong>${escapeHtml(cleaned)}</strong>)`;
+    }
+
+    return match;
+  });
+}
+
 function venueLine(pub) {
-  const venue = cleanRoleMarkers(pub?.venue || "");
+  const venueRaw = cleanRoleMarkers(pub?.venue || "");
   const details = cleanRoleMarkers(pub?.details || "");
+
+  const venue = highlightConferenceAcronym(venueRaw);
 
   if (!venue && !details) return "";
 
   if (details) {
-    return `${venue ? `<strong>${escapeHtml(venue)}</strong>` : ""}${venue ? ", " : ""}${escapeHtml(details)}`;
+    return `${venue ? `<strong>${venue}</strong>` : ""}${venue ? ", " : ""}${escapeHtml(details)}`;
   }
 
-  return escapeHtml(venue);
+  return venue;
 }
 
 function authorsLine(pub) {

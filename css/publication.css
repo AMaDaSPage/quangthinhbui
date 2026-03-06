@@ -116,7 +116,7 @@ body{
 
 .pub-item__title{
   margin:0;
-  font-size:18px;
+  font-size:16px;
   line-height:1.45;
   font-weight:500;
   color:#1d4ed8;
@@ -133,7 +133,6 @@ body{
 }
 
 .pub-item__code{
-  font-weight:800;
   color:#111;
   margin-right:10px;
 }
