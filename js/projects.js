@@ -34,24 +34,49 @@ function joinNice(arr) {
   return a.join(" and ");
 }
 
-function fullAgencyText(funding) {
-  if (!funding) return "";
-
+/* Tên đầy đủ agency */
+function fullAgencyName(agency) {
   const agencyMap = {
     TGU: "Tien Giang University",
     NAFOSTED: "Vietnam National Foundation for Science and Technology Development",
     VIASM: "Vietnam Institute for Advanced Study in Mathematics"
   };
 
-  const agencyRaw = String(funding.agency || "").trim();
+  const raw = String(agency || "").trim();
+  if (!raw) return "";
+  return agencyMap[raw] || raw;
+}
+
+/* agency_code: TGU_TN.CB-2425.20 */
+function fundingAgencyCode(funding, joiner = "_") {
+  if (!funding) return "";
+
+  const agency = String(funding.agency || "").trim();
   const code = String(funding.code || "").trim();
 
-  const agencyFull = agencyMap[agencyRaw] || agencyRaw;
+  if (!agency && !code) return "";
+  if (agency && code) {
+    const agencyUp = agency.toUpperCase();
+    const codeUp = code.toUpperCase();
 
-  if (agencyFull && code) {
-    return `${agencyFull} (${code})`;
+    if (codeUp.startsWith(agencyUp)) return code;
+    return `${agency}${joiner}${code}`;
   }
-  return agencyFull || code || "";
+
+  return agency || code || "";
+}
+
+/* Hiển thị cuối cùng: Tien Giang University (TGU_TN.CB-2425.20) */
+function fundingDisplayText(funding) {
+  if (!funding) return "";
+
+  const fullName = fullAgencyName(funding.agency);
+  const agencyCode = fundingAgencyCode(funding);
+
+  if (fullName && agencyCode) return `${fullName} (${agencyCode})`;
+  if (fullName) return fullName;
+  if (agencyCode) return agencyCode;
+  return "";
 }
 
 function normalizeStatus(status) {
@@ -75,7 +100,7 @@ function projectItem(p) {
     : `${escapeHtml(p.name || "")}`;
 
   const status = normalizeStatus(p.status);
-  const agency = fullAgencyText(p.funding);
+  const agencyText = fundingDisplayText(p.funding);
   const pi = joinNice(p.pi);
 
   return `
@@ -89,7 +114,7 @@ function projectItem(p) {
       </div>
 
       <div class="proj-item__body">
-        ${agency ? `<p class="proj-item__agency">${escapeHtml(agency)}</p>` : ""}
+        ${agencyText ? `<p class="proj-item__agency">${escapeHtml(agencyText)}</p>` : ""}
         ${pi ? `<p class="proj-item__pi">PI: ${escapeHtml(pi)}</p>` : ""}
       </div>
     </article>
