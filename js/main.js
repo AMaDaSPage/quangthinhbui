@@ -363,17 +363,10 @@ function isHomePage() {
 
 const THEME_KEY = "theme";
 
-function getSystemTheme() {
-  const prefersDark =
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches;
-  return prefersDark ? "dark" : "light";
-}
-
 function getInitialTheme() {
   const saved = localStorage.getItem(THEME_KEY);
   if (saved === "light" || saved === "dark") return saved;
-  return getSystemTheme();
+  return "light"; // mặc định light
 }
 
 function applyTheme(theme) {
@@ -389,23 +382,15 @@ function setupTheme() {
   applyTheme(getInitialTheme());
 
   const themeToggle = document.getElementById("themeToggle");
+
   themeToggle?.addEventListener("click", () => {
     const current =
-      document.documentElement.getAttribute("data-theme") || getSystemTheme();
+      document.documentElement.getAttribute("data-theme") || "light";
+
     const next = current === "dark" ? "light" : "dark";
+
     setTheme(next);
   });
-
-  const mql = window.matchMedia("(prefers-color-scheme: dark)");
-  const onSystemChange = () => {
-    const saved = localStorage.getItem(THEME_KEY);
-    if (saved !== "light" && saved !== "dark") {
-      applyTheme(getSystemTheme());
-    }
-  };
-
-  if (mql?.addEventListener) mql.addEventListener("change", onSystemChange);
-  else if (mql?.addListener) mql.addListener(onSystemChange);
 }
 
 /* =========================
