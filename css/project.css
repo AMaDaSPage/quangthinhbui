@@ -1,338 +1,221 @@
-.proj-groups { display:block; }
+/* ===== Background page ===== */
+body{
+  background: #efefef;
+}
+
+/* ===== Projects section ===== */
+#projects{
+  padding: 0; /* bỏ khoảng cách trên dưới */
+}
+
+#projects .container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== White box (paper style) ===== */
+.projects-box{
+  background: #ffffff;
+
+  /* chỉ viền hai bên */
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+
+  border-top: none;
+  border-bottom: none;
+
+  border-radius: 0;
+  box-shadow: none;
+
+  padding: 40px 60px;
+}
+
+.proj-groups{
+  display:block;
+}
+
+/* ===== Section head ===== */
+.section-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px;
+  margin-bottom:28px;
+}
+
+.section-actions{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+}
 
 .year-pill{
   display:flex;
   align-items:center;
   gap:10px;
-  padding:8px 12px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.06);
 }
-.year-pill__label{ font-weight:800; opacity:.9; }
+
+.year-pill__label{
+  font-size:16px;
+  font-weight:700;
+  color:#111;
+}
+
 .year-pill__select{
-  border:none;
-  background:transparent;
-  padding:0;
-  height:auto;
+  min-width:120px;
 }
 
-/* Group theo YEAR */
-.year-group{ margin-top:18px; }
-.year-group:first-child{ margin-top:0; }
-
-.year-bar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:8px 20px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.06);
-  margin-bottom:14px;
+/* ===== Group by year ===== */
+.proj-year-group{
+  margin-bottom:34px;
 }
 
-.year-bar__left{
-  font-size:19px;
-  font-weight:600;
-  letter-spacing:.2px;
-}
-.year-bar__right{
-  font-size:14px;
-  opacity:.85;
+.proj-year-group:last-child{
+  margin-bottom:0;
 }
 
-/* List 1 cột */
-.proj-grid{
+.proj-year-row{
+  display:grid;
+  grid-template-columns:90px minmax(0,1fr);
+  gap:18px;
+  align-items:start;
+}
+
+.proj-year-label{
+  font-size:22px;
+  font-weight:800;
+  color:#111;
+  line-height:1.2;
+  padding-top:2px;
+}
+
+/* ===== Project list ===== */
+.proj-list{
   display:flex;
   flex-direction:column;
-  gap:14px;
+  gap:26px;
 }
 
-/* Card row: icon trái + nội dung phải */
-.proj-card{
-  padding:18px 20px;
-  transition: transform 160ms ease, box-shadow 160ms ease;
-  will-change: transform;
-}
-.proj-card:hover{ transform: translateY(-3px); }
-.proj-card[data-href]{ cursor:pointer; }
-
-.proj-card__row{
-  display:flex;
-  gap:14px;
-  align-items:flex-start;
+.proj-item{
+  display:block;
 }
 
-.proj-card__body{
-  flex:1;
-  min-width:0;
+.proj-item__head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:18px;
+  align-items:baseline;
 }
 
-.proj-card__title{
+.proj-item__title{
   margin:0;
-  font-size:15px;
-  font-weight:800;
-  line-height:1.25;
-}
-
-/* Link title xanh */
-.card-title-link{
-  color:inherit;
-  text-decoration:none;
-  display:inline-block;
-  transition: transform 160ms ease, opacity 160ms ease;
-}
-.card-title-link:hover,
-.card-title-link:focus-visible{
-  text-decoration:none;
-  transform: translateY(-2px);
-  opacity:.92;
-}
-.proj-card__title .card-title-link{
-  color:#7aa2ff;
-}
-
-/* Meta line + badges cùng hàng */
-.proj-card__meta{
-  margin-top:8px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-}
-
-.proj-card__meta-left{
-  font-size:14px;
-  opacity:.85;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-}
-
-.proj-card__meta-right .badges{ margin-top:0; }
-
-/* PI + description */
-.proj-card__pi{
-  margin-top:8px;
-  font-size:14px;
-  opacity:.9;
-}
-.proj-card__desc{
-  margin:8px 0 0 0;
-  font-size:14px;
-  opacity:.9;
-}
-
-/* Actions */
-.proj-card__actions .link{
-  text-decoration:none;
-}
-.proj-card__actions .link:hover,
-.proj-card__actions .link:focus-visible{
-  text-decoration:none;
-  opacity:.9;
-}
-
-/* Icon tròn P */
-.proj-kind{
-  width:36px;
-  height:36px;
-  border-radius:999px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:900;
-  font-size:14px;
-  flex:0 0 36px;
-  border:1px solid rgba(255,255,255,.22);
-  background:rgba(255,255,255,.04);
-}
-.kind--project{
-  border-color: rgba(59,130,246,.45);
-  color: #60a5fa;
-  background: rgba(59,130,246,.12);
-}
-
-/* ===== Badges: giống publication ===== */
-.badges{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-}
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  font-size:12px;
-  line-height:1;
-  padding:5px 10px;
-  border-radius:999px;
-  font-weight:800;
-  letter-spacing:.2px;
-  white-space:nowrap;
-}
-
-/* Status styles */
-.badge--status{
-  background:transparent;
-  color:rgba(255,255,255,.75);
-  border:1px solid rgba(255,255,255,.25);
-}
-.badge--inprogress{
- background:#a28611;
-  color:#fff;
-}
-.badge--finished{
-  background:#1f7a2f; 
-  color:#fff;
-}
-.badge--apletion{
-  background:#be7f09; 
-  color:#fff;
-}
-
-/* Tag pills */
-.badge--tag{
-  background:rgba(255,255,255,.08);
-  color:rgba(255,255,255,.85);
-  border:1px solid rgba(255,255,255,.08);
-}
-
-html[data-theme="light"] .year-pill,
-html[data-theme="light"] .year-bar{
-  border:1px solid rgba(0,0,0,.12);
-  background:rgba(0,0,0,.03);
-}
-
-html[data-theme="light"] .proj-card__title .card-title-link{
+  font-size:18px;
+  line-height:1.45;
+  font-weight:500;
   color:#1d4ed8;
 }
 
-html[data-theme="light"] .badge--status{
-  color:rgba(0,0,0,.65);
-  border:1px solid rgba(0,0,0,.22);
-}
-html[data-theme="light"] .badge--tag{
-  background:rgba(0,0,0,.04);
-  color:rgba(0,0,0,.75);
-  border:1px solid rgba(0,0,0,.06);
-}
-
-/* Link title xanh (SỬA: không dùng inline-block để tránh shrink-to-fit làm title chiếm hết hàng) */
-.card-title-link{
-  color:inherit;
+.proj-item__title a{
+  color:#1d4ed8;
   text-decoration:none;
-  display:inline; /* <= đổi từ inline-block -> inline */
-  transition: transform 160ms ease, opacity 160ms ease;
-}
-.card-title-link:hover,
-.card-title-link:focus-visible{
-  text-decoration:none;
-  transform: translateY(-2px);
-  opacity:.92;
-}
-.proj-card__title .card-title-link{
-  color:#7aa2ff;
-  overflow-wrap:anywhere;
 }
 
-/* ===== Title row: Title + (Period, Agency) cùng hàng (GRID) ===== */
-.proj-card__title-row{
-  display:grid;
-  grid-template-columns: minmax(0, 1fr) auto; /* title co được, badges auto */
-  align-items:start;
-  gap:12px;
+.proj-item__title a:hover,
+.proj-item__title a:focus-visible{
+  opacity:.9;
 }
 
-.proj-card__title-row .proj-card__title{
-  min-width:0; /* MUST */
+.proj-item__code{
+  font-weight:800;
+  color:#111;
+  margin-right:10px;
 }
 
-.proj-card__title-badges{
-  margin: 0;
-  justify-self:end; 
+.proj-item__status{
+  font-size:15px;
+  color:#111;
+  white-space:nowrap;
+  align-self:center;
 }
 
-/* ===== PI row: PI + Status cùng hàng ===== */
-.proj-card__pi-row{
-  margin-top:8px;
-  display:grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items:center;
-  gap:12px;
+.proj-item__body{
+  margin-top:10px;
+  padding-left:58px;
 }
 
-.proj-card__pi-row .proj-card__pi{
-  margin-top:0; /* override margin-top cũ */
-  min-width:0;
+.proj-item__agency,
+.proj-item__pi{
+  margin:0 0 8px 0;
+  font-size:16px;
+  line-height:1.6;
+  color:#111;
 }
 
-.proj-card__pi-status{
-  justify-self:end;
+.proj-item__agency:last-child,
+.proj-item__pi:last-child{
+  margin-bottom:0;
 }
-/* ===== FIX MOBILE: đưa 3 badge/pill xuống dưới hết ===== */
-@media (max-width: 560px) {
 
-  /* Title row: đổi GRID -> FLEX dọc (badge xuống dưới title) */
-  .proj-card__title-row{
-    display: flex !important;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+/* ===== Mobile ===== */
+@media (max-width:768px){
+
+  #projects{
+    padding:0;
   }
 
-  .proj-card__title-badges{
-    width: 100%;
-    justify-content: flex-start !important;
-    justify-self: auto !important;
+  #projects .container{
+    padding:0 14px;
   }
 
-  /* PI row: đổi GRID -> FLEX dọc (status xuống dưới PI) */
-  .proj-card__pi-row{
-    display: flex !important;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
+  .projects-box{
+    padding:28px 18px;
+    border-left:none;
+    border-right:none;
   }
 
-  .proj-card__pi-status{
-    width: 100%;
-    justify-self: auto !important;
+  .section-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+    margin-bottom:22px;
   }
 
-  /* (tuỳ chọn nhưng nên có) nếu badge code dài quá thì không tràn */
-  .badge--tag{
-    max-width: 100%;
-    white-space: normal;       /* cho xuống dòng trong pill nếu cần */
-    overflow-wrap: anywhere;
+  .section-actions{
+    width:100%;
+    justify-content:flex-start;
   }
-}
 
-/* ===== Collapse / Expand theo YEAR (Projects) ===== */
-.year-bar{
-  cursor: pointer;
-  user-select: none;
-}
+  .proj-year-row{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
 
-/* Ẩn danh sách project khi thu gọn */
-.year-group.is-collapsed .proj-grid{
-  display: none;
-}
+  .proj-year-label{
+    padding-top:0;
+    font-size:22px;
+  }
 
-/* Khi thu gọn thì bớt khoảng trống */
-.year-group.is-collapsed .year-bar{
-  margin-bottom: 0;
-}
+  .proj-item__head{
+    grid-template-columns:1fr;
+    gap:6px;
+  }
 
-/* Mũi tên */
-.year-bar__chev{
-  display: inline-block;
-  margin-left: 10px;
-  transition: transform 160ms ease;
-}
+  .proj-item__body{
+    padding-left:0;
+  }
 
-/* Thu gọn thì xoay mũi tên */
-.year-group.is-collapsed .year-bar__chev{
-  transform: rotate(-90deg);
+  .proj-item__title{
+    font-size:17px;
+  }
+
+  .proj-item__agency,
+  .proj-item__pi,
+  .proj-item__status{
+    font-size:15px;
+  }
+
+  .proj-item__status{
+    white-space:normal;
+  }
 }

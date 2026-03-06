@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="../css/project.css" />
   <link rel="icon" href="../img/favicon.png" type="image/x-icon">
   <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
-
 </head>
 
 <body>
@@ -20,21 +19,22 @@
 
   <section class="section alt" id="projects" aria-label="Projects">
     <div class="container">
-      <div class="section-head">
-        <div>
-        </div>
+      <div class="projects-box">
+        <div class="section-head">
+          <div></div>
 
-        <div class="section-actions">
-          <div class="year-pill">
-            <span class="year-pill__label">Year:</span>
-            <select class="select year-pill__select" id="projYear" aria-label="Filter by year">
-              <option value="all">All</option>
-            </select>
+          <div class="section-actions">
+            <div class="year-pill">
+              <span class="year-pill__label">Year:</span>
+              <select class="select year-pill__select" id="projYear" aria-label="Filter by year">
+                <option value="all">All</option>
+              </select>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div id="projList" class="proj-groups" aria-live="polite"></div>
+        <div id="projList" class="proj-groups" aria-live="polite"></div>
+      </div>
     </div>
   </section>
 
@@ -42,5 +42,15 @@
 
   <script src="../js/main.js"></script>
   <script src="../js/visitors.js"></script>
+  <script src="../js/projects.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      window.initProjects({
+        targetId: "projList",
+        yearId: "projYear",
+        jsonUrl: "/projects.json"
+      });
+    });
+  </script>
 </body>
 </html>

@@ -13,63 +13,6 @@ async function loadProjects(jsonUrl) {
   return await res.json();
 }
 
-function enableCardClicks(container) {
-  if (!container) return;
-  container.addEventListener("click", (e) => {
-    if (e.target.closest("a")) return;
-    const card = e.target.closest(".card[data-href]");
-    if (!card) return;
-    const href = card.getAttribute("data-href");
-    if (href) window.open(href, "_blank", "noreferrer");
-  });
-}
-
-function enableYearBarCollapse(container, collapsedYears) {
-  if (!container) return;
-
-  const setExpanded = (barEl, expanded) => {
-    barEl.setAttribute("aria-expanded", expanded ? "true" : "false");
-  };
-
-  container.addEventListener("click", (e) => {
-    const bar = e.target.closest(".year-bar");
-    if (!bar || !container.contains(bar)) return;
-
-    const group = bar.closest(".year-group");
-    if (!group) return;
-
-    const yearKey = group.getAttribute("data-year") || "";
-    if (!yearKey) return;
-
-    const willCollapse = !group.classList.contains("is-collapsed");
-
-    if (willCollapse) collapsedYears.add(yearKey);
-    else collapsedYears.delete(yearKey);
-
-    group.classList.toggle("is-collapsed", willCollapse);
-    setExpanded(bar, !willCollapse);
-  });
-
-  container.addEventListener("keydown", (e) => {
-    const bar = e.target.closest(".year-bar");
-    if (!bar || !container.contains(bar)) return;
-
-    if (e.key !== "Enter" && e.key !== " ") return;
-    e.preventDefault();
-    bar.click();
-  });
-}
-
-function joinNice(arr) {
-  const a = Array.isArray(arr) ? arr.filter(Boolean) : [];
-  return a.join(", ");
-}
-
-function getPrimaryHref(p) {
-  const links = p.links || {};
-  return links.repo || links.demo || p.url || "";
-}
-
 function getYear(p) {
   const y = Number(p.year);
   if (Number.isFinite(y) && y > 0) return y;
@@ -81,126 +24,76 @@ function getYear(p) {
   return null;
 }
 
-function statusBadge(status) {
-  const s = String(status || "").trim();
-  if (!s) return "";
-
-  const low = s.toLowerCase();
-  const cls =
-    low.includes("in progress") ? "badge--inprogress" :
-    low.includes("finished") ? "badge--finished" :
-    low.includes("approaching completion") ? "badge--apletion" :
-    "badge--status";
-
-  return `<span class="badge ${cls}">${escapeHtml(s)}</span>`;
+function getPrimaryHref(p) {
+  const links = p.links || {};
+  return links.repo || links.demo || p.url || "";
 }
 
-function tagBadge(text) {
-  const t = String(text || "").trim();
-  if (!t) return "";
-  return `<span class="badge badge--tag">${escapeHtml(t)}</span>`;
+function joinNice(arr) {
+  const a = Array.isArray(arr) ? arr.filter(Boolean) : [];
+  return a.join(" and ");
 }
 
-function shortAgencyName(agency) {
-  const s = String(agency || "").trim();
-  if (!s) return "";
-  return s.includes("(") ? s.split("(")[0].trim() : s;
-}
+function fullAgencyText(funding) {
+  if (!funding) return "";
 
-function fundingAgencyCode(funding, joiner = "_") {
-  const agencyRaw = funding?.agency ? String(funding.agency).trim() : "";
-  const agency = shortAgencyName(agencyRaw);
-  const code = funding?.code ? String(funding.code).trim() : "";
+  const agencyMap = {
+    TGU: "Tien Giang University",
+    NAFOSTED: "Vietnam National Foundation for Science and Technology Development",
+    VIASM: "Vietnam Institute for Advanced Study in Mathematics"
+  };
 
-  if (!agency && !code) return "";
-  if (agency && code) {
-    const aUp = agency.toUpperCase();
-    const cUp = code.toUpperCase();
-    if (cUp.startsWith(aUp)) return code;
-    return `${agency}${joiner}${code}`;
+  const agencyRaw = String(funding.agency || "").trim();
+  const code = String(funding.code || "").trim();
+
+  const agencyFull = agencyMap[agencyRaw] || agencyRaw;
+
+  if (agencyFull && code) {
+    return `${agencyFull} (${code})`;
   }
-  return agency || code;
+  return agencyFull || code || "";
 }
 
-function projCard(p) {
-  const primaryHref = getPrimaryHref(p);
-  const y = getYear(p);
+function normalizeStatus(status) {
+  const s = String(status || "").trim().toLowerCase();
+  if (!s) return "";
 
-  const funding = p.funding || {};
-  const agencyCode = fundingAgencyCode(funding);
+  if (s.includes("in progress")) return "In progress";
+  if (s.includes("approaching completion")) return "In progress";
+  if (s.includes("finished")) return "";
+  return status;
+}
 
-  const periodText =
-    (p.period ? String(p.period).trim() : "") ||
-    (y ? String(y) : "");
+function projectItem(p) {
+  const href = getPrimaryHref(p);
+  const codeMatch = String(p.id || "").match(/\d+/);
+  const codeNum = codeMatch ? codeMatch[0] : "";
+  const codeLabel = codeNum ? `[P${codeNum}]` : "";
 
-  const piLine = joinNice(p.pi);
-
-  const titleHtml = primaryHref
-    ? `<a class="card-title-link" href="${escapeHtml(primaryHref)}" target="_blank" rel="noreferrer">${escapeHtml(p.name || "")}</a>`
+  const titleInner = href
+    ? `<a href="${escapeHtml(href)}" target="_blank" rel="noreferrer">${escapeHtml(p.name || "")}</a>`
     : `${escapeHtml(p.name || "")}`;
 
-  const titleBadgesHtml =
-    (periodText || agencyCode)
-      ? `<div class="badges proj-card__title-badges">
-           ${periodText ? tagBadge(periodText) : ""}
-           ${agencyCode ? tagBadge(agencyCode) : ""}
-         </div>`
-      : "";
-
-  const statusHtml = statusBadge(p.status);
-
-  const actions = [];
-  if (p.links?.repo) {
-    actions.push(
-      `<a class="link" href="${escapeHtml(p.links.repo)}" target="_blank" rel="noreferrer">Repo</a>`
-    );
-  }
-  if (p.links?.demo) {
-    actions.push(
-      `<a class="link" href="${escapeHtml(p.links.demo)}" target="_blank" rel="noreferrer">Demo</a>`
-    );
-  }
+  const status = normalizeStatus(p.status);
+  const agency = fullAgencyText(p.funding);
+  const pi = joinNice(p.pi);
 
   return `
-    <article class="card proj-card" ${primaryHref ? `data-href="${escapeHtml(primaryHref)}"` : ""}>
-      <div class="proj-card__row">
-        <div class="proj-card__body">
+    <article class="proj-item">
+      <div class="proj-item__head">
+        <h3 class="proj-item__title">
+          ${codeLabel ? `<span class="proj-item__code">${escapeHtml(codeLabel)}</span>` : ""}
+          ${titleInner}
+        </h3>
+        ${status ? `<div class="proj-item__status">(${escapeHtml(status)})</div>` : ""}
+      </div>
 
-          <div class="proj-card__title-row">
-            <h3 class="proj-card__title">${titleHtml}</h3>
-            ${titleBadgesHtml}
-          </div>
-
-          ${(piLine || statusHtml) ? `
-            <div class="proj-card__pi-row">
-              ${piLine ? `<div class="proj-card__pi">PI: ${escapeHtml(piLine)}</div>` : `<div></div>`}
-              ${statusHtml ? `<div class="proj-card__pi-status">${statusHtml}</div>` : ""}
-            </div>
-          ` : ""}
-
-          ${actions.length ? `<div class="card-actions proj-card__actions">${actions.join("")}</div>` : ""}
-        </div>
+      <div class="proj-item__body">
+        ${agency ? `<p class="proj-item__agency">${escapeHtml(agency)}</p>` : ""}
+        ${pi ? `<p class="proj-item__pi">PI: ${escapeHtml(pi)}</p>` : ""}
       </div>
     </article>
   `;
-}
-
-function filterByText(projects, q) {
-  const s = (q || "").trim().toLowerCase();
-  if (!s) return projects;
-
-  return projects.filter((p) => {
-    const funding = p.funding || {};
-    const agencyCode = fundingAgencyCode(funding);
-
-    const blob = [
-      p.id, p.name, p.status, p.period, p.year,
-      funding.agency, funding.code, agencyCode,
-      ...(p.pi || []),
-    ].join(" ").toLowerCase();
-
-    return blob.includes(s);
-  });
 }
 
 function filterByYear(projects, yearValue) {
@@ -211,25 +104,19 @@ function filterByYear(projects, yearValue) {
   return projects.filter((p) => getYear(p) === y);
 }
 
-function sortItems(items, mode) {
+function sortProjects(items) {
   const arr = [...items];
-
-  if (mode !== "year_asc") {
-    arr.sort((a, b) => {
-      const ya = getYear(a) ?? -1;
-      const yb = getYear(b) ?? -1;
-      if (ya !== yb) return yb - ya;
-      return String(a.name || "").localeCompare(String(b.name || ""));
-    });
-    return arr;
-  }
 
   arr.sort((a, b) => {
     const ya = getYear(a) ?? -1;
     const yb = getYear(b) ?? -1;
-    if (ya !== yb) return ya - yb;
-    return String(a.name || "").localeCompare(String(b.name || ""));
+    if (ya !== yb) return yb - ya;
+
+    const ida = Number(String(a.id || "").replace(/\D/g, "")) || 0;
+    const idb = Number(String(b.id || "").replace(/\D/g, "")) || 0;
+    return idb - ida; // P6 -> P1
   });
+
   return arr;
 }
 
@@ -248,6 +135,7 @@ function getUniqueYears(items) {
 
 function populateYearSelect(yearEl, itemsAll) {
   if (!yearEl) return;
+
   const { years, hasUnknown } = getUniqueYears(itemsAll);
 
   yearEl.innerHTML =
@@ -256,102 +144,75 @@ function populateYearSelect(yearEl, itemsAll) {
     (hasUnknown ? `<option value="unknown">Unknown</option>` : "");
 }
 
-function groupByYear(items, mode) {
+function groupByYear(items) {
   const map = new Map();
+
   for (const it of items) {
     const y = getYear(it);
     const key = Number.isFinite(y) && y > 0 ? String(y) : "unknown";
+
     if (!map.has(key)) map.set(key, []);
     map.get(key).push(it);
   }
 
-  const years = [...map.keys()].filter((k) => k !== "unknown").map(Number);
-  if (mode === "year_asc") years.sort((a, b) => a - b);
-  else years.sort((a, b) => b - a);
+  const keys = [...map.keys()].sort((a, b) => {
+    if (a === "unknown") return 1;
+    if (b === "unknown") return -1;
+    return Number(b) - Number(a);
+  });
 
-  const ordered = years.map(String);
-  if (map.has("unknown")) ordered.push("unknown");
-
-  return ordered.map((k) => ({ yearKey: k, items: map.get(k) || [] }));
+  return keys.map((key) => ({
+    yearKey: key,
+    items: map.get(key) || []
+  }));
 }
 
-function yearSection(yearKey, items, collapsedYears) {
+function yearSection(yearKey, items) {
   const label = yearKey === "unknown" ? "Unknown" : yearKey;
-  const count = items.length;
-
-  const isCollapsed = collapsedYears?.has(yearKey);
-  const gridId = `projgrid-${yearKey}`;
 
   return `
-    <section class="year-group ${isCollapsed ? "is-collapsed" : ""}"
-             data-year="${escapeHtml(yearKey)}"
-             aria-label="Year ${escapeHtml(label)}">
-
-      <div class="year-bar" role="button" tabindex="0"
-           aria-expanded="${isCollapsed ? "false" : "true"}"
-           aria-controls="${escapeHtml(gridId)}">
-        <div class="year-bar__left">${escapeHtml(label)}</div>
-        <div class="year-bar__right">
-          ${count} item(s)
-          <span class="year-bar__chev" aria-hidden="true">▾</span>
+    <section class="proj-year-group" aria-label="Year ${escapeHtml(label)}">
+      <div class="proj-year-row">
+        <div class="proj-year-label">${escapeHtml(label)}</div>
+        <div class="proj-list">
+          ${items.map(projectItem).join("")}
         </div>
-      </div>
-
-      <div id="${escapeHtml(gridId)}" class="proj-grid">
-        ${items.map(projCard).join("")}
       </div>
     </section>
   `;
 }
 
-function renderByYear(targetEl, items, mode, collapsedYears) {
+function renderProjects(targetEl, items) {
   if (!targetEl) return;
-  const groups = groupByYear(items, mode);
-  targetEl.innerHTML = groups
-    .map((g) => yearSection(g.yearKey, g.items, collapsedYears))
-    .join("");
+
+  const groups = groupByYear(items);
+  targetEl.innerHTML = groups.map((g) => yearSection(g.yearKey, g.items)).join("");
 }
 
-/* =========================
-   PUBLIC ENTRYPOINT
-   ========================= */
 window.initProjects = async function initProjects(options) {
   const opt = options || {};
   const target = document.getElementById(opt.targetId || "projList");
-  const filterEl = document.getElementById(opt.filterId || "projFilter");
   const yearEl = document.getElementById(opt.yearId || "projYear");
   const jsonUrl = opt.jsonUrl || "/projects.json";
 
   if (!target) return;
 
-  const collapsedYears = new Set();
-
   try {
     const all = await loadProjects(jsonUrl);
 
     populateYearSelect(yearEl, all);
-    enableCardClicks(target);
-    enableYearBarCollapse(target, collapsedYears);
 
     const redraw = () => {
-      const q = filterEl?.value || "";
       const yearValue = yearEl?.value || "all";
-      const mode = "year_desc";
-
-      const step1 = filterByText(all, q);
-      const step2 = filterByYear(step1, yearValue);
-      const sorted = sortItems(step2, mode);
-
-      renderByYear(target, sorted, mode, collapsedYears);
+      const filtered = filterByYear(all, yearValue);
+      const sorted = sortProjects(filtered);
+      renderProjects(target, sorted);
     };
 
-    filterEl?.addEventListener("input", redraw);
     yearEl?.addEventListener("change", redraw);
-
     redraw();
   } catch (e) {
     console.error(e);
-    target.innerHTML =
-      `<div class="card"><h3 class="card-title">Projects</h3><p class="card-text">Cannot load projects.json</p></div>`;
+    target.innerHTML = `<p>Cannot load projects.json</p>`;
   }
 };

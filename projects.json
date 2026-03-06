@@ -6,8 +6,7 @@
     "period": "2025-2026",
     "funding": { "agency": "TGU", "code": "TN.CB-2425.20" },
     "pi": ["Bui Quang Thinh, Ph.D."],
-    "status": "Approaching Completion",
-    "description": "Funded by Tien Giang University (TGU, TN.CB-2425.20). PI: Bui Quang Thinh, PhD. Status: In progress (2025-2026).",
+    "status": "",
     "links": {}
   },
   {
@@ -18,7 +17,6 @@
     "funding": { "agency": "TGU", "code": "TN.CB-2425.03" },
     "pi": ["Thanh Nha Nguyen, M.Sc."],
     "status": "In progress",
-    "description": "Funded by Tien Giang University (TGU, TN.CB-2425.03). PI: Thanh Nha Nguyen, MSc. Status: In progress (2025-2027).",
     "links": {}
   },
   {
@@ -26,43 +24,39 @@
     "name": "Topology-based Deep Learning for Multimedia Data Classification Problem",
     "year": 2025,
     "period": "2025-2028",
-    "funding": { "agency": "NAFOSTED", "code": "NAFOSTED_102.05-2024.15" },
+    "funding": { "agency": "NAFOSTED", "code": "102.05-2024.15" },
     "pi": ["Pham The Anh Phu, Ph.D."],
     "status": "In progress",
-    "description": "Funded by Vietnam National Foundation for Science and Technology Development (NAFOSTED_102.05-2024.15). PI: Pham The Anh Phu, PhD. Status: In progress (2025-2028).",
     "links": {}
   },
   {
     "id": "p3",
+    "name": "Topological Data Analysis for Data Clustering Problem",
+    "year": 2023,
+    "period": "2023-2025",
+    "funding": { "agency": "NAFOSTED", "code": "102.05-2021.08" },
+    "pi": ["Assoc. Prof. Vo Dinh Bay, Ph.D."],
+    "status": "Finished",
+    "links": {}
+  },
+  {
+    "id": "p2",
     "name": "Multi-criteria Decision-making Problems in Neutrosophic Fuzzy Environment",
     "year": 2023,
     "period": "2023-2025",
     "funding": { "agency": "TGU", "code": "TN.CB-2223.05" },
     "pi": ["Bui Quang Thinh, Ph.D."],
     "status": "Finished",
-    "description": "Funded by Tien Giang University (TGU, TN.CB-2223.05). PI: Bui Quang Thinh, PhD. Status: Finished (2023-2025).",
-    "links": {}
-  },
-  {
-    "id": "p2",
-    "name": "Deep Learning-oriented Topological Data Analysis on Graphs",
-    "year": 2023,
-    "period": "2023",
-    "funding": { "agency": "VIASM", "code": "" },
-    "pi": ["Assoc. Prof. Vo Dinh Bay, Ph.D.", "Prof. Nguyen Xuan Hung, PhD."],
-    "status": "Finished",
-    "description": "Funded by Vietnam Institute for Advanced Study in Mathematics (VIASM). PI: Assoc. Prof. Vo Dinh Bay, PhD. and Prof. Nguyen Xuan Hung, PhD. Status: Finished (2023).",
     "links": {}
   },
   {
     "id": "p1",
-    "name": "Topological Data Analysis for Data Clustering Problem",
+    "name": "Deep Learning-oriented Topological Data Analysis on Graphs",
     "year": 2023,
-    "period": "2023-2025",
-    "funding": { "agency": "NAFOSTED", "code": "NAFOSTED_102.05-2021.08" },
-    "pi": ["Assoc. Prof. Vo Dinh Bay, Ph.D."],
+    "period": "2023",
+    "funding": { "agency": "VIASM", "code": "" },
+    "pi": ["Assoc. Prof. Vo Dinh Bay, Ph.D.", "Prof. Nguyen Xuan Hung, Ph.D."],
     "status": "Finished",
-    "description": "Funded by Vietnam National Foundation for Science and Technology Development (NAFOSTED_102.05-2021.08). PI: Assoc. Prof. Vo Dinh Bay, PhD. Status: Finished (2023-2025).",
     "links": {}
   }
 ]
