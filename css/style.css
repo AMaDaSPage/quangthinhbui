@@ -128,7 +128,7 @@ a{ color: inherit; }
 
 /* Light: BG_White */
 html[data-theme="light"] .hero-bg{
-  background-image: url("/img/BG_White.png");
+  background-image: url("/img/BG_Black.png");
 }
 
 /* Dark: BG_Black */
