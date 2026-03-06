@@ -1,402 +1,250 @@
-.pub-groups {
-  display: block;
+/* ===== Background ===== */
+body{
+  background:#efefef;
 }
 
-.pub-group {
-  margin-top: 24px;
-}
-
-.pub-group:first-child {
-  margin-top: 0;
-}
-
-.pub-group-title {
-  margin: 0 0 12px 0;
-}
-
-.card-title-link {
-  color: inherit;
-  text-decoration: none;
-  display: inline-block;          
-  transition: transform 160ms ease, opacity 160ms ease;
-}
-
-.card-title-link:hover,
-.card-title-link:focus-visible {
-  text-decoration: none;           
-  transform: translateY(-2px);      
-  opacity: 0.92;               
-}
-.card {
-  transition: transform 160ms ease, box-shadow 160ms ease;
-  will-change: transform;
-}
-
-.card:hover {
-  transform: translateY(-3px);   
-}
-
-.card[data-href] {
-  cursor: pointer;
-}
-
-.card-actions .link {
-  text-decoration: none;
-}
-
-.card-actions .link:hover,
-.card-actions .link:focus-visible {
-  text-decoration: none;
-  opacity: 0.9;
-}
-
-.badges{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:10px;
-}
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  font-size:12px;
-  line-height:1;
-  padding:5px 10px;
-  border-radius:999px;
-  font-weight:600;
-  letter-spacing:.2px;
-  text-decoration:none;
-  white-space:nowrap;
-}
-
-.badge--isi{
-  background:#1f7a2f;
-  color:#fff;
-}
-
-.badge--scopus{
-  background:#a28611;
-  color:#fff;
-}
-
-.badge--status{
-  background:transparent;
-  color:rgba(255,255,255,.75);
-  border:1px solid rgba(255,255,255,.25);
-}
-
-.badge--tag{
-  background:rgba(255,255,255,.08);
-  color:rgba(255,255,255,.85);
-  border:1px solid rgba(255,255,255,.08);
-}
-
-html[data-theme="light"] .badge--status{
-  color:rgba(0,0,0,.6);
-  border:1px solid rgba(0,0,0,.2);
-}
-html[data-theme="light"] .badge--tag{
-  background:rgba(0,0,0,.04);
-  color:rgba(0,0,0,.75);
-  border:1px solid rgba(0,0,0,.06);
-}
-/* ===== Year filter pill (Year: All) ===== */
-.year-pill{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  padding:8px 12px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.06);
-}
-
-.year-pill__label{
-  font-weight:700;
-  opacity:.9;
-}
-
-.year-pill__select{
-  border:none;
-  background:transparent;
+#publications{
   padding:0;
-  height:auto;
 }
 
-/* ===== Group theo YEAR ===== */
-.pub-groups{ display:block; }
+#publications .container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+}
 
-.year-group{ margin-top:18px; }
-.year-group:first-child{ margin-top:0; }
+/* ===== White paper box ===== */
+.publications-box{
+  background:#fff;
+  border-left:1px solid #e5e7eb;
+  border-right:1px solid #e5e7eb;
+  border-top:none;
+  border-bottom:none;
+  border-radius:0;
+  box-shadow:none;
+  padding:40px 60px;
+}
 
-.year-bar{
+/* ===== Header / filters ===== */
+.section-head{
   display:flex;
-  align-items:center;
   justify-content:space-between;
-  padding:8px 20px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
-  background:rgba(255,255,255,.06);
-  margin-bottom:14px;
-}
-
-.year-bar__left{
-    font-size: 19px;
-    font-weight: 500;
-    letter-spacing: .2px;
-}
-
-.year-bar__right{
-  font-size:14px;
-  opacity:.85;
-}
-
-/* ===== Title link: không underline + hover nhích nhẹ ===== */
-.card-title-link{
-  color:inherit;
-  text-decoration:none;
-  display:inline-block;
-  transition: transform 160ms ease, opacity 160ms ease;
-}
-
-.card-title-link:hover,
-.card-title-link:focus-visible{
-  text-decoration:none;
-  transform: translateY(-2px);
-  opacity: .92;
-}
-
-/* ===== Card hover nhích nhẹ (tuỳ thích) ===== */
-.card{
-  transition: transform 160ms ease, box-shadow 160ms ease;
-  will-change: transform;
-}
-.card:hover{
-  transform: translateY(-3px);
-}
-.card[data-href]{ cursor:pointer; }
-
-/* ===== Badges: pill nhỏ ===== */
-.badges{
-  display:flex;
-  flex-wrap:wrap;
-  gap:8px;
-  margin-top:10px;
-}
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  font-size:12px;
-  line-height:1;
-  padding:5px 10px;
-  border-radius:999px;
-  font-weight:700;
-  letter-spacing:.2px;
-  white-space:nowrap;
-}
-
-/* WoS / ISI / Scopus / Status */
-.badge--wos{ background:#166534; color:#fff; }
-.badge--isi{ background:#1f7a2f; color:#fff; }
-.badge--scopus{ background:#7a7d1e; color:#fff; }
-
-.badge--status{
-  background:transparent;
-  color:rgba(255,255,255,.75);
-  border:1px solid rgba(255,255,255,.25);
-}
-
-.badge--tag{
-  background:rgba(255,255,255,.08);
-  color:rgba(255,255,255,.85);
-  border:1px solid rgba(255,255,255,.08);
-}
-
-/* Light theme override nhẹ */
-html[data-theme="light"] .year-pill,
-html[data-theme="light"] .year-bar{
-  border:1px solid rgba(0,0,0,.12);
-  background:rgba(0,0,0,.03);
-}
-
-html[data-theme="light"] .badge--status{
-  color:rgba(0,0,0,.65);
-  border:1px solid rgba(0,0,0,.22);
-}
-html[data-theme="light"] .badge--tag{
-  background:rgba(0,0,0,.04);
-  color:rgba(0,0,0,.75);
-  border:1px solid rgba(0,0,0,.06);
-}
-
-/* ===== List layout như ảnh (1 cột) ===== */
-.pub-grid{
-  display:flex;
-  flex-direction:column;
-  gap:14px;
-}
-
-/* ===== Card row: icon trái + nội dung phải ===== */
-.pub-card{
-  padding:18px 20px;
-}
-
-.pub-card__row{
-  display:flex;
-  gap:14px;
   align-items:flex-start;
+  gap:16px;
+  margin-bottom:28px;
 }
 
-.pub-card__body{
+.section-head__left{
   flex:1;
   min-width:0;
 }
 
-.pub-card__title{
-  margin:0;
-  font-size: 15px;
-  font-weight:700;
-  line-height:1.25;
+.filters-row{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
 }
 
-/* Link title xanh như ảnh */
-.pub-card__title .card-title-link{
-  color:#7aa2ff;
+.section-actions{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
 }
 
-/* Meta line + badges nằm cùng hàng (giống ảnh) */
-.pub-card__meta{
-  margin-top:8px;
+.year-pill{
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:14px;
+  gap:10px;
 }
 
-.pub-card__meta-left{
-  font-size:14px;
-  opacity:.85;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+.year-pill__label{
+  font-size:16px;
+  font-weight:700;
+  color:#111;
 }
 
-.pub-card__meta-right .badges{
-  margin-top:0;
+.year-pill__select{
+  min-width:120px;
 }
 
-.pub-card__authors{
-  margin-top:8px;
-  font-size:14px;
+/* ===== Publication groups ===== */
+.pub-groups{
+  display:block;
+}
+
+.pub-year-group{
+  margin-bottom:34px;
+}
+
+.pub-year-group:last-child{
+  margin-bottom:0;
+}
+
+.pub-year-row{
+  display:grid;
+  grid-template-columns:90px minmax(0,1fr);
+  gap:18px;
+  align-items:start;
+}
+
+.pub-year-label{
+  font-size:22px;
+  font-weight:800;
+  color:#111;
+  line-height:1.2;
+  padding-top:2px;
+}
+
+/* ===== Publication list ===== */
+.pub-list{
+  display:flex;
+  flex-direction:column;
+  gap:24px;
+}
+
+.pub-item{
+  display:block;
+}
+
+.pub-item__head{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) auto;
+  gap:18px;
+  align-items:baseline;
+}
+
+.pub-item__title{
+  margin:0;
+  font-size:18px;
+  line-height:1.45;
+  font-weight:500;
+  color:#1d4ed8;
+}
+
+.pub-item__title a{
+  color:#1d4ed8;
+  text-decoration:none;
+}
+
+.pub-item__title a:hover,
+.pub-item__title a:focus-visible{
   opacity:.9;
 }
 
-.pub-kind{
-  width:36px;
-  height:36px;
-  border-radius:999px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.pub-item__code{
   font-weight:800;
+  color:#111;
+  margin-right:10px;
+}
+
+.pub-item__status{
+  font-size:15px;
+  color:#111;
+  white-space:nowrap;
+  align-self:center;
+}
+
+.pub-item__body{
+  margin-top:10px;
+  padding-left:55px;
+}
+
+.pub-item__venue,
+.pub-item__authors,
+.pub-item__details{
+  margin:0 0 8px 0;
+  font-size:16px;
+  line-height:1.6;
+  color:#111;
+}
+
+.pub-item__venue strong,
+.pub-item__details strong{
+  font-weight:800;
+}
+
+.pub-item__venue:last-child,
+.pub-item__authors:last-child,
+.pub-item__details:last-child{
+  margin-bottom:0;
+}
+
+.pub-note{
+  margin:26px 0 0 0;
   font-size:14px;
-  flex:0 0 36px;
-  border:1px solid rgba(255,255,255,.22);
-  background:rgba(255,255,255,.04);
+  color:#444;
+  text-align:right;
 }
 
-.kind--journal{
-  border-color: rgba(34,197,94,.45);
-  color: #22c55e;
-  background: rgba(34,197,94,.10);
-}
+/* ===== Mobile ===== */
+@media (max-width:768px){
+  #publications{
+    padding:0;
+  }
 
-.kind--conf{
-  border-color: rgba(239,68,68,.45);
-  color: #ef4444;
-  background: rgba(239,68,68,.10);
-}
+  #publications .container{
+    padding:0 14px;
+  }
 
-.kind--preprint{
-  border-color: rgba(148,163,184,.45);
-  color: rgba(226,232,240,.95);
-  background: rgba(148,163,184,.10);
-}
+  .publications-box{
+    padding:28px 18px;
+    border-left:none;
+    border-right:none;
+  }
 
-.kind--other{
-  border-color: rgba(255,255,255,.22);
-  color: rgba(255,255,255,.8);
-  background: rgba(255,255,255,.04);
-}
-
-@media (max-width: 560px){
-  .pub-card__meta{
+  .section-head{
     flex-direction:column;
     align-items:flex-start;
+    gap:12px;
+    margin-bottom:22px;
   }
-  .pub-card__meta-left{
+
+  .section-actions{
+    width:100%;
+    justify-content:flex-start;
+  }
+
+  .pub-year-row{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .pub-year-label{
+    padding-top:0;
+    font-size:22px;
+  }
+
+  .pub-item__head{
+    grid-template-columns:1fr;
+    gap:6px;
+  }
+
+  .pub-item__body{
+    padding-left:0;
+  }
+
+  .pub-item__title{
+    font-size:17px;
+  }
+
+  .pub-item__venue,
+  .pub-item__authors,
+  .pub-item__details,
+  .pub-item__status{
+    font-size:15px;
+  }
+
+  .pub-item__status{
     white-space:normal;
   }
-}
 
-html[data-theme="light"] .pub-card__title .card-title-link{
-  color:#1d4ed8;
-}
-html[data-theme="light"] .pub-kind{
-  border-color: rgba(0,0,0,.12);
-  background: rgba(0,0,0,.02);
-}
-.pub-card__meta-left{
-  display: flex;
-  align-items: center;
-  gap: 12px;     
-  min-width: 0;  
-}
-
-.pub-card__meta-text{
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.badges--inline{
-  margin-top: 0 !important;
-  flex-wrap: nowrap;
-}
-
-@media (max-width: 560px){
-  .pub-card__meta-text{
-    white-space: normal;
+  .pub-note{
+    text-align:left;
   }
 }
-
-/* ===== Collapse / Expand theo YEAR ===== */
-.year-bar{
-  cursor: pointer;
-  user-select: none;
-}
-
-/* Ẩn danh sách khi thu gọn */
-.year-group.is-collapsed .pub-grid{
-  display: none;
-}
-
-/* Khi thu gọn thì bớt khoảng trống dưới year-bar */
-.year-group.is-collapsed .year-bar{
-  margin-bottom: 0;
-}
-
-/* Mũi tên */
-.year-bar__chev{
-  display: inline-block;
-  margin-left: 10px;
-  transition: transform 160ms ease;
-}
-
-/* Thu gọn thì xoay mũi tên */
-.year-group.is-collapsed .year-bar__chev{
-  transform: rotate(-90deg);
+.pub-item__marker{
+  font-weight:800;
+  color:#111;
+  margin-left:4px;
 }
