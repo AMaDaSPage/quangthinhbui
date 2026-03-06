@@ -144,7 +144,7 @@
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.1109/TFUZZ.2020.3014662",
-    "Author":"Quang-Thinh Bui*, Bay Vo, Vaclav Snasel, Witold Pedrycz, Tzung-Pei Hong, Ngoc-Thanh Nguyen",
+    "Author":"Quang-Thinh Bui, Bay Vo, Vaclav Snasel, Witold Pedrycz, Tzung-Pei Hong, Ngoc-Thanh Nguyen, Mu-Yen Chen",
     "order": 2
 
   },
@@ -203,7 +203,7 @@
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
     "url": "https://doi.org/10.1007/s40815-022-01257-4",
-    "Author":"Quang-Thinh Bui*, My-Phuong Ngo, Vaclav Snasel, Witold Pedrycz, Bay Vo",
+    "Author":"Quang-Thinh Bui, My-Phuong Ngo, Vaclav Snasel, Witold Pedrycz, Bay Vo",
     "order": 3
   },
   {
@@ -217,7 +217,7 @@
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.1016/j.knosys.2019.105107",
-    "Author":"Quang-Thinh Bui*, Bay Vo, Hoang-Anh Nguyen Do, Nguyen Quoc Viet Hung, Vaclav Snasel"
+    "Author":"Quang-Thinh Bui, Bay Vo, Hoang-Anh Nguyen Do, Nguyen Quoc Viet Hung, Vaclav Snasel"
     
   },
   {
@@ -430,7 +430,7 @@
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.1007/s12190-025-02520-1",
-    "Author":"Quang-Thinh Bui*, Vaclav Snasel, Witold Pedrycz, Bay Vo",
+    "Author":"Quang-Thinh Bui, Vaclav Snasel, Witold Pedrycz, Bay Vo",
     "order": 13
   },
   
@@ -458,7 +458,7 @@
     "tag": ["Conference"],
     "url": "https://doi.org/10.1007/978-981-96-4603-6_6",
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
-    "Author":"Quang-Thinh Bui*, Thao Tran-Phuong, Thanh Nha Nguyen, Bao Huynh, Bay Vo",
+    "Author":"Quang-Thinh Bui, Thao Tran-Phuong, Thanh Nha Nguyen, Bao Huynh, Bay Vo",
     "order": 15
   },
   {
@@ -472,7 +472,7 @@
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q3" },
     "url": "https://doi.org/10.1007/s00500-025-10633-9",
-    "Author":"Quang-Thinh Bui*, Thanh Nha Nguyen, Tzung-Pei Hong, Bay Vo",
+    "Author":"Quang-Thinh Bui, Thanh Nha Nguyen, Tzung-Pei Hong, Bay Vo",
     "order": 16
   },
 
@@ -508,7 +508,7 @@
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.1007/s12190-024-02291-1",
-    "Author":"Quang-Thinh Bui*, Tram B. T. Tran, My-Phuong Ngo, Tzung-Pei Hong, Bay Vo",
+    "Author":"Quang-Thinh Bui, Tram B. T. Tran, My-Phuong Ngo, Tzung-Pei Hong, Bay Vo",
     "order": 2
   },
   {
