@@ -22,28 +22,7 @@
     <div class="container">
       <div class="publications-box">
         <div class="section-head">
-          <div class="section-head__left">
-            <div class="filters-row">
-              <div class="year-pill">
-                <span class="year-pill__label">Type:</span>
-                <select class="select year-pill__select" id="pubType" aria-label="Filter by type">
-                  <option value="all">All</option>
-                  <option value="conference">Conference</option>
-                  <option value="journal">Journal</option>
-                  <option value="preprint">Preprint</option>
-                </select>
-              </div>
-
-              <div class="year-pill">
-                <span class="year-pill__label">Index:</span>
-                <select class="select year-pill__select" id="pubIndex" aria-label="Filter by indexing">
-                  <option value="all">All</option>
-                  <option value="wos">WoS</option>
-                  <option value="scopus">Scopus</option>
-                </select>
-              </div>
-            </div>
-          </div>
+          <div class="section-head__left"></div>
 
           <div class="section-actions">
             <div class="year-pill">
@@ -57,7 +36,6 @@
 
         <div id="pubList" class="pub-groups" aria-live="polite"></div>
 
-        <p class="pub-note">*: First author or corresponding author</p>
       </div>
     </div>
   </section>
@@ -73,8 +51,6 @@
       window.initPublications({
         targetId: "pubList",
         yearId: "pubYear",
-        typeId: "pubType",
-        indexId: "pubIndex",
         jsonUrl: "/publications.json"
       });
     });

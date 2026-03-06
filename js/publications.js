@@ -39,158 +39,6 @@ function getPubType(pub) {
   return "other";
 }
 
-function normalizeQuartile(q) {
-  const s = String(q ?? "").trim().toUpperCase();
-  return /^Q[1-4]$/.test(s) ? s : "";
-}
-
-function normalizeScopusRank(r) {
-  const s = String(r ?? "").trim().toUpperCase();
-  if (!s) return "";
-  if (/^[ABCD]$/.test(s)) return s;
-  const m = s.match(/\b(A|B|C|D)\b/);
-  return m ? m[1] : "";
-}
-
-function getScopusQuartile(idx) {
-  const q1 = normalizeQuartile(idx?.scopus_q);
-  if (q1) return q1;
-
-  const s = idx?.scopus;
-  if (typeof s === "string") {
-    const q2 = normalizeQuartile(s);
-    if (q2) return q2;
-  }
-  return "";
-}
-
-function getScopusRank(idx) {
-  const r1 = normalizeScopusRank(idx?.scopus_q);
-  if (r1) return r1;
-
-  const s = idx?.scopus;
-  if (typeof s === "string") {
-    const r2 = normalizeScopusRank(s);
-    if (r2) return r2;
-  }
-  return "";
-}
-
-function isScopusIndexed(idx) {
-  const s = idx?.scopus;
-  if (s === true) return true;
-  if (typeof s === "string" && s.trim() !== "") return true;
-  if (getScopusQuartile(idx)) return true;
-  if (getScopusRank(idx)) return true;
-  return false;
-}
-
-function isWosIndexed(idx) {
-  if (idx?.jcr_q) return true;
-  const w = idx?.wos;
-  if (w === true) return true;
-  if (typeof w === "string" && w.trim() !== "") return true;
-  return false;
-}
-
-function hasAuthorMarker(pub) {
-  const tags = normalizeTags(pub);
-
-  const fields = [
-    pub?.title,
-    pub?.authors,
-    pub?.status,
-    pub?.details,
-    pub?.note,
-    pub?.notes,
-    pub?.remark,
-    pub?.remarks,
-    ...tags
-  ]
-    .filter(Boolean)
-    .join(" ")
-    .toLowerCase();
-
-  const patterns = [
-    /\b1st\b/,
-    /\b1\/st\b/,
-    /\bfirst\s*author\b/,
-    /\bcorr\b/,
-    /\bcrr\b/,
-    /\bcorresponding\b/,
-    /\bcorresponding\s*author\b/
-  ];
-
-  return patterns.some((re) => re.test(fields));
-}
-
-function cleanRoleMarkers(value) {
-  let s = String(value ?? "");
-  if (!s) return "";
-
-  s = s.replace(/\(\s*(?:1st|1\/st|first\s*author|corr|crr|corresponding|corresponding\s*author)(?:\s*\/\s*(?:1st|1\/st|first\s*author|corr|crr|corresponding|corresponding\s*author))*\s*\)/gi, "");
-  s = s.replace(/\[\s*(?:1st|1\/st|first\s*author|corr|crr|corresponding|corresponding\s*author)(?:\s*\/\s*(?:1st|1\/st|first\s*author|corr|crr|corresponding|corresponding\s*author))*\s*\]/gi, "");
-  s = s.replace(/\{\s*(?:1st|1\/st|first\s*author|corr|crr|corresponding|corresponding\s*author)(?:\s*\/\s*(?:1st|1\/st|first\s*author|corr|crr|corresponding|corresponding\s*author))*\s*\}/gi, "");
-  s = s.replace(/\b(?:1st|1\/st|first\s*author|corr|crr|corresponding|corresponding\s*author)\b/gi, "");
-
-  s = s.replace(/\s+,/g, ",");
-  s = s.replace(/,\s*,/g, ", ");
-  s = s.replace(/\s{2,}/g, " ");
-  s = s.replace(/\(\s*\)/g, "");
-  s = s.replace(/\[\s*\]/g, "");
-  s = s.replace(/\{\s*\}/g, "");
-  s = s.replace(/^[,\s\-–;:\/]+/, "");
-  s = s.replace(/[,\s\-–;:\/]+$/, "");
-
-  return s.trim();
-}
-
-function statusText(pub) {
-  const s = cleanRoleMarkers(pub?.status || "");
-  if (!s) return "";
-  return `(${s})`;
-}
-
-function highlightConferenceAcronym(text) {
-  if (!text) return "";
-
-  return text.replace(/\(([^)]+)\)/g, (match, inside) => {
-    const cleaned = inside.trim();
-
-    // nếu trong ngoặc có chữ viết tắt (>=2 chữ hoa)
-    if (/[A-Z]{2,}/.test(cleaned)) {
-      return `(<strong>${escapeHtml(cleaned)}</strong>)`;
-    }
-
-    return match;
-  });
-}
-
-function venueLine(pub) {
-  const venueRaw = cleanRoleMarkers(pub?.venue || "");
-  const details = cleanRoleMarkers(pub?.details || "");
-
-  const venue = highlightConferenceAcronym(venueRaw);
-
-  if (!venue && !details) return "";
-
-  if (details) {
-    return `${venue ? `<strong>${venue}</strong>` : ""}${venue ? ", " : ""}${escapeHtml(details)}`;
-  }
-
-  return venue;
-}
-
-function authorsLine(pub) {
-  const a = cleanRoleMarkers(pub?.authors || "");
-  if (!a) return "";
-  return escapeHtml(a);
-}
-
-function getPrimaryHref(pub) {
-  return String(pub?.url || pub?.links?.paper || "").trim();
-}
-
 function safeOrder(pub) {
   const v = Number(pub?.order);
   return Number.isFinite(v) ? v : Number.POSITIVE_INFINITY;
@@ -203,15 +51,14 @@ function compareWithinSameYear(a, b) {
   return String(a.title || "").localeCompare(String(b.title || ""));
 }
 
-/* 
-  ===== Thứ tự để đánh mã từ dưới lên trên =====
-  Năm cũ -> năm mới
-  Trong cùng năm: order nhỏ trước
-*/
-function compareForDisplayCode(a, b) {
-  const ya = Number(a?.year) || 0;
-  const yb = Number(b?.year) || 0;
-  if (ya !== yb) return ya - yb;
+/* Thứ tự hiển thị thực tế trên trang:
+   - năm mới ở trên
+   - cùng năm thì order nhỏ ở trên */
+function compareForDisplay(a, b) {
+  const ya = Number(a?.year) || -1;
+  const yb = Number(b?.year) || -1;
+
+  if (ya !== yb) return yb - ya;
 
   const oa = safeOrder(a);
   const ob = safeOrder(b);
@@ -220,33 +67,25 @@ function compareForDisplayCode(a, b) {
   return String(a?.title || "").localeCompare(String(b?.title || ""));
 }
 
+function assignCodesForType(pubs, typeName, prefix) {
+  const items = pubs
+    .filter((p) => getPubType(p) === typeName)
+    .slice()
+    .sort(compareForDisplay);
+
+  const total = items.length;
+
+  items.forEach((p, i) => {
+    const num = total - i;
+    const paddedNum = String(num).padStart(2, "0");
+    p._displayCode = `[${prefix}${paddedNum}]`;
+  });
+}
+
 function assignDisplayCodes(pubs) {
-  const journals = pubs
-    .filter((p) => getPubType(p) === "journal")
-    .slice()
-    .sort(compareForDisplayCode);
-
-  const conferences = pubs
-    .filter((p) => getPubType(p) === "conference")
-    .slice()
-    .sort(compareForDisplayCode);
-
-  const preprints = pubs
-    .filter((p) => getPubType(p) === "preprint")
-    .slice()
-    .sort(compareForDisplayCode);
-
-  journals.forEach((p, i) => {
-    p._displayCode = `[J${i + 1}]`;
-  });
-
-  conferences.forEach((p, i) => {
-    p._displayCode = `[C${i + 1}]`;
-  });
-
-  preprints.forEach((p, i) => {
-    p._displayCode = `[P${i + 1}]`;
-  });
+  assignCodesForType(pubs, "journal", "J");
+  assignCodesForType(pubs, "conference", "C");
+  assignCodesForType(pubs, "preprint", "P");
 
   pubs.forEach((p) => {
     if (!p._displayCode) p._displayCode = "[…]";
@@ -259,62 +98,69 @@ function publicationCode(pub) {
   return String(pub?._displayCode || "[…]");
 }
 
+function getPrimaryHref(pub) {
+  return String(pub?.url || "").trim();
+}
+
+function getAuthors(pub) {
+  return String(pub?.Author || pub?.authors || "").trim();
+}
+
+function formatAuthors(pub) {
+  const raw = getAuthors(pub);
+  if (!raw) return "";
+
+  const myNames = [
+    "Quang-Thinh Bui",
+    "Quang Thinh Bui"
+  ];
+
+  let html = escapeHtml(raw);
+
+  for (const name of myNames) {
+    const escapedName = escapeHtml(name);
+
+    html = html.replace(
+      new RegExp(`${escapedName}(\\*)?`, "g"),
+      (_match, star) => `<span class="pub-item__author-me">${escapedName}${star || ""}</span>`
+    );
+  }
+
+  html = html.trim();
+  html = html.replace(/[,\s.]+$/g, "");
+  html += ".";
+
+  return html;
+}
+
+function formatVenue(pub) {
+  return escapeHtml(String(pub?.venue || "").trim());
+}
+
 function publicationItem(pub) {
   const href = getPrimaryHref(pub);
   const code = publicationCode(pub);
-  const status = statusText(pub);
-  const venue = venueLine(pub);
-  const authors = authorsLine(pub);
-  const marker = hasAuthorMarker(pub) ? `<span class="pub-item__marker">*</span>` : "";
+  const authors = formatAuthors(pub);
+  const venue = formatVenue(pub);
 
-  const cleanTitle = cleanRoleMarkers(pub.title || "");
-  const titleText = escapeHtml(cleanTitle);
+  const rawTitle = String(pub?.title || "").trim();
+  const titleText = rawTitle ? `“${escapeHtml(rawTitle)}”` : "";
 
-  const titleInner = href
-    ? `<a href="${escapeHtml(href)}" target="_blank" rel="noreferrer">${titleText}</a>${marker}`
-    : `${titleText}${marker}`;
+  const titleHtml = href
+    ? `<a class="pub-item__title" href="${escapeHtml(href)}" target="_blank" rel="noreferrer">${titleText}</a>`
+    : `<span class="pub-item__title">${titleText}</span>`;
 
   return `
     <article class="pub-item">
-      <div class="pub-item__head">
-        <h3 class="pub-item__title">
-          <span class="pub-item__code">${escapeHtml(code)}</span>${titleInner}
-        </h3>
-        ${status ? `<div class="pub-item__status">${escapeHtml(status)}</div>` : ""}
-      </div>
-
-      <div class="pub-item__body">
-        ${venue ? `<p class="pub-item__venue">${venue}</p>` : ""}
-        ${authors ? `<p class="pub-item__authors">${authors}</p>` : ""}
+      <div class="pub-item__line">
+        <div class="pub-item__code">${escapeHtml(code)}</div>
+        <div class="pub-item__content">
+          ${authors ? `${authors} ` : ""}
+          ${titleHtml}${venue ? `. <em class="pub-item__venue">${venue}</em>.` : ""}
+        </div>
       </div>
     </article>
   `;
-}
-
-function filterByText(pubs, q) {
-  const s = (q || "").trim().toLowerCase();
-  if (!s) return pubs;
-
-  return pubs.filter((p) => {
-    const tags = normalizeTags(p);
-    const idx = p.indexing || {};
-    const blob = [
-      p.title,
-      p.authors,
-      p.venue,
-      p.details,
-      p.year,
-      p.type,
-      p.status,
-      idx.wos,
-      idx.jcr_q,
-      idx.scopus,
-      idx.scopus_q,
-      ...tags
-    ].join(" ").toLowerCase();
-
-    return blob.includes(s);
-  });
 }
 
 function filterByYear(pubs, yearValue) {
@@ -325,30 +171,9 @@ function filterByYear(pubs, yearValue) {
   return pubs.filter((p) => Number(p.year) === y);
 }
 
-function filterByType(pubs, typeValue) {
-  if (!typeValue || typeValue === "all") return pubs;
-  const t = String(typeValue).toLowerCase();
-  return pubs.filter((p) => getPubType(p) === t);
-}
-
-function filterByIndex(pubs, indexValue) {
-  if (!indexValue || indexValue === "all") return pubs;
-
-  const v = String(indexValue).toLowerCase();
-  if (v === "wos") return pubs.filter((p) => isWosIndexed(p.indexing || {}));
-  if (v === "scopus") return pubs.filter((p) => isScopusIndexed(p.indexing || {}));
-
-  return pubs;
-}
-
 function sortPubs(pubs) {
   const arr = [...pubs];
-  arr.sort((a, b) => {
-    const ya = Number(a.year) || -1;
-    const yb = Number(b.year) || -1;
-    if (ya !== yb) return yb - ya;
-    return compareWithinSameYear(a, b);
-  });
+  arr.sort(compareForDisplay);
   return arr;
 }
 
@@ -362,7 +187,10 @@ function getUniqueYears(pubs) {
     else hasUnknown = true;
   }
 
-  return { years: [...years].sort((a, b) => b - a), hasUnknown };
+  return {
+    years: [...years].sort((a, b) => b - a),
+    hasUnknown
+  };
 }
 
 function populateYearSelect(yearEl, pubsAll) {
@@ -382,6 +210,7 @@ function groupByYear(pubs) {
   for (const p of pubs) {
     const y = Number(p.year);
     const key = Number.isFinite(y) && y > 0 ? String(y) : "unknown";
+
     if (!map.has(key)) map.set(key, []);
     map.get(key).push(p);
   }
@@ -424,10 +253,7 @@ window.initPublications = async function initPublications(options) {
   const opt = options || {};
 
   const target = document.getElementById(opt.targetId || "pubList");
-  const filterEl = document.getElementById(opt.filterId || "pubFilter");
   const yearEl = document.getElementById(opt.yearId || "pubYear");
-  const typeEl = document.getElementById(opt.typeId || "pubType");
-  const indexEl = document.getElementById(opt.indexId || "pubIndex");
 
   if (!target) return;
 
@@ -438,24 +264,13 @@ window.initPublications = async function initPublications(options) {
     populateYearSelect(yearEl, pubsAll);
 
     const redraw = () => {
-      const q = filterEl?.value || "";
       const yearValue = yearEl?.value || "all";
-      const typeValue = typeEl?.value || "all";
-      const indexValue = indexEl?.value || "all";
-
-      const step1 = filterByText(pubsAll, q);
-      const step2 = filterByType(step1, typeValue);
-      const step3 = filterByIndex(step2, indexValue);
-      const step4 = filterByYear(step3, yearValue);
-      const sorted = sortPubs(step4);
-
+      const filtered = filterByYear(pubsAll, yearValue);
+      const sorted = sortPubs(filtered);
       renderPublications(target, sorted);
     };
 
-    filterEl?.addEventListener("input", redraw);
     yearEl?.addEventListener("change", redraw);
-    typeEl?.addEventListener("change", redraw);
-    indexEl?.addEventListener("change", redraw);
 
     redraw();
   } catch (e) {

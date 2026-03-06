@@ -1,5 +1,19 @@
 [
   {
+    "title": "A Framework of Near-intuitionistic Fuzzy Soft Sets With Applications to Uncertainty-based Diagnosis",
+    "authors": "",
+    "venue": "Journal of Intelligent & Fuzzy Systems: Applications in Engineering and Technology",
+    "year": 2026,
+    "type": "journal",
+    "details": "Vol. 24, No. 4, 2036–2053, 2022",
+    "status": "1st",
+    "tag": ["Journal"],
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
+    "url": "",
+    "Author":"Thanh Nha Nguyen, Quang-Thinh Bui*",
+    "order": 0
+  },
+  {
     "title": "Graph-guided Hierarchical Multi-class Decomposition for Intuitionistic Fuzzy Weighted Least Squares Twin Support Vector Machine",
     "authors": "",
     "venue": "The 11th International Conference on Information and Communication Technology for Intelligent Systems (ICTIS 2026), Thailand",
@@ -10,7 +24,8 @@
     "tag": ["Conference"],
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
     "url": "",
-    "order": 0
+    "Author":"Quang-Thinh Bui*,  Lan T.T. Tran",
+    "order": 1
   },
   {
     "title": "Topology-Driven Rough Set Classification Using Ball Mapper Coverings for Healthcare Intelligence",
@@ -23,7 +38,8 @@
     "tag": ["Conference"],
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B"  },
     "url": "",
-    "order": 1
+    "Author":"Quang-Thinh Bui*, Quang-Loc Pham, Minh-Khoi Pham, Minh-Huy Bui, Phu Pham, Bay Vo",
+    "order": 2
   },
 
   {
@@ -37,7 +53,8 @@
     "tag": ["Conference"],
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B" },
     "url": "",
-    "order": 2
+    "Author":"Trang T.D. Nguyen, Loan T.T. Nguyen, Quang-Thinh Bui, Phu Pham, Bay Vo",
+    "order": 3
   },
 
   {
@@ -51,7 +68,8 @@
     "tag": ["Conference"],
     "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
     "url": "",
-    "order": 3
+    "Author":"Thanh-Nguyen Nguyen, Hiep Huynh, Duong Van Hieu, Thai-Son Nguyen, Song-Toan Tran, Quang-Thinh Bui*",
+    "order": 4
   },
 
   {
@@ -65,6 +83,7 @@
     "tag": ["Conference"],
     "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
     "url": "",
+    "Author":"Tam T.T. Nguyen, Minh-Huy Bui, My-Phuong Ngo, Quang-Thinh Bui*",
     "order": 5
   },
 
@@ -79,10 +98,12 @@
     "tag": ["Conference"],
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
     "url": "",
+    "Author":"Khang L.N. Nguyen, Bay Vo, Quang-Thinh Bui*",
     "order": 6
   },
 
 
+  
   {
     "title": "Information Measures Based on Similarity Under Neutrosophic Fuzzy Environment and Multi-criteria Decision Problems",
     "authors": "",
@@ -92,8 +113,9 @@
     "details": "Vol. 122, 106026, 2023",
     "status": "1st",
     "tag": ["Journal"],
-        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.1016/j.engappai.2023.106026",
+    "Author":"Quang-Thinh Bui*, My-Phuong Ngo, Vaclav Snasel, Witold Pedrycz, Bay Vo",
     "order": 1
   },
 
@@ -108,8 +130,8 @@
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
     "url": "https://doi.org/10.1007/s40747-020-00220-w",
+    "Author":"Jia Syuen Chai, Ganeshsree Selvachandran, Florentin Smarandache, Vassilis C. Gerogiannis, Le Hoang Son, Quang-Thinh Bui, Bay Vo",
     "order": 1
-
   },
   {
     "title": "SFCM: A Fuzzy Clustering Algorithm of Extracting the Shape Information of Data",
@@ -121,8 +143,8 @@
     "status": "1st",
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
-
     "url": "https://doi.org/10.1109/TFUZZ.2020.3014662",
+    "Author":"Quang-Thinh Bui*, Bay Vo, Vaclav Snasel, Witold Pedrycz, Tzung-Pei Hong, Ngoc-Thanh Nguyen",
     "order": 2
 
   },
@@ -136,6 +158,7 @@
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.3390/math8060965",
+    "Author":"Shio Gai Quek, Ganeshsree Selvachandran, Florentin Smarandache, J. Vimala, Son Hoang Le, Quang-Thinh Bui, Vassilis C. Gerogiannis",
     "order": 3
 
   },
@@ -150,8 +173,8 @@
     "details": "Vol. 215, 119395, 2023",
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
-
     "url": "https://doi.org/10.1016/j.eswa.2022.119395",
+    "Author":"Trang T.D. Nguyen, Loan T.T. Nguyen, Quang-Thinh Bui, Unil Yun, Bay Vo",
     "order": 1
   },
   {
@@ -162,9 +185,9 @@
     "type": "journal",
     "details": "Vol. 7, No. 6, 9603–9626, 2022",
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
-
     "tag": ["Journal"],
     "url": "https://www.aimspress.com/article/doi/10.3934/math.2022534",
+    "Author":"Tram B.T. Tran, My-Phuong Ngo, Quang-Thinh Bui, Vaclav Snasel, Bay Vo",
     "order": 2
     
   },
@@ -180,6 +203,7 @@
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
     "url": "https://doi.org/10.1007/s40815-022-01257-4",
+    "Author":"Quang-Thinh Bui*, My-Phuong Ngo, Vaclav Snasel, Witold Pedrycz, Bay Vo",
     "order": 3
   },
   {
@@ -192,18 +216,22 @@
     "status": "1st",
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
-    "url": "https://doi.org/10.1016/j.knosys.2019.105107"
+    "url": "https://doi.org/10.1016/j.knosys.2019.105107",
+    "Author":"Quang-Thinh Bui*, Bay Vo, Hoang-Anh Nguyen Do, Nguyen Quoc Viet Hung, Vaclav Snasel"
+    
   },
   {
     "title": "Some p-Normal Properties of Topological Space",
     "authors": "",
-    "venue": "Journal of Science of HCMUE (Natural Sciences and Technology)",
+    "venue": "Journal of Science of HCMUE (Natural Sciences and Technology) (Vietnamese)",
     "year": 2017,
     "type": "journal",
     "details": "Vol. 14, No. 06, 172-180, 2017",
     "status": "1st/corr",
     "tag": ["Journal"],
-    "url": "https://journal.hcmue.edu.vn/index.php/hcmuejos/article/view/223"
+    "url": "https://journal.hcmue.edu.vn/index.php/hcmuejos/article/view/223",
+    "Author":"Quang-Thinh Bui*, Ha Thanh Nguyen"
+
     
   },
 
@@ -221,18 +249,20 @@
   "tag": [""],
   "indexing": { "scopus": false, "wos": false, "jcr_q": "" },
   "url": "https://doi.org/10.48550/arXiv.2509.12251",
+  "Author":"Duong Q. Nguyen, Quy P. Nguyen, Nguyen Van Nhon, Quang-Thinh Bui, H. Nguyen-Xuan",
   "order": 0
   },
   {
     "title": "Improving Mapper-based Coverings Through Derivative Transformations in Rough Set",
     "authors": "",
-    "venue": "The 10th Information and Communication Technology Conference (ICT 2025), Vietnam",
+    "venue": "The 10th Information and Communication Technology Conference (ICT 2025), Vietnam (Vietnamese)",
     "year": 2025,
     "type": "conference",
     "status": "1st/corr",
     "details": "",
     "tag": ["Conference"],
     "url": "https://ebook365.vn/ict2025-information-and-communication-technology-ky-yeu-hoi-thao-khoa-hoc-cong-nghe-thong-tin-va-truyen-thong-nam-2025-lam-dong-thang-7-nam-2025-bm1VW.html",
+    "Author":"Quang-Thinh Bui*, Quang-Loc Pham, Duong Van Hieu",
     "order": 1
   },
   {
@@ -246,6 +276,7 @@
     "status": "corr",
     "tag": ["Journal"],
     "url": "https://doi.org/10.1016/j.image.2025.117461",
+    "Author":"Phuoc-Thinh Nguyen ,  The-Bang Nguyen ,  Phu Pham,  Quang-Thinh Bui*",
     "order": 2
   },
   {
@@ -258,6 +289,7 @@
     "status": "corr",
     "tag": ["Conference"],
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+    "Author":"Huu-Luan Nguyen, My-Phuong Ngo, Hiep Huynh, Quang-Thinh Bui*",
     "url": "",
     "order": 3
   },
@@ -271,6 +303,7 @@
     "status": "corr",
     "tag": ["Journal"],
     "url": "https://doi.org/10.1142/S3060932125500207",
+    "Author":"Minh-Trong Tran, Hiep Huynh, Duong Q. Nguyen, Minh Nguyen, Quang-Thinh Bui*",
     "order": 4
   },
   {
@@ -283,6 +316,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
     "tag": ["Conference"],
     "url": "",
+    "Author":"Minh Nguyen, Kuheli Sai, Deepti Gupta, Quang-Thinh Bui*",
     "order": 5
   },
   {
@@ -294,9 +328,9 @@
     "details": "",
     "status": "corr",
     "tag": ["Conference"],
-        "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
-
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
     "url": "https://doi.org/10.1109/KSE68178.2025.11309606",
+    "Author":"Hiep Huynh, Hung C. Nguyen, Quang-Thinh Bui*",
     "order": 6
   },
   {
@@ -309,6 +343,7 @@
     "details": "Vol. 8, No. S2, 351–359, 2025",
     "tag": ["Journal"],
     "url": "https://doi.org/10.55401/hyzp8z13",
+    "Author":"Huu Huy Nguyen, Quang-Thinh Bui*",
     "order": 7
   },
 
@@ -324,6 +359,7 @@
     "status": "corr",
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q4" },
     "url": "https://doi.org/10.1177/18758967251383573",
+    "Author":"Thanh Nha Nguyen, Kieu Vy Cao, Quang-Thinh Bui*",
     "order": 8
 
   },
@@ -337,7 +373,8 @@
     "details": "Vol. 722, 122592, 2026",
     "tag": ["Journal"],
     "url": "https://doi.org/10.1016/j.ins.2025.122592",
-        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "Author":"Quang-Thinh Bui*,  Thanh Nha Nguyen, Hung Son Nguyen, Bay Vo",
     "order": 9
 
   },
@@ -350,9 +387,9 @@
     "details": "",
     "status": "corr",
     "tag": ["Journal"],
-        "indexing": { "scopus": true, "scopus_q": "Q3", "wos": "", "jcr_q": "" },
-
+    "indexing": { "scopus": true, "scopus_q": "Q3", "wos": "", "jcr_q": "" },
     "url": "https://doi.org/10.1142/S2196888825500174",
+    "Author":"Tram B. T. Tran, Thanh Nha Nguyen, Quang-Thinh Bui*",
     "order": 10
   },
   {
@@ -364,9 +401,9 @@
     "details": "",
     "status": "corr",
     "tag": ["Conference"],
-        "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B" },
-
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B" },
     "url": "https://doi.org/10.1007/978-3-032-10202-7_23",
+    "Author":"Minh Nguyen, Farzana Nasrin, Quang-Thinh Bui*",
     "order": 11
   },
   {
@@ -377,8 +414,9 @@
     "type": "journal",
     "details": "Vol. 15, e70023, 2025",
     "tag": ["Journal"],
-        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
     "url": "https://doi.org/10.1002/widm.70023",
+    "Author":"Loan T. T. Nguyen, Trang T. D. Nguyen, Quang-Thinh Bui, Bay Vo",
     "order": 12
   },
      {
@@ -390,8 +428,9 @@
     "details": "Vol. 71, No. 05, 6549–6584, 2025",
     "status": "1st",
     "tag": ["Journal"],
-        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.1007/s12190-025-02520-1",
+    "Author":"Quang-Thinh Bui*, Vaclav Snasel, Witold Pedrycz, Bay Vo",
     "order": 13
   },
   
@@ -405,6 +444,7 @@
     "status": "corr",
     "tag": ["Journal"],
     "url": "https://doi.org/10.1142/S3060932125500037",
+    "Author":"Khoi M. Nguyen, Hung C. Nguyen, H. Huy Nguyen, The-Bang Nguyen, Phuoc-Thinh Nguyen, Vu Tran, Phu Pham, Quang-Thinh Bui*",
     "order": 14
   },
    {
@@ -417,8 +457,8 @@
     "status": "1st",
     "tag": ["Conference"],
     "url": "https://doi.org/10.1007/978-981-96-4603-6_6",
-        "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
-
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+    "Author":"Quang-Thinh Bui*, Thao Tran-Phuong, Thanh Nha Nguyen, Bao Huynh, Bay Vo",
     "order": 15
   },
   {
@@ -432,6 +472,7 @@
     "tag": ["Journal"],
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q3" },
     "url": "https://doi.org/10.1007/s00500-025-10633-9",
+    "Author":"Quang-Thinh Bui*, Thanh Nha Nguyen, Tzung-Pei Hong, Bay Vo",
     "order": 16
   },
 
@@ -451,9 +492,9 @@
     "type": "journal",
     "details": "Vol. 36, No. 6, 9758–9776, 2025",
     "tag": ["Journal"],
-        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
-
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.1109/TNNLS.2024.3520147",
+    "Author":"Phu Pham, Quang-Thinh Bui, Ngoc Thanh Nguyen, Robert Kozma, Philip S. Yu, Bay Vo",
     "order": 1
   },
   {
@@ -465,9 +506,9 @@
     "type": "journal",
     "details": "Vol. 71, No. 02, 1809-1841, 2025",
     "tag": ["Journal"],
-        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
-
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.1007/s12190-024-02291-1",
+    "Author":"Quang-Thinh Bui*, Tram B. T. Tran, My-Phuong Ngo, Tzung-Pei Hong, Bay Vo",
     "order": 2
   },
   {
@@ -478,9 +519,9 @@
     "type": "journal",
     "details": "Vol. 55, No. 03, 203, 2025",
     "tag": ["Journal"],
-        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
-
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
     "url": "https://doi.org/10.1007/s10489-024-05927-8",
+    "Author":"Trang T. D. Nguyen, Loan T. T. Nguyen, Quang-Thinh Bui, Le Nhat Duy, Witold Pedrycz, Bay Vo",
     "order": 3
   },
   {
@@ -491,8 +532,9 @@
     "type": "journal",
     "details": "Vol. 690, 121526, 2025",
     "tag": ["Journal"],
-        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.1016/j.ins.2024.121526",
+    "Author":"Trang T.D. Nguyen,  Loan T.T. Nguyen,  Quang-Thinh Bui,  Le Nhat Duy, Bay Vo",
     "order": 4
   },
   {
@@ -505,7 +547,8 @@
     "status": "1st",
     "tag": ["Conference"],
     "url": "https://doi.org/10.1007/978-3-031-92545-0_45",
-        "indexing": { "scopus": true,  "wos": "", "jcr_q": "" },
+    "indexing": { "scopus": true,  "wos": "", "jcr_q": "" },
+    "Author":"Quang-Thinh Bui*, Trong-Duc Le, Bang-Trinh N. Nguyen, Bao Huynh, N. T. Tung",
     "order": 5
   },
   {
@@ -518,8 +561,8 @@
     "status": "1st",
     "tag": ["Conference"],
     "url": "https://doi.org/10.1007/978-3-031-92545-0_8",
-        "indexing": { "scopus": true,  "wos": "", "jcr_q": "" },
-
+    "indexing": { "scopus": true,  "wos": "", "jcr_q": "" },
+    "Author":"Quang-Thinh Bui*, Thac Nguyen Tien, The-Bang Nguyen, Son P. Nguyen, Bay Vo",
     "order": 6
   },
   {
@@ -532,8 +575,8 @@
     "status": "corr",
     "tag": ["Conference"],
     "url": "https://doi.org/10.1007/978-3-031-92545-0_6",
-        "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
-
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
+    "Author":"Thinh D. Le, Tran Vu, Quang-Thinh Bui*, Luong Cong Minh, Hoang Van Trieu, Bui Anh Triet, Hue Nguyen, Thao Truong, Phu Pham",
     "order": 7
   },
   {
@@ -545,7 +588,8 @@
     "details": "Vol. 299, 112035, 2024",
     "tag": ["Journal"],
     "url": "https://doi.org/10.1016/j.knosys.2024.112035",
-        "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
+    "Author":"Bao Huynh, N.T. Tung, Trinh D.D. Nguyen, Quang-Thinh Bui, Loan T.T. Nguyen, Unil Yun, Bay Vo",
     "order": 8
   }
 ]

@@ -66,21 +66,9 @@ main{
 }
 
 .year-pill__label{
-  font-size:16px;
-  font-weight:500;
-  color:#111;
-  line-height:1.2;
-}
-
-.year-pill__select{
-  font-family:"Poppins", sans-serif;
-  font-size:14px;
-  padding:2px 8px;
-  height:32px;
-  border:1px solid #d1d5db;
-  border-radius:6px;
-  background:#fff;
-  color:#111;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111;
 }
 
 /* ===== Year group ===== */
@@ -143,7 +131,7 @@ color: #111;
 
 /* ===== Title ===== */
 .proj-title{
-  color:#111;
+  color:#80350C;;
   font-weight:400;
 }
 
