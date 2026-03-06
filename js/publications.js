@@ -147,6 +147,24 @@ function formatDetails(pub) {
   return escapeHtml(getDetails(pub));
 }
 
+function endsWithVietnameseNote(text) {
+  return /\(Vietnamese\)\s*$/i.test(String(text || "").trim());
+}
+
+function endsWithPunctuation(text) {
+  return /[.!?]$/.test(String(text || "").trim());
+}
+
+function ensureEnding(text) {
+  const s = String(text || "").trim();
+  if (!s) return "";
+
+  if (endsWithVietnameseNote(s)) return s;
+  if (endsWithPunctuation(s)) return s;
+
+  return `${s}.`;
+}
+
 function publicationItem(pub) {
   const href = getPrimaryHref(pub);
   const code = publicationCode(pub);
@@ -162,12 +180,16 @@ function publicationItem(pub) {
     : `<span class="pub-item__title">${titleText}</span>`;
 
   let venueDetailsHtml = "";
+
   if (venue && details) {
-    venueDetailsHtml = `. <em class="pub-item__venue">${venue}</em>, <span class="pub-item__details">${details}</span>.`;
+    venueDetailsHtml =
+      `. <em class="pub-item__venue">${venue}</em>, <span class="pub-item__details">${ensureEnding(details)}</span>`;
   } else if (venue) {
-    venueDetailsHtml = `. <em class="pub-item__venue">${venue}</em>.`;
+    venueDetailsHtml =
+      `. <em class="pub-item__venue">${ensureEnding(venue)}</em>`;
   } else if (details) {
-    venueDetailsHtml = `. <span class="pub-item__details">${details}</span>.`;
+    venueDetailsHtml =
+      `. <span class="pub-item__details">${ensureEnding(details)}</span>`;
   }
 
   return `
