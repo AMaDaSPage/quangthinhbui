@@ -34,12 +34,11 @@ function joinNice(arr) {
   return a.join(" and ");
 }
 
-/* Tên đầy đủ agency */
 function fullAgencyName(agency) {
   const agencyMap = {
     TGU: "Tien Giang University",
-    NAFOSTED: "Vietnam National Foundation for Science and Technology Development",
-    VIASM: "Vietnam Institute for Advanced Study in Mathematics"
+    NAFOSTED: "Vietnam National Foundation for Science and Technology Development (NAFOSTED)",
+    VIASM: "Vietnam Institute for Advanced Study in Mathematics (VIASM)"
   };
 
   const raw = String(agency || "").trim();
@@ -47,7 +46,6 @@ function fullAgencyName(agency) {
   return agencyMap[raw] || raw;
 }
 
-/* agency_code: TGU_TN.CB-2425.20 */
 function fundingAgencyCode(funding, joiner = "_") {
   if (!funding) return "";
 
@@ -66,7 +64,6 @@ function fundingAgencyCode(funding, joiner = "_") {
   return agency || code || "";
 }
 
-/* Hiển thị cuối cùng: Tien Giang University (TGU_TN.CB-2425.20) */
 function fundingDisplayText(funding) {
   if (!funding) return "";
 
@@ -79,45 +76,39 @@ function fundingDisplayText(funding) {
   return "";
 }
 
-function normalizeStatus(status) {
-  const s = String(status || "").trim().toLowerCase();
-  if (!s) return "";
-
-  if (s.includes("in progress")) return "In progress";
-  if (s.includes("approaching completion")) return "In progress";
-  if (s.includes("finished")) return "";
-  return status;
+function normalizeRoleFromPi(piText) {
+  const s = String(piText || "").toLowerCase();
+  return s.includes("thinh") ? "PI" : "member";
 }
 
 function projectItem(p) {
-  const href = getPrimaryHref(p);
   const codeMatch = String(p.id || "").match(/\d+/);
   const codeNum = codeMatch ? codeMatch[0] : "";
   const codeLabel = codeNum ? `[P${codeNum}]` : "";
 
-  const titleInner = href
-    ? `<a href="${escapeHtml(href)}" target="_blank" rel="noreferrer">${escapeHtml(p.name || "")}</a>`
-    : `${escapeHtml(p.name || "")}`;
+  const title = `“${escapeHtml(p.name || "")}”`;
+  const fundCode = escapeHtml(p.funding?.code || "");
+  const agency = escapeHtml(fullAgencyName(p.funding?.agency || ""));
+  const period = escapeHtml(p.period || "");
 
-  const status = normalizeStatus(p.status);
-  const agencyText = fundingDisplayText(p.funding);
   const pi = joinNice(p.pi);
+  const role = pi ? normalizeRoleFromPi(pi) : "";
+
+  const contentParts = [
+    `<span class="proj-title">${title}</span>`,
+    fundCode,
+    agency,
+    period ? period : "",
+    role ? `(${escapeHtml(role)})` : ""
+  ].filter(Boolean);
 
   return `
-    <article class="proj-item">
-      <div class="proj-item__head">
-        <h3 class="proj-item__title">
-          ${codeLabel ? `<span class="proj-item__code">${escapeHtml(codeLabel)}</span>` : ""}
-          ${titleInner}
-        </h3>
-        ${status ? `<div class="proj-item__status">(${escapeHtml(status)})</div>` : ""}
+    <div class="proj-item">
+      <div class="proj-code">${escapeHtml(codeLabel)}</div>
+      <div class="proj-content">
+        ${contentParts.join(", ")}
       </div>
-
-      <div class="proj-item__body">
-        ${agencyText ? `<p class="proj-item__agency">${escapeHtml(agencyText)}</p>` : ""}
-        ${pi ? `<p class="proj-item__pi">PI: ${escapeHtml(pi)}</p>` : ""}
-      </div>
-    </article>
+    </div>
   `;
 }
 
@@ -139,7 +130,7 @@ function sortProjects(items) {
 
     const ida = Number(String(a.id || "").replace(/\D/g, "")) || 0;
     const idb = Number(String(b.id || "").replace(/\D/g, "")) || 0;
-    return idb - ida; // P6 -> P1
+    return idb - ida;
   });
 
   return arr;
