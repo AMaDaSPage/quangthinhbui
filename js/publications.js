@@ -106,6 +106,10 @@ function getAuthors(pub) {
   return String(pub?.Author || pub?.authors || "").trim();
 }
 
+function getDetails(pub) {
+  return String(pub?.details || "").trim();
+}
+
 function formatAuthors(pub) {
   const raw = getAuthors(pub);
   if (!raw) return "";
@@ -122,7 +126,12 @@ function formatAuthors(pub) {
 
     html = html.replace(
       new RegExp(`${escapedName}(\\*)?`, "g"),
-      (_match, star) => `<span class="pub-item__author-me">${escapedName}${star || ""}</span>`
+      (_match, star) => {
+        if (star) {
+          return `${escapedName}${star}`;
+        }
+        return `<span class="pub-item__author-me">${escapedName}</span>`;
+      }
     );
   }
 
@@ -137,11 +146,16 @@ function formatVenue(pub) {
   return escapeHtml(String(pub?.venue || "").trim());
 }
 
+function formatDetails(pub) {
+  return escapeHtml(getDetails(pub));
+}
+
 function publicationItem(pub) {
   const href = getPrimaryHref(pub);
   const code = publicationCode(pub);
   const authors = formatAuthors(pub);
   const venue = formatVenue(pub);
+  const details = formatDetails(pub);
 
   const rawTitle = String(pub?.title || "").trim();
   const titleText = rawTitle ? `“${escapeHtml(rawTitle)}”` : "";
@@ -150,13 +164,22 @@ function publicationItem(pub) {
     ? `<a class="pub-item__title" href="${escapeHtml(href)}" target="_blank" rel="noreferrer">${titleText}</a>`
     : `<span class="pub-item__title">${titleText}</span>`;
 
+  let venueDetailsHtml = "";
+  if (venue && details) {
+    venueDetailsHtml = `. <em class="pub-item__venue">${venue}</em>, <span class="pub-item__details">${details}</span>.`;
+  } else if (venue) {
+    venueDetailsHtml = `. <em class="pub-item__venue">${venue}</em>.`;
+  } else if (details) {
+    venueDetailsHtml = `. <span class="pub-item__details">${details}</span>.`;
+  }
+
   return `
     <article class="pub-item">
       <div class="pub-item__line">
         <div class="pub-item__code">${escapeHtml(code)}</div>
         <div class="pub-item__content">
           ${authors ? `${authors} ` : ""}
-          ${titleHtml}${venue ? `. <em class="pub-item__venue">${venue}</em>.` : ""}
+          ${titleHtml}${venueDetailsHtml}
         </div>
       </div>
     </article>

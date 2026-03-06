@@ -38,7 +38,7 @@ main{
   background:#fff;
   border-left:1px solid #e5e7eb;
   border-right:1px solid #e5e7eb;
-  padding:28px 60px 42px;
+  padding:24px 48px 34px;
   min-height:calc(100vh - 110px);
   box-sizing:border-box;
 }
@@ -48,8 +48,8 @@ main{
   display:flex;
   justify-content:flex-end;
   align-items:flex-start;
-  gap:16px;
-  margin-bottom:18px;
+  gap:12px;
+  margin-bottom:14px;
 }
 
 .section-head__left{
@@ -66,7 +66,7 @@ main{
 .year-pill{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:8px;
 }
 
 .year-pill__label{
@@ -85,7 +85,7 @@ main{
 }
 
 .pub-year-group{
-  margin-bottom:18px;
+  margin-bottom:12px;
 }
 
 .pub-year-group:last-child{
@@ -97,7 +97,7 @@ main{
 }
 
 .pub-year-label{
-  margin:0 0 10px 0;
+  margin:0 0 6px 0;
   padding:0;
   font-size:16px;
   font-weight:700;
@@ -109,7 +109,7 @@ main{
 .pub-list{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:6px;
 }
 
 .pub-item{
@@ -118,14 +118,14 @@ main{
 
 .pub-item__line{
   display:grid;
-  grid-template-columns:64px minmax(0, 1fr);
-  column-gap:14px;
+  grid-template-columns:58px minmax(0, 1fr);
+  column-gap:10px;
   align-items:start;
 }
 
 .pub-item__code{
   font-size:16px;
-  line-height:1.6;
+  line-height:1.5;
   color:#111;
   white-space:nowrap;
 }
@@ -133,7 +133,7 @@ main{
 .pub-item__content{
   min-width:0;
   font-size:16px;
-  line-height:1.6;
+  line-height:1.5;
   color:#111;
   text-align:justify;
   overflow-wrap:break-word;
@@ -171,6 +171,9 @@ a.pub-item__title:focus-visible{
   font-style:italic;
 }
 
+.pub-item__details{
+  color:#111;
+}
 
 /* ===== Mobile ===== */
 @media (max-width:768px){
@@ -179,7 +182,7 @@ a.pub-item__title:focus-visible{
   }
 
   .publications-box{
-    padding:22px 20px 30px;
+    padding:18px 16px 24px;
     border-left:none;
     border-right:none;
     min-height:calc(100vh - 120px);
@@ -187,7 +190,7 @@ a.pub-item__title:focus-visible{
 
   .section-head{
     justify-content:flex-start;
-    margin-bottom:14px;
+    margin-bottom:12px;
   }
 
   .section-actions{
@@ -196,26 +199,26 @@ a.pub-item__title:focus-visible{
   }
 
   .pub-year-group{
-    margin-bottom:14px;
+    margin-bottom:10px;
   }
 
   .pub-year-label{
-    margin:0 0 8px 0;
+    margin:0 0 6px 0;
     font-size:16px;
   }
 
   .pub-list{
-    gap:8px;
+    gap:6px;
   }
 
   .pub-item__line{
-    grid-template-columns:52px minmax(0, 1fr);
-    column-gap:10px;
+    grid-template-columns:48px minmax(0, 1fr);
+    column-gap:8px;
   }
 
   .pub-item__code,
   .pub-item__content{
-    font-size:16px;
-    line-height:1.55;
+    font-size:15px;
+    line-height:1.5;
   }
 }
