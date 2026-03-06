@@ -444,7 +444,7 @@
     "status": "corr",
     "tag": ["Journal"],
     "url": "https://doi.org/10.1142/S3060932125500037",
-    "Author":"Khoi M. Nguyen, Hung C. Nguyen, H. Huy Nguyen, The-Bang Nguyen, Phuoc-Thinh Nguyen, Vu Tran, Phu Pham, Quang-Thinh Bui *",
+    "Author":"Khoi M. Nguyen, Hung C. Nguyen, H. Huy Nguyen, The-Bang Nguyen, Phuoc-Thinh Nguyen, Vu Tran, Phu Pham, Quang-Thinh Bui*",
     "order": 14
   },
    {
@@ -562,7 +562,7 @@
     "tag": ["Conference"],
     "url": "https://doi.org/10.1007/978-3-031-92545-0_8",
     "indexing": { "scopus": true,  "wos": "", "jcr_q": "" },
-    "Author":" *, Thac Nguyen Tien, The-Bang Nguyen, Son P. Nguyen, Bay Vo",
+    "Author":"Quang-Thinh Bui*, Thac Nguyen Tien, The-Bang Nguyen, Son P. Nguyen, Bay Vo",
     "order": 6
   },
   {
