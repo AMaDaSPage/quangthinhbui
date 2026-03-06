@@ -36,7 +36,7 @@ main{
 /* ===== White paper box ===== */
 .projects-box{
   background:#fff;
-  padding:28px 60px 42px;
+  padding:24px 48px 34px;
   border-left:1px solid #e5e7eb;
   border-right:1px solid #e5e7eb;
   min-height:calc(100vh - 110px);
@@ -48,8 +48,8 @@ main{
   display:flex;
   justify-content:flex-end;
   align-items:center;
-  gap:16px;
-  margin-bottom:14px;
+  gap:12px;
+  margin-bottom:12px;
 }
 
 .section-actions{
@@ -66,14 +66,14 @@ main{
 }
 
 .year-pill__label{
-  font-size: 16px;
-  font-weight: 600;
-  color: #111;
+  font-size:16px;
+  font-weight:600;
+  color:#111;
 }
 
 /* ===== Year group ===== */
 .proj-year-group{
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 
 .proj-year-group:last-child{
@@ -81,13 +81,12 @@ main{
 }
 
 .proj-year-row{
-  text-align: justify;
   display:block;
 }
 
 /* ===== Year label ===== */
 .proj-year-label{
-  margin:0 0 10px 0;
+  margin:0 0 6px 0;
   padding:0;
   font-size:16px;
   font-weight:700;
@@ -99,50 +98,50 @@ main{
 .proj-list{
   display:flex;
   flex-direction:column;
-  gap:10px;
+  gap:6px;
 }
 
-/* hanging indent */
+/* ===== Item ===== */
 .proj-item{
-  display: grid;
-  grid-template-columns: 45px minmax(0, 1fr);
-  align-items: start;
-  margin: 0;
-  font-size: 16px;
-  line-height: 1.7; 
-color: #111;
+  display:grid;
+  grid-template-columns:52px minmax(0, 1fr);
+  column-gap:10px;
+  align-items:start;
+  margin:0;
 }
 
 .proj-code{
   font-size:16px;
-  line-height:1.7;
+  line-height:1.5;
   color:#111;
   white-space:nowrap;
 }
 
 .proj-content{
-  font-size:16px;
-  line-height:1.7;
-  color:#111;
   min-width:0;
+  font-size:16px;
+  line-height:1.5;
+  color:#111;
+  text-align:justify;
   word-break:normal;
   overflow-wrap:break-word;
 }
 
 /* ===== Title ===== */
 .proj-title{
-  color:#80350C;;
+  color:#80350C;
   font-weight:400;
 }
 
 /* ===== Link ===== */
 .proj-title a{
-  color:#111;
+  color:#80350C;
   text-decoration:none;
 }
 
 .proj-title a:hover,
 .proj-title a:focus-visible{
+  color:#80350C;
   text-decoration:underline;
 }
 
@@ -153,7 +152,7 @@ color: #111;
   }
 
   .projects-box{
-    padding:22px 20px 30px;
+    padding:18px 16px 24px;
     border-left:none;
     border-right:none;
     min-height:calc(100vh - 120px);
@@ -161,7 +160,7 @@ color: #111;
 
   .section-head{
     justify-content:flex-start;
-    margin-bottom:12px;
+    margin-bottom:10px;
   }
 
   .section-actions{
@@ -173,29 +172,27 @@ color: #111;
   }
 
   .proj-year-group{
-    margin-bottom:8px;
+    margin-bottom:10px;
   }
 
   .proj-year-label{
-    margin:0 0 10px 0;
+    margin:0 0 6px 0;
     font-size:16px;
     padding:0;
   }
 
   .proj-list{
-    gap:8px;
+    gap:6px;
   }
 
   .proj-item{
-    grid-template-columns:58px minmax(0, 1fr);
+    grid-template-columns:46px minmax(0, 1fr);
     column-gap:8px;
-    font-size:16px;
-    line-height:1.65;
   }
 
   .proj-code,
   .proj-content{
-    font-size:16px;
-    line-height:1.65;
+    font-size:15px;
+    line-height:1.5;
   }
 }
