@@ -1,305 +1,5 @@
 (function () {
   "use strict";
-
-  // const __URL__ = new URL(window.location.href);
-  // const __LOCK__ = __URL__.searchParams.get("unlock") !== "0";
-
-  let __DEVTOOLS_OPEN__ = false;
-  let __OVERLAY_VISIBLE__ = false;
-
-  function domReady(cb) {
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", cb, { once: true });
-    } else cb();
-  }
-
-  function ensureWarningOverlay() {
-    if (!document.body) return;
-    if (document.getElementById("amadasWarningOverlay")) return;
-
-    const style = document.createElement("style");
-    style.id = "amadasWarningOverlayStyle";
-    style.textContent = `
-      #amadasWarningOverlay{
-        position: fixed;
-        inset: 0;
-        z-index: 2147483647;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 24px;
-        background: rgba(0,0,0,0.72);
-        backdrop-filter: blur(6px);
-      }
-      #amadasWarningOverlay .amadas-card{
-        width: min(560px, 100%);
-        border-radius: 16px;
-        padding: 18px 18px 14px;
-        background: rgba(20,20,20,0.95);
-        border: 1px solid rgba(255,255,255,0.12);
-        box-shadow: 0 10px 30px rgba(0,0,0,0.45);
-        color: #fff;
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      }
-      #amadasWarningOverlay .amadas-title{
-        font-size: 18px;
-        font-weight: 700;
-        margin: 0 0 8px;
-      }
-      #amadasWarningOverlay .amadas-desc{
-        font-size: 14px;
-        line-height: 1.45;
-        opacity: 0.92;
-        margin: 0 0 12px;
-      }
-      #amadasWarningOverlay .amadas-reason{
-        font-size: 12px;
-        opacity: 0.75;
-        margin: 0 0 14px;
-        word-break: break-word;
-      }
-      #amadasWarningOverlay .amadas-actions{
-        display: flex;
-        gap: 10px;
-        justify-content: flex-end;
-      }
-      #amadasWarningOverlay .amadas-btn{
-        border: 0;
-        border-radius: 12px;
-        padding: 10px 12px;
-        cursor: pointer;
-        font-size: 14px;
-      }
-      #amadasWarningOverlay .amadas-btn.primary{
-        background: #ffffff;
-        color: #111;
-        font-weight: 700;
-      }
-      #amadasWarningOverlay .amadas-btn.ghost{
-        background: transparent;
-        color: #fff;
-        border: 1px solid rgba(255,255,255,0.18);
-      }
-      #amadasWarningOverlay .amadas-note{
-        margin-top: 8px;
-        font-size: 12px;
-        opacity: .75;
-      }
-    `;
-    document.head.appendChild(style);
-
-    const overlay = document.createElement("div");
-    overlay.id = "amadasWarningOverlay";
-    overlay.setAttribute("role", "dialog");
-    overlay.setAttribute("aria-modal", "true");
-    overlay.innerHTML = `
-      <div class="amadas-card">
-        <div class="amadas-title">Cảnh báo</div>
-        <div class="amadas-desc">
-          Hành động này đang bị hạn chế để bảo vệ nội dung. Vui lòng dừng thao tác bị chặn hoặc đóng DevTools.
-        </div>
-        <div class="amadas-reason" id="amadasWarningReason">Lý do: —</div>
-        <div class="amadas-reason">Không sử dụng chuột phải hay phím tắt để mở DevTools</div>
-        <div class="amadas-actions">
-          <button class="amadas-btn ghost" id="amadasWarnClose">Đóng</button>
-          <button class="amadas-btn primary" id="amadasWarnReload">Tải lại trang</button>
-        </div>
-        <div class="amadas-note" id="amadasWarnNote"></div>
-      </div>
-    `;
-    document.body.appendChild(overlay);
-
-    overlay.addEventListener("click", (e) => {
-      if (e.target === overlay) hideWarningOverlay();
-    });
-
-    const btnClose = document.getElementById("amadasWarnClose");
-    const btnReload = document.getElementById("amadasWarnReload");
-    if (btnClose) btnClose.addEventListener("click", hideWarningOverlay);
-    if (btnReload) btnReload.addEventListener("click", () => window.location.reload());
-  }
-
-  function showWarningOverlay(reason) {
-    try {
-      ensureWarningOverlay();
-      const overlay = document.getElementById("amadasWarningOverlay");
-      const reasonEl = document.getElementById("amadasWarningReason");
-      const noteEl = document.getElementById("amadasWarnNote");
-
-      if (reasonEl) reasonEl.textContent = "Lý do: " + (reason || "—");
-
-      if (noteEl) {
-        noteEl.textContent = __LOCK__ ? "" : "Đang ở chế độ debug (unlock=1).";
-      }
-
-      if (overlay) overlay.style.display = "flex";
-      __OVERLAY_VISIBLE__ = true;
-    } catch (e) {}
-  }
-
-  function hideWarningOverlay() {
-    const overlay = document.getElementById("amadasWarningOverlay");
-    if (overlay) overlay.style.display = "none";
-    __OVERLAY_VISIBLE__ = false;
-  }
-
-  function isEditableTarget(target) {
-    if (!target) return false;
-    const el = target.closest
-      ? target.closest("input, textarea, select, [contenteditable='true']")
-      : null;
-    return !!el;
-  }
-
-  function isDevtoolsHotkey(e) {
-    const key = (e.key || "").toLowerCase();
-    const code = (e.code || "").toLowerCase();
-    const kc = e.keyCode;
-
-    // F12
-    if (key === "f12" || code === "f12" || kc === 123) return true;
-
-    // Ctrl + Shift + I/J/C/K
-    if (e.ctrlKey && e.shiftKey && ["i", "j", "c", "k"].includes(key)) return true;
-    if (e.ctrlKey && e.shiftKey && [73, 74, 67, 75].includes(kc)) return true;
-
-    // Cmd + Opt + I/J/C (macOS)
-    if (e.metaKey && e.altKey && ["i", "j", "c"].includes(key)) return true;
-
-    return false;
-  }
-
-  function installKeyGuards() {
-    document.addEventListener(
-      "keydown",
-      function (e) {
-        if (!__LOCK__) return;
-
-        // nếu đang gõ trong input/textarea thì vẫn chặn devtools
-        // (không return, vì devtools hotkey vẫn cần chặn)
-
-        // Chặn DevTools hotkeys
-        if (isDevtoolsHotkey(e)) {
-          e.preventDefault();
-          e.stopPropagation();
-          if (e.stopImmediatePropagation) e.stopImmediatePropagation();
-          showWarningOverlay("Phím tắt DevTools đã bị chặn.");
-          return false;
-        }
-
-        // Context Menu key
-        if (e.key === "ContextMenu") {
-          e.preventDefault();
-          e.stopPropagation();
-          if (e.stopImmediatePropagation) e.stopImmediatePropagation();
-          showWarningOverlay("Context Menu đã bị chặn.");
-          return false;
-        }
-
-        // Shift + F10
-        if (e.shiftKey && (e.key === "F10" || e.code === "F10")) {
-          e.preventDefault();
-          e.stopPropagation();
-          if (e.stopImmediatePropagation) e.stopImmediatePropagation();
-          showWarningOverlay("Shift+F10 đã bị chặn.");
-          return false;
-        }
-
-        // (Tuỳ chọn) chặn Ctrl+U xem source, Ctrl+S save, Ctrl+P print
-        // Nếu bạn không muốn chặn các phím này thì xoá block dưới
-        if (!isEditableTarget(e.target)) {
-          const key = (e.key || "").toLowerCase();
-          if (e.ctrlKey && !e.shiftKey && !e.altKey && ["u", "s", "p"].includes(key)) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
-            showWarningOverlay("Phím tắt đã bị chặn.");
-            return false;
-          }
-          if (e.metaKey && !e.shiftKey && !e.altKey && ["u", "s", "p"].includes(key)) {
-            e.preventDefault();
-            e.stopPropagation();
-            if (e.stopImmediatePropagation) e.stopImmediatePropagation();
-            showWarningOverlay("Phím tắt đã bị chặn.");
-            return false;
-          }
-        }
-      },
-      { capture: true }
-    );
-  }
-
-  function installRightClickGuard() {
-    document.addEventListener(
-      "contextmenu",
-      function (e) {
-        if (!__LOCK__) return;
-        if (isEditableTarget(e.target)) return;
-        e.preventDefault();
-        e.stopPropagation();
-        showWarningOverlay("Chuột phải đã bị vô hiệu hóa.");
-      },
-      { capture: true }
-    );
-
-    document.addEventListener(
-      "auxclick",
-      function (e) {
-        if (!__LOCK__) return;
-        if (e.button === 2 && !isEditableTarget(e.target)) {
-          e.preventDefault();
-          e.stopPropagation();
-          showWarningOverlay("Chuột phải đã bị vô hiệu hóa.");
-        }
-      },
-      { capture: true }
-    );
-  }
-
-  function installDevtoolsDetect() {
-    if (!__LOCK__) return;
-
-    const TH = 160;
-    const POLL_MS = 300;
-
-    function isDevtoolsOpen() {
-      return (
-        Math.abs(window.outerWidth - window.innerWidth) > TH ||
-        Math.abs(window.outerHeight - window.innerHeight) > TH
-      );
-    }
-
-    function tick() {
-      const open = isDevtoolsOpen();
-      if (open && !__DEVTOOLS_OPEN__) {
-        __DEVTOOLS_OPEN__ = true;
-        showWarningOverlay("DevTools đang mở. Vui lòng đóng để tiếp tục.");
-      } else if (!open && __DEVTOOLS_OPEN__) {
-        __DEVTOOLS_OPEN__ = false;
-        if (__OVERLAY_VISIBLE__) hideWarningOverlay();
-      } else if (open && __DEVTOOLS_OPEN__) {
-        if (!__OVERLAY_VISIBLE__) {
-          showWarningOverlay("DevTools đang mở. Vui lòng đóng để tiếp tục.");
-        }
-      }
-    }
-
-    tick();
-    const timer = setInterval(tick, POLL_MS);
-
-    window.addEventListener("pagehide", () => clearInterval(timer), { once: true });
-    window.addEventListener("focus", tick);
-    window.addEventListener("resize", tick);
-  }
-
-  // Init guards as soon as DOM ready
-  domReady(() => {
-    ensureWarningOverlay();
-    hideWarningOverlay();
-    installKeyGuards();
-    installRightClickGuard();
-    installDevtoolsDetect();
-  });
 })();
 
 /* =========================
@@ -307,19 +7,21 @@
    ========================= */
 async function includePartials() {
   const nodes = document.querySelectorAll("[data-include]");
-  await Promise.all([...nodes].map(async (el) => {
-    const url = el.getAttribute("data-include");
-    if (!url) return;
+  await Promise.all(
+    [...nodes].map(async (el) => {
+      const url = el.getAttribute("data-include");
+      if (!url) return;
 
-    try {
-      const res = await fetch(url, { cache: "no-store" });
-      if (!res.ok) throw new Error(`Failed to load: ${url} (${res.status})`);
-      el.innerHTML = await res.text();
-    } catch (err) {
-      console.error(err);
-      el.innerHTML = `<!-- ${url} not loaded -->`;
-    }
-  }));
+      try {
+        const res = await fetch(url, { cache: "no-store" });
+        if (!res.ok) throw new Error(`Failed to load: ${url} (${res.status})`);
+        el.innerHTML = await res.text();
+      } catch (err) {
+        console.error(err);
+        el.innerHTML = `<!-- ${url} not loaded -->`;
+      }
+    })
+  );
 }
 
 function prefersReducedMotion() {
@@ -335,7 +37,7 @@ function prefersReducedMotion() {
 function getRootPath() {
   const parts = location.pathname.split("/").filter(Boolean);
   const idx = parts.indexOf("partials");
-  const baseParts = idx >= 0 ? parts.slice(0, idx) : parts.slice(0, 0);
+  const baseParts = idx >= 0 ? parts.slice(0, idx) : [];
   return "/" + (baseParts.length ? baseParts.join("/") + "/" : "");
 }
 
@@ -344,7 +46,7 @@ function rootUrl(rel) {
 }
 
 /* =========================
-   HOME DETECT (for lightning only)
+   HOME DETECT
    ========================= */
 function isHomePage() {
   const parts = location.pathname.split("/").filter(Boolean);
@@ -360,13 +62,15 @@ function isHomePage() {
   return false;
 }
 
-
+/* =========================
+   THEME
+   ========================= */
 const THEME_KEY = "theme";
 
 function getInitialTheme() {
   const saved = localStorage.getItem(THEME_KEY);
   if (saved === "light" || saved === "dark") return saved;
-  return "light"; // mặc định light
+  return "light";
 }
 
 function applyTheme(theme) {
@@ -382,13 +86,12 @@ function setupTheme() {
   applyTheme(getInitialTheme());
 
   const themeToggle = document.getElementById("themeToggle");
+  if (!themeToggle) return;
 
-  themeToggle?.addEventListener("click", () => {
+  themeToggle.addEventListener("click", () => {
     const current =
       document.documentElement.getAttribute("data-theme") || "light";
-
     const next = current === "dark" ? "light" : "dark";
-
     setTheme(next);
   });
 }
@@ -418,17 +121,20 @@ function smoothScrollToId(id) {
 }
 
 function canonicalPath(pathname) {
-  if (pathname.length > 1 && pathname.endsWith("/"))
+  if (pathname.length > 1 && pathname.endsWith("/")) {
     pathname = pathname.slice(0, -1);
+  }
 
   const map = {
     "/": "/",
     "/index.html": "/",
 
+    "/partials/bio.html": "/bio",
     "/partials/contact.html": "/contact",
     "/partials/publications.html": "/publications",
     "/partials/project.html": "/projects",
 
+    "/bio": "/bio",
     "/contact": "/contact",
     "/publications": "/publications",
     "/projects": "/projects",
@@ -439,9 +145,55 @@ function canonicalPath(pathname) {
 
 function setActiveTab(sectionId) {
   const links = Array.from(document.querySelectorAll(".nav-link"));
-  links.forEach((l) =>
-    l.classList.toggle("active", l.dataset.section === sectionId)
-  );
+
+  links.forEach((link) => {
+    const isActive = link.dataset.section === sectionId;
+    link.classList.toggle("active", isActive);
+
+    if (isActive) {
+      link.setAttribute("aria-current", "page");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+function detectSectionFromPath() {
+  const curPath = canonicalPath(window.location.pathname);
+
+  const pathToSection = {
+    "/": "home",
+    "/bio": "bio",
+    "/publications": "publications",
+    "/projects": "projects",
+    "/contact": "contact",
+  };
+
+  return pathToSection[curPath] || null;
+}
+
+function applyActiveTabFromLocation() {
+  const sectionFromPath = detectSectionFromPath();
+
+  // Trang riêng: ưu tiên pathname tuyệt đối
+  if (sectionFromPath && sectionFromPath !== "home") {
+    setActiveTab(sectionFromPath);
+    return;
+  }
+
+  // Trang home mới dùng hash
+  const hash = (window.location.hash || "").replace("#", "").trim();
+  if (hash) {
+    const link = document.querySelector(`.nav-link[data-section="${hash}"]`);
+    if (link) {
+      setActiveTab(hash);
+      return;
+    }
+  }
+
+  if (sectionFromPath) {
+    setActiveTab(sectionFromPath);
+  }
 }
 
 function setupScrollSpy() {
@@ -482,26 +234,30 @@ function setupTabClickScroll() {
       const id = a.dataset.section;
       if (!id) return;
 
-      const url = new URL(a.getAttribute("href"), window.location.href);
+      const href = a.getAttribute("href");
+      if (!href) return;
 
+      const url = new URL(href, window.location.href);
       const linkPath = canonicalPath(url.pathname);
       const curPath = canonicalPath(window.location.pathname);
-
-      if (linkPath !== curPath) return;
-
-      const target = document.getElementById(id);
-      if (!target) return;
-
-      e.preventDefault();
 
       if (nav?.classList.contains("open")) {
         nav.classList.remove("open");
         toggle?.setAttribute("aria-expanded", "false");
       }
 
+      // Khác trang: để browser chuyển trang bình thường.
+      // Không ép active ở đây, vì trang mới sẽ tự active đúng theo pathname.
+      if (linkPath !== curPath) {
+        return;
+      }
+
+      const target = document.getElementById(id);
+      if (!target) return;
+
+      e.preventDefault();
       setActiveTab(id);
       smoothScrollToId(id);
-
       history.pushState(null, "", `#${id}`);
     });
   });
@@ -529,6 +285,13 @@ function adjustHeaderActionsForPage() {
 }
 
 function handleInitialHash() {
+  const currentSection = detectSectionFromPath();
+
+  // Chỉ smooth scroll bằng hash ở trang home
+  if (currentSection && currentSection !== "home") {
+    return;
+  }
+
   const id = (location.hash || "").replace("#", "");
   if (!id) return;
 
@@ -579,7 +342,13 @@ function loadScript(src) {
   setupScrollSpy();
 
   adjustHeaderActionsForPage();
+  applyActiveTabFromLocation();
   handleInitialHash();
+
+  window.addEventListener("hashchange", () => {
+    applyActiveTabFromLocation();
+    handleInitialHash();
+  });
 
   /* ===== Projects ===== */
   if (document.getElementById("projList")) {
@@ -624,7 +393,7 @@ function loadScript(src) {
     }
   }
 
-  /* ===== Lightning Cursor: chỉ chạy ở index/home ===== */
+  /* ===== Lightning Cursor ===== */
   // if (isHomePage()) {
   //   try {
   //     await loadScript(rootUrl("js/lightning-cursor.js"));

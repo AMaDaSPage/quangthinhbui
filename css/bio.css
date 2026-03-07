@@ -1,0 +1,164 @@
+.bio-section {
+  padding-bottom: 72px;
+}
+
+.bio-box {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+
+.section-kicker {
+  display: inline-block;
+  margin: 0 0 10px;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: #2563eb;
+  text-transform: none;
+  letter-spacing: 0;
+}
+.section-heads{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.bio-title {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 600;
+  color: #2563eb;
+}
+
+.bio-subtitle {
+  display: none;
+}
+
+.bio-card {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.bio-card p {
+  margin: 0 0 18px;
+  font-size: 16px;
+  line-height: 1.9;
+  font-weight: 400;
+  color: #111827;
+  text-align: justify;
+}
+
+.bio-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* dark theme */
+html[data-theme="dark"] .section-kicker {
+  color: #60a5fa;
+}
+
+html[data-theme="dark"] .bio-title {
+  color: #f3f4f6;
+}
+
+html[data-theme="dark"] .bio-card p {
+  color: #e5e7eb;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .bio-section {
+    padding-top: 36px;
+    padding-bottom: 52px;
+  }
+
+  .bio-box {
+    max-width: 100%;
+  }
+
+  .section-kicker,
+  .bio-title,
+  .bio-card p {
+    font-size: 16px;
+  }
+
+  .bio-card p {
+    line-height: 1.8;
+    text-align: left;
+  }
+}
+
+.positions{
+margin-top:10px;
+}
+
+.position-row{
+display:flex;
+align-items:flex-start;
+gap:30px;
+margin-bottom:10px;
+font-size:16px;
+line-height:1.8;
+}
+
+.position-year{
+width:140px;
+flex-shrink:0;
+font-weight:500;
+color:#111827;
+}
+
+.position-text{
+    flex:1;
+    color:#111827;
+    text-align: justify;
+}
+
+html[data-theme="dark"] .position-year,
+html[data-theme="dark"] .position-text{
+color:#e5e7eb;
+}
+
+.positions{
+margin-top:10px;
+}
+
+.position-row{
+display:flex;
+align-items:flex-start;
+gap:30px;
+margin-bottom:10px;
+font-size:16px;
+line-height:1.8;
+}
+
+.position-year{
+width:140px;
+flex-shrink:0;
+font-weight:500;
+color:#111827;
+}
+
+.position-text{
+flex:1;
+color:#111827;
+}
+
+.hero-media{
+width:100%;
+max-width:1119px;
+margin: 13px auto 13px auto;
+}
+
+.hero-media img{
+width:100%;
+object-fit:cover;
+border-radius:14px;
+display:block;
+}

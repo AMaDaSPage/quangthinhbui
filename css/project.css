@@ -196,3 +196,17 @@ main{
     line-height:1.5;
   }
 }
+
+
+.hero-media{
+width:100%;
+max-width:1060px;
+margin: 13px auto 13px auto;
+}
+
+.hero-media img{
+width:100%;
+object-fit:cover;
+border-radius:14px;
+display:block;
+}

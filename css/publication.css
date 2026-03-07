@@ -222,3 +222,16 @@ a.pub-item__title:focus-visible{
     line-height:1.5;
   }
 }
+
+.hero-media{
+width:100%;
+max-width:1083px;
+margin: 13px auto 13px auto;
+}
+
+.hero-media img{
+width:100%;
+object-fit:cover;
+border-radius:14px;
+display:block;
+}
