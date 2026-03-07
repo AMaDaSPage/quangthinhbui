@@ -28,9 +28,8 @@
 
 .contact-layout{
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
+  grid-template-columns: 1fr 1fr; /* 2 cột đều nhau */
   gap: 12px;
-  align-items: start;
 }
 
 .contact-aside{
@@ -182,9 +181,8 @@
 }
 
 .map-embed iframe{
-  display: block;
   width: 100%;
-  height: 155px; /* thu gọn để ngang cột phải */
+  height: 250px; /* tăng cao hơn để vừa khung */
   border: 0;
 }
 

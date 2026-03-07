@@ -6,15 +6,18 @@
     { "source": "/partials/contact.html", "destination": "/contact", "permanent": true },
     { "source": "/partials/publications.html", "destination": "/publications", "permanent": true },
     { "source": "/partials/project.html", "destination": "/projects", "permanent": true },
+    { "source": "/partials/profile.html", "destination": "/profile", "permanent": true },
 
     { "source": "/contact/", "destination": "/contact", "permanent": true },
     { "source": "/publications/", "destination": "/publications", "permanent": true },
-    { "source": "/projects/", "destination": "/projects", "permanent": true }
+    { "source": "/projects/", "destination": "/projects", "permanent": true },
+    { "source": "/profile/", "destination": "/profile", "permanent": true }
   ],
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
     { "source": "/contact", "destination": "/partials/contact.html" },
     { "source": "/publications", "destination": "/partials/publications.html" },
-    { "source": "/projects", "destination": "/partials/project.html" }
+    { "source": "/projects", "destination": "/partials/project.html" },
+    { "source": "/profile", "destination": "/partials/profile.html" }
   ]
 }

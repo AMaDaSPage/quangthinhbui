@@ -129,7 +129,7 @@ function canonicalPath(pathname) {
     "/": "/",
     "/index.html": "/",
 
-    "/partials/bio.html": "/bio",
+    "/partials/profile.html": "/bio",
     "/partials/contact.html": "/contact",
     "/partials/publications.html": "/publications",
     "/partials/project.html": "/projects",
