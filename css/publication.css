@@ -20,17 +20,38 @@ main{
   flex:1 0 auto;
 }
 
+/* ===== Hero image ===== */
+.hero-media{
+  width:100%;
+  max-width:1157px;
+  margin:13px auto;
+}
+
+.hero-media img{
+  width:100%;
+  object-fit:cover;
+  border-radius:14px;
+  display:block;
+}
+
 /* ===== Section ===== */
 #publications{
   padding:0;
   flex:1 0 auto;
+  display:flex;
+  flex-direction:column;
 }
 
 #publications .container{
   max-width:1200px;
   margin:0 auto;
   padding:0 20px;
-  min-height:100%;
+  width:100%;
+  box-sizing:border-box;
+
+  /* quan trọng */
+  flex:1;
+  display:flex;
 }
 
 /* ===== White paper box ===== */
@@ -39,8 +60,12 @@ main{
   border-left:1px solid #e5e7eb;
   border-right:1px solid #e5e7eb;
   padding:24px 48px 34px;
-  min-height:calc(100vh - 110px);
   box-sizing:border-box;
+
+  /* quan trọng */
+  flex:1;
+  width:100%;
+  min-height:100%;
 }
 
 /* ===== Header / filters ===== */
@@ -185,7 +210,6 @@ a.pub-item__title:focus-visible{
     padding:18px 16px 24px;
     border-left:none;
     border-right:none;
-    min-height:calc(100vh - 120px);
   }
 
   .section-head{
@@ -221,17 +245,9 @@ a.pub-item__title:focus-visible{
     font-size:15px;
     line-height:1.5;
   }
-}
+   .hero-media{
+    padding:0 14px;
+    max-width:1200px;
 
-.hero-media{
-width:100%;
-max-width:1080px;
-margin: 13px auto 13px auto;
-}
-
-.hero-media img{
-width:100%;
-object-fit:cover;
-border-radius:14px;
-display:block;
+  }
 }
