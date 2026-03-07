@@ -242,6 +242,11 @@
   .contact-layout{ grid-template-columns: 1fr; }
   .contact-actions{ grid-template-columns: 1fr; }
   .map-embed iframe{ height: 200px; }
+    .hero-media{
+    padding:0 14px;
+    max-width:1200px;
+
+  }
 }
 
 .hero-media{
@@ -255,4 +260,5 @@ width:100%;
 object-fit:cover;
 border-radius:14px;
 display:block;
+
 }
