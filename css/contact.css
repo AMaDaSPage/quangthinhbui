@@ -243,3 +243,16 @@
   .contact-actions{ grid-template-columns: 1fr; }
   .map-embed iframe{ height: 200px; }
 }
+
+.hero-media{
+width:100%;
+max-width:981px;
+margin: 13px auto 13px auto;
+}
+
+.hero-media img{
+width:100%;
+object-fit:cover;
+border-radius:14px;
+display:block;
+}

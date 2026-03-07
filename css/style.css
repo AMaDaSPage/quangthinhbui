@@ -33,7 +33,10 @@ main{
 }
 
 a{ color: inherit; }
-.muted{ color: var(--muted); }
+.muted{ 
+  font-size: 13px;
+  color: var(--muted); 
+}
 .section{
   /* padding: 64px 0; */
 }

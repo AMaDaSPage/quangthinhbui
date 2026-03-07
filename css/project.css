@@ -16,21 +16,43 @@ body{
   flex-direction:column;
 }
 
+/* nếu có main thì vẫn hỗ trợ */
 main{
   flex:1 0 auto;
+}
+
+/* ===== Hero image ===== */
+.hero-media{
+  width:100%;
+  max-width:1060px;
+  margin:13px auto;
+}
+
+.hero-media img{
+  width:100%;
+  object-fit:cover;
+  border-radius:14px;
+  display:block;
 }
 
 /* ===== Section ===== */
 #projects{
   padding:0;
   flex:1 0 auto;
+  display:flex;
+  flex-direction:column;
 }
 
 #projects .container{
   max-width:1100px;
   margin:0 auto;
   padding:0 20px;
-  min-height:100%;
+  width:100%;
+  box-sizing:border-box;
+
+  /* quan trọng để box trắng kéo dài */
+  flex:1;
+  display:flex;
 }
 
 /* ===== White paper box ===== */
@@ -39,8 +61,12 @@ main{
   padding:24px 48px 34px;
   border-left:1px solid #e5e7eb;
   border-right:1px solid #e5e7eb;
-  min-height:calc(100vh - 110px);
   box-sizing:border-box;
+
+  /* quan trọng */
+  flex:1;
+  width:100%;
+  min-height:100%;
 }
 
 /* ===== Top filter row ===== */
@@ -88,7 +114,7 @@ main{
 .proj-year-label{
   margin:0 0 6px 0;
   padding:0;
-  font-size:16px;
+  font-size:17px;
   font-weight:700;
   line-height:1.2;
   color:#2563eb;
@@ -155,7 +181,6 @@ main{
     padding:18px 16px 24px;
     border-left:none;
     border-right:none;
-    min-height:calc(100vh - 120px);
   }
 
   .section-head{
@@ -177,7 +202,7 @@ main{
 
   .proj-year-label{
     margin:0 0 6px 0;
-    font-size:16px;
+    font-size:17px;
     padding:0;
   }
 
@@ -195,18 +220,4 @@ main{
     font-size:15px;
     line-height:1.5;
   }
-}
-
-
-.hero-media{
-width:100%;
-max-width:1060px;
-margin: 13px auto 13px auto;
-}
-
-.hero-media img{
-width:100%;
-object-fit:cover;
-border-radius:14px;
-display:block;
 }
