@@ -48,7 +48,7 @@ a{ color: inherit; }
   align-items:flex-end;
   justify-content: space-between;
   gap: 16px;
-  margin-bottom: 18px;
+  /* margin-bottom: 18px; */
 }
 .section-title{
   margin: 0;

@@ -48,8 +48,6 @@ main{
   padding:0 20px;
   width:100%;
   box-sizing:border-box;
-
-  /* quan trọng */
   flex:1;
   display:flex;
 }
@@ -61,11 +59,65 @@ main{
   border-right:1px solid #e5e7eb;
   padding:24px 48px 34px;
   box-sizing:border-box;
-
-  /* quan trọng */
   flex:1;
   width:100%;
   min-height:100%;
+}
+
+/* ===== Page heading ===== */
+.pub-page-head{
+  margin-bottom:18px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.pub-page-title{
+  margin:0 0 12px 0;
+  font-size:28px;
+  font-weight:500;
+  line-height:1.2;
+  color:#111;
+}
+
+/* ===== Tabs giống kiểu ảnh ===== */
+.pub-page-tabs{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.pub-tab{
+  background:transparent;
+  border:none;
+  padding:0;
+  margin:0;
+  font-family:"Poppins", sans-serif;
+  font-size:16px;
+  font-weight:400;
+  color:#6b7280;
+  cursor:pointer;
+  transition:all .2s ease;
+  position:relative;
+}
+
+.pub-tab:hover{
+  color:#111;
+}
+
+.pub-tab.is-active{
+  color:#0ea5e9;
+}
+
+.pub-tab.is-active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:100%;
+  height:1.5px;
+  background:#0ea5e9;
+  border-radius:999px;
 }
 
 /* ===== Header / filters ===== */
@@ -74,7 +126,7 @@ main{
   justify-content:flex-end;
   align-items:flex-start;
   gap:12px;
-  margin-bottom:14px;
+  /* margin-bottom:14px; */
 }
 
 .section-head__left{
@@ -165,20 +217,19 @@ main{
   word-break:normal;
 }
 
-/* tên của bạn: chỉ underline */
+/* tên của bạn */
 .pub-item__author-me{
   color:#111;
   text-decoration:underline;
   text-underline-offset:2px;
 }
 
-/* title luôn màu nâu */
+/* title */
 .pub-item__title{
   color:#80350C;
   text-decoration:none;
 }
 
-/* title là link thì vẫn giữ màu nâu */
 a.pub-item__title{
   color:#80350C;
   text-decoration:none;
@@ -190,7 +241,6 @@ a.pub-item__title:focus-visible{
   text-decoration:underline;
 }
 
-/* venue giữ màu đen */
 .pub-item__venue{
   color:#111;
   font-style:italic;
@@ -198,6 +248,12 @@ a.pub-item__title:focus-visible{
 
 .pub-item__details{
   color:#111;
+}
+
+.pub-empty{
+  margin:12px 0 0 0;
+  color:#6b7280;
+  font-size:16px;
 }
 
 /* ===== Mobile ===== */
@@ -210,6 +266,19 @@ a.pub-item__title:focus-visible{
     padding:18px 16px 24px;
     border-left:none;
     border-right:none;
+  }
+
+  .pub-page-title{
+    font-size:24px;
+    margin-bottom:10px;
+  }
+
+  .pub-page-tabs{
+    gap:14px;
+  }
+
+  .pub-tab{
+    font-size:15px;
   }
 
   .section-head{
@@ -245,9 +314,9 @@ a.pub-item__title:focus-visible{
     font-size:15px;
     line-height:1.5;
   }
-   .hero-media{
+
+  .hero-media{
     padding:0 14px;
     max-width:1200px;
-
   }
 }

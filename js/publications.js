@@ -51,9 +51,6 @@ function compareWithinSameYear(a, b) {
   return String(a.title || "").localeCompare(String(b.title || ""));
 }
 
-/* Thứ tự hiển thị thực tế trên trang:
-   - năm mới ở trên
-   - cùng năm thì order nhỏ ở trên */
 function compareForDisplay(a, b) {
   const ya = Number(a?.year) || -1;
   const yb = Number(b?.year) || -1;
@@ -213,15 +210,22 @@ function filterByYear(pubs, yearValue) {
   return pubs.filter((p) => Number(p.year) === y);
 }
 
+function filterByType(pubs, typeValue) {
+  if (!typeValue || typeValue === "all") return pubs;
+  return pubs.filter((p) => getPubType(p) === typeValue);
+}
+
 function sortPubs(pubs) {
   const arr = [...pubs];
   arr.sort(compareForDisplay);
   return arr;
 }
 
-function getUniqueYears(pubs) {
+function getUniqueYears(pubsAll, typeValue = "all") {
   const years = new Set();
   let hasUnknown = false;
+
+  const pubs = filterByType(pubsAll, typeValue);
 
   for (const p of pubs) {
     const y = Number(p.year);
@@ -235,15 +239,20 @@ function getUniqueYears(pubs) {
   };
 }
 
-function populateYearSelect(yearEl, pubsAll) {
+function populateYearSelect(yearEl, pubsAll, activeType = "all") {
   if (!yearEl) return;
 
-  const { years, hasUnknown } = getUniqueYears(pubsAll);
+  const currentValue = yearEl.value || "all";
+  const { years, hasUnknown } = getUniqueYears(pubsAll, activeType);
 
   yearEl.innerHTML =
     `<option value="all">All</option>` +
     years.map((y) => `<option value="${y}">${y}</option>`).join("") +
     (hasUnknown ? `<option value="unknown">Unknown</option>` : "");
+
+  const availableValues = ["all", ...years.map(String), ...(hasUnknown ? ["unknown"] : [])];
+
+  yearEl.value = availableValues.includes(currentValue) ? currentValue : "all";
 }
 
 function groupByYear(pubs) {
@@ -287,8 +296,25 @@ function yearSection(yearKey, items) {
 
 function renderPublications(targetEl, items) {
   if (!targetEl) return;
+
+  if (!items.length) {
+    targetEl.innerHTML = `<p class="pub-empty">No publications found.</p>`;
+    return;
+  }
+
   const groups = groupByYear(items);
   targetEl.innerHTML = groups.map((g) => yearSection(g.yearKey, g.items)).join("");
+}
+
+function activateTab(tabContainer, activeType) {
+  if (!tabContainer) return;
+  const buttons = tabContainer.querySelectorAll("[data-type]");
+
+  buttons.forEach((btn) => {
+    const isActive = btn.dataset.type === activeType;
+    btn.classList.toggle("is-active", isActive);
+    btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+  });
 }
 
 window.initPublications = async function initPublications(options) {
@@ -296,6 +322,7 @@ window.initPublications = async function initPublications(options) {
 
   const target = document.getElementById(opt.targetId || "pubList");
   const yearEl = document.getElementById(opt.yearId || "pubYear");
+  const typeTabsEl = document.getElementById(opt.typeTabsId || "pubTypeTabs");
 
   if (!target) return;
 
@@ -303,20 +330,36 @@ window.initPublications = async function initPublications(options) {
     let pubsAll = await loadPublications(opt.jsonUrl || "/publications.json");
     pubsAll = assignDisplayCodes(pubsAll);
 
-    populateYearSelect(yearEl, pubsAll);
+    let activeType = "all";
+
+    populateYearSelect(yearEl, pubsAll, activeType);
+    activateTab(typeTabsEl, activeType);
 
     const redraw = () => {
       const yearValue = yearEl?.value || "all";
-      const filtered = filterByYear(pubsAll, yearValue);
-      const sorted = sortPubs(filtered);
-      renderPublications(target, sorted);
+
+      let filtered = filterByType(pubsAll, activeType);
+      filtered = filterByYear(filtered, yearValue);
+      filtered = sortPubs(filtered);
+
+      renderPublications(target, filtered);
     };
 
     yearEl?.addEventListener("change", redraw);
 
+    typeTabsEl?.addEventListener("click", (e) => {
+      const btn = e.target.closest("[data-type]");
+      if (!btn) return;
+
+      activeType = btn.dataset.type || "all";
+      activateTab(typeTabsEl, activeType);
+      populateYearSelect(yearEl, pubsAll, activeType);
+      redraw();
+    });
+
     redraw();
   } catch (e) {
     console.error(e);
-    target.innerHTML = `<p>Cannot load publications.json</p>`;
+    target.innerHTML = `<p class="pub-empty">Cannot load publications.json</p>`;
   }
 };

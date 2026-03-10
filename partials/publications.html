@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="../css/contact.css" />
   <link rel="stylesheet" href="../css/publication.css" />
   <link rel="icon" href="../img/favicon.png" type="image/x-icon">
-
   <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
 </head>
 
@@ -21,26 +20,35 @@
   <div data-include="/partials/header.html"></div>
 
   <section class="section" id="publications" aria-label="Publications">
-     <div class="hero-media">
-            <img src="/img/quangthinhbui.png" alt="Team photo" />
-        </div>
+    <div class="hero-media">
+      <img src="/img/quangthinhbui.png" alt="Publications banner" />
+    </div>
+
     <div class="container">
       <div class="publications-box">
-        <div class="section-head">
-          <div class="section-head__left"></div>
 
-          <div class="section-actions">
-            <div class="year-pill">
-              <span class="year-pill__label">Year:</span>
-              <select class="select year-pill__select" id="pubYear" aria-label="Filter by year">
-                <option value="all">All</option>
-              </select>
+        <!-- Tiêu đề giống ảnh -->
+        <div class="pub-page-head">
+          <div class="pub-page-tabs" id="pubTypeTabs" aria-label="Filter by publication type">
+            <button class="pub-tab is-active" type="button" data-type="all">All</button>
+            <button class="pub-tab" type="button" data-type="conference">Conference</button>
+            <button class="pub-tab" type="button" data-type="journal">Journal</button>
+          </div>
+           <div class="section-head">
+            <div class="section-head__left"></div>
+
+            <div class="section-actions">
+              <div class="year-pill">
+                <span class="year-pill__label">Year:</span>
+                <select class="select year-pill__select" id="pubYear" aria-label="Filter by year">
+                  <option value="all">All</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
 
         <div id="pubList" class="pub-groups" aria-live="polite"></div>
-
       </div>
     </div>
   </section>
@@ -56,6 +64,7 @@
       window.initPublications({
         targetId: "pubList",
         yearId: "pubYear",
+        typeTabsId: "pubTypeTabs",
         jsonUrl: "/publications.json"
       });
     });
