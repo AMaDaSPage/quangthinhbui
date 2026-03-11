@@ -1,0 +1,174 @@
+[
+  {
+    "code": "[P02]",
+    "type": "doctoral",
+    "student": "Nguyen Thanh Nha",
+    "title": "Fuzzy Covering-Based Rough Sets with Applications in Machine Learning and Decision Making",
+    "institution": "HUTECH University (Vietnam)",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Prof. Nguyen Hung Son"
+  },
+  {
+    "code": "[P01]",
+    "type": "doctoral",
+    "student": "Nguyen Thanh Dang",
+    "title": "Improving Deep Learning Models Using Explainable AI (XAI) for Mammographic Data Analysis and Processing",
+    "institution": "HUTECH University (Vietnam)",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Dr. Pham The Anh Phu"
+  },
+
+  {
+    "code": "[P11]",
+    "type": "master",
+    "student": "Le Nguyen Nguyen Khang",
+    "title": "Integrating Topological Information into Deep Learning for Time Series Forecasting",
+    "institution": "HUTECH University (Vietnam)",
+    "period": "2026 – Ongoing",
+    "year": 2026,
+    "supervisor": "with Assoc. Prof. Vo Dinh Bay"
+  },
+  {
+    "code": "[P10]",
+    "type": "master",
+    "student": "Huynh Van Hiep",
+    "title": "Semi-Supervised Possibilistic Fuzzy Clustering with Reliability Control Based on Neighborhood Information",
+    "institution": "HUTECH University (Vietnam)",
+    "period": "2026 – Ongoing",
+    "year": 2026,
+    "supervisor": "with Assoc. Prof. Vo Dinh Bay"
+  },
+  {
+    "code": "[P09]",
+    "type": "master",
+    "student": "Nguyen Tran Tuan Anh",
+    "title": "Estimating the Frequency Distribution of Simplet Patterns in Simplicial Complexes",
+    "institution": "HUTECH University (Vietnam)",
+    "period": "2026 – Ongoing",
+    "year": 2026,
+    "supervisor": "with Dr. Pham The Anh Phu"
+  },
+  {
+    "code": "[P08]",
+    "type": "master",
+    "student": "Tran Minh Trong",
+    "title": "Frequency Threshold Optimization for Pattern Mining on Simplicial Complexes",
+    "institution": "HUTECH University (Vietnam)",
+    "period": "2026 – Ongoing",
+    "year": 2026,
+    "supervisor": "with Dr. Pham The Anh Phu"
+  },
+  {
+    "code": "[P07]",
+    "type": "master",
+    "student": "Huynh Nguyen Huy Phuc",
+    "title": "Transformer-Based Models for Cardiac Arrhythmia Detection and Classification from ECG Signals",
+    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Dr. Nguyen Minh Hai"
+  },
+  {
+    "code": "[P06]",
+    "type": "master",
+    "student": "To Duc Vinh Huy",
+    "title": "An Explainable Framework Based on KernelSHAP for Detecting Noisy Image Regions",
+    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Dr. Nguyen Viet Hung"
+  },
+  {
+    "code": "[P05]",
+    "type": "master",
+    "student": "Tran Quyen Vu",
+    "title": "A Deep Learning-Based Model for Diagnosing Lumbar Spine Degeneration from X-ray Images",
+    "institution": "HUTECH University (Vietnam)",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Dr. Pham The Anh Phu"
+  },
+  {
+    "code": "[P04]",
+    "type": "master",
+    "student": "Nguyen Trung Tuyen",
+    "title": "Enhancing Human Activity Recognition Models through Data Feature Stratification",
+    "institution": "HUTECH University (Vietnam)",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Dr. Pham The Anh Phu"
+  },
+  {
+    "code": "[P03]",
+    "type": "master",
+    "student": "Nguyen Tien Thac",
+    "title": "Interpretability of Deep Learning Models Based on the Mapper Algorithm",
+    "institution": "HUTECH University (Vietnam)",
+    "period": "2024 – 2025",
+    "year": 2025,
+    "supervisor": "with Assoc. Prof. Vo Dinh Bay"
+  },
+  {
+    "code": "[P02]",
+    "type": "master",
+    "student": "Ha Van Loi",
+    "title": "Resolution Parameter Optimization for the Mapper Algorithm Based on Data Density Distribution",
+    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "period": "2023 – 2025",
+    "year": 2025,
+    "supervisor": "with Dr. Nguyen Viet Hung"
+  },
+  {
+    "code": "[P01]",
+    "type": "master",
+    "student": "Duong Thi Hoa Binh",
+    "title": "Top-k Frequent Subgraph Mining in a Single Large Graph",
+    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "period": "2023 – 2025",
+    "year": 2025,
+    "supervisor": "with Dr. Nguyen Viet Hung"
+  },
+
+  {
+    "code": "[I04]",
+    "type": "intern",
+    "student": "Malek Zouaoui",
+    "title": "Developing a Web-Based Application to Support the Annual Income Payment of Lecturers from Scientific Research Activities",
+    "institution": "University of Picardie Jules Verne, France",
+    "period": "2026",
+    "year": 2026,
+    "supervisor": ""
+  },
+  {
+    "code": "[I03]",
+    "type": "intern",
+    "student": "Efrem Menival",
+    "title": "A Distributed Approach for the Mapper Algorithm",
+    "institution": "University of Picardie Jules Verne, France",
+    "period": "2025",
+    "year": 2025,
+    "supervisor": ""
+  },
+  {
+    "code": "[I02]",
+    "type": "intern",
+    "student": "Matthis Prignot",
+    "title": "Understanding the Shape of Data Using Topological Data Analysis",
+    "institution": "University of Picardie Jules Verne, France",
+    "period": "2024",
+    "year": 2024,
+    "supervisor": ""
+  },
+  {
+    "code": "[I01]",
+    "type": "intern",
+    "student": "Matthis Prignot",
+    "title": "Topological Data Analysis",
+    "institution": "University of Picardie Jules Verne, France",
+    "period": "2023",
+    "year": 2023,
+    "supervisor": ""
+  }
+]

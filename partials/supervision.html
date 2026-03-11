@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Supervision" />
+  <title>Supervision • thinhbui</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/header.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/footer.css" />
+  <link rel="stylesheet" href="../css/supervision.css" />
+  <link rel="icon" href="../img/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="../img/favicon.png" type="image/x-icon">
+</head>
+
+<body>
+  <div data-include="/partials/header.html"></div>
+
+  <section class="section" id="supervision" aria-label="Supervision">
+    <div class="hero-media">
+      <img src="/img/quangthinhbui.png" alt="Supervision banner" />
+    </div>
+
+    <div class="container">
+      <div class="supervision-box">
+
+        <div class="sup-page-head">
+          <div class="sup-page-tabs" id="supTypeTabs" aria-label="Filter by supervision type">
+          </div>
+
+          <div class="section-head">
+            <div class="section-head__left"></div>
+
+            <div class="section-actions">
+              <div class="year-pill">
+                <span class="year-pill__label">Year:</span>
+                <select class="select year-pill__select" id="supYear" aria-label="Filter by year">
+                  <option value="all">All</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="supList" class="sup-groups" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <div data-include="/partials/footer.html"></div>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/visitors.js"></script>
+  <script src="../js/supervision.js"></script>
+
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      window.initSupervision({
+        targetId: "supList",
+        yearId: "supYear",
+        typeTabsId: "supTypeTabs",
+        jsonUrl: "/supervision.json"
+      });
+    });
+  </script>
+</body>
+</html>

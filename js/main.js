@@ -132,6 +132,7 @@ function canonicalPath(pathname) {
     "/partials/profile.html": "/bio",
     "/partials/contact.html": "/contact",
     "/partials/publications.html": "/publications",
+    "/partials/supervision.html": "/supervision",
     "/partials/project.html": "/projects",
 
     "/bio": "/bio",
@@ -165,6 +166,7 @@ function detectSectionFromPath() {
     "/": "home",
     "/bio": "bio",
     "/publications": "publications",
+    "/supervision": "supervision",
     "/projects": "projects",
     "/contact": "contact",
   };

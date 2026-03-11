@@ -1,0 +1,311 @@
+/* ===== Global ===== */
+html,
+body{
+  height:100%;
+}
+
+body{
+  min-height:100vh;
+  margin:0;
+  background:#efefef;
+  font-family:"Poppins", sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  color:#111;
+  display:flex;
+  flex-direction:column;
+}
+
+main{
+  flex:1 0 auto;
+}
+
+/* ===== Hero image ===== */
+.hero-media{
+  width:100%;
+  max-width:1157px;
+  margin:13px auto;
+}
+
+.hero-media img{
+  width:100%;
+  object-fit:cover;
+  border-radius:14px;
+  display:block;
+}
+
+/* ===== Section ===== */
+#supervision{
+  padding:0;
+  flex:1 0 auto;
+  display:flex;
+  flex-direction:column;
+}
+
+#supervision .container{
+  max-width:1200px;
+  margin:0 auto;
+  padding:0 20px;
+  width:100%;
+  box-sizing:border-box;
+  flex:1;
+  display:flex;
+}
+
+/* ===== White paper box ===== */
+.supervision-box{
+  background:#fff;
+  border-left:1px solid #e5e7eb;
+  border-right:1px solid #e5e7eb;
+  padding:24px 48px 34px;
+  box-sizing:border-box;
+  flex:1;
+  width:100%;
+  min-height:100%;
+}
+
+/* ===== Top area ===== */
+.sup-page-head{
+  margin-bottom:18px;
+  display:flex;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+}
+
+/* ===== Tabs ===== */
+.sup-page-tabs{
+  display:flex;
+  align-items:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.sup-tab{
+  background:transparent;
+  border:none;
+  padding:0;
+  margin:0;
+  font-family:"Poppins", sans-serif;
+  font-size:16px;
+  font-weight:400;
+  color:#6b7280;
+  cursor:pointer;
+  transition:all .2s ease;
+  position:relative;
+}
+
+.sup-tab:hover{
+  color:#111;
+}
+
+.sup-tab.is-active{
+  color:#0ea5e9;
+}
+
+.sup-tab.is-active::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-4px;
+  width:100%;
+  height:1.5px;
+  background:#0ea5e9;
+  border-radius:999px;
+}
+
+/* ===== Header / filters ===== */
+.section-head{
+  display:flex;
+  justify-content:flex-end;
+  align-items:flex-start;
+  gap:12px;
+}
+
+.section-head__left{
+  display:none;
+}
+
+.section-actions{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  width:100%;
+}
+
+.year-pill{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.year-pill__label{
+  font-size:16px;
+  font-weight:600;
+  color:#111;
+}
+
+.year-pill__select{
+  min-width:120px;
+}
+
+/* ===== Group ===== */
+.sup-groups{
+  display:block;
+}
+
+.sup-year-group{
+  margin-bottom:18px;
+}
+
+.sup-year-group:last-child{
+  margin-bottom:0;
+}
+
+.sup-year-label{
+  margin:0 0 10px 0;
+  padding:0;
+  font-size:18px;
+  font-weight:700;
+  line-height:1.2;
+  color:#2563eb;
+}
+
+/* ===== Category inside year ===== */
+.sup-category{
+  margin-bottom:16px;
+}
+
+.sup-category:last-child{
+  margin-bottom:0;
+}
+
+.sup-category__title{
+  margin:0 0 8px 0;
+  font-size:16px;
+  font-weight:600;
+  color:#2563eb;
+}
+
+/* ===== List ===== */
+.sup-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.sup-item{
+  display:block;
+}
+
+.sup-item__line{
+  display:grid;
+  grid-template-columns:58px minmax(0, 1fr);
+  column-gap:10px;
+  align-items:start;
+}
+
+.sup-item__code{
+  font-size:16px;
+  line-height:1.5;
+  color:#111;
+  white-space:nowrap;
+}
+
+.sup-item__content{
+  min-width:0;
+  font-size:16px;
+  line-height:1.55;
+  color:#111;
+  text-align:justify;
+  overflow-wrap:break-word;
+  word-break:normal;
+}
+
+.sup-item__student{
+  /* font-weight:600; */
+  color:#111;
+}
+
+.sup-item__title{
+  color:#80350C;
+  font-style:italic;
+}
+
+.sup-item__school{
+  color:#111;
+}
+
+.sup-item__meta{
+  color:#111;
+}
+
+.sup-item__supervisor{
+  color:#111;
+}
+
+.sup-empty{
+  margin:12px 0 0 0;
+  color:#6b7280;
+  font-size:16px;
+}
+
+/* ===== Mobile ===== */
+@media (max-width:768px){
+  #supervision .container{
+    padding:0 14px;
+  }
+
+  .supervision-box{
+    padding:18px 16px 24px;
+    border-left:none;
+    border-right:none;
+  }
+
+  .sup-page-head{
+    gap:12px;
+  }
+
+  .sup-page-tabs{
+    gap:14px;
+  }
+
+  .sup-tab{
+    font-size:15px;
+  }
+
+  .section-head{
+    justify-content:flex-start;
+    width:100%;
+  }
+
+  .section-actions{
+    width:100%;
+    justify-content:flex-start;
+  }
+
+  .sup-year-label{
+    font-size:17px;
+    margin:0 0 8px 0;
+  }
+
+  .sup-category__title{
+    font-size:15px;
+  }
+
+  .sup-item__line{
+    grid-template-columns:48px minmax(0, 1fr);
+    column-gap:8px;
+  }
+
+  .sup-item__code,
+  .sup-item__content{
+    font-size:15px;
+    line-height:1.5;
+  }
+
+  .hero-media{
+    padding:0 14px;
+    max-width:1200px;
+  }
+}
