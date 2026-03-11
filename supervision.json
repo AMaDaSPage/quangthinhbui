@@ -21,7 +21,7 @@
   },
 
   {
-    "code": "[M12]",
+    "code": "[M14]",
     "type": "master",
     "student": "Le Nguyen Nguyen Khang",
     "title": "Integrating Topological Information into Deep Learning for Time Series Forecasting",
@@ -31,7 +31,7 @@
     "supervisor": "with Assoc. Prof. Vo Dinh Bay"
   },
   {
-    "code": "[M11]",
+    "code": "[M13]",
     "type": "master",
     "student": "Huynh Van Hiep",
     "title": "Semi-Supervised Possibilistic Fuzzy Clustering with Reliability Control Based on Neighborhood Information",
@@ -41,7 +41,7 @@
     "supervisor": "with Assoc. Prof. Vo Dinh Bay"
   },
   {
-    "code": "[M10]",
+    "code": "[M12]",
     "type": "master",
     "student": "Nguyen Tran Tuan Anh",
     "title": "Estimating the Frequency Distribution of Simplet Patterns in Simplicial Complexes",
@@ -51,7 +51,7 @@
     "supervisor": "with Dr. Pham The Anh Phu"
   },
   {
-    "code": "[M09]",
+    "code": "[M11]",
     "type": "master",
     "student": "Tran Minh Trong",
     "title": "Frequency Threshold Optimization for Pattern Mining on Simplicial Complexes",
@@ -62,10 +62,31 @@
   },
   
   {
-    "code": "[M08]",
+    "code": "[M10]",
     "type": "master",
     "student": "Huynh Nguyen Huy Phuc",
     "title": "Transformer-Based Models for Cardiac Arrhythmia Detection and Classification from ECG Signals",
+    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Dr. Nguyen Minh Hai"
+  },
+  {
+    "code": "[M09]",
+    "type": "master",
+    "student": "Tran Ngoc Nghia",
+    "title": "Overlapping Community Detection in Networks via Clustering",
+    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Dr. Nguyen Minh Hai"
+  },
+
+  {
+    "code": "[M08]",
+    "type": "master",
+    "student": "Nguyen Hoang Han",
+    "title": "Utilizing Mobile Devices to Teach Perimeter and Area of Geometric Shapes in Real-Life Contexts for Grade 6 Students at Tam Hiep Secondary School, Dong Thap, Vietnam",
     "institution": "Ho Chi Minh City University of Education (Vietnam)",
     "period": "2025 – Ongoing",
     "year": 2025,
@@ -75,13 +96,14 @@
   {
     "code": "[M07]",
     "type": "master",
-    "student": "Tran Ngoc Nghia",
-    "title": "Overlapping Community Detection in Networks via Clustering",
+    "student": "Nguyen Thi Bao Anh",
+    "title": "Developing Students’ Competence in Using Mathematical Tools and Learning Aids through Practical and Experiential Activities in the Grade 8 Statistics Topic at My Long Secondary School, Dong Thap, Vietnam",
     "institution": "Ho Chi Minh City University of Education (Vietnam)",
     "period": "2025 – Ongoing",
     "year": 2025,
-    "supervisor": "with Dr. Nguyen Minh Hai"
+    "supervisor": "with Assoc. Prof. Tang Minh Dung"
   },
+  
   {
     "code": "[M06]",
     "type": "master",
