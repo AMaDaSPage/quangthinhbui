@@ -82,6 +82,10 @@
     const period = escapeHtml(item.period || "");
     const supervisor = item.supervisor ? ` (${escapeHtml(item.supervisor)})` : "";
 
+    const isIntern = item.type === "intern";
+
+    const commaBeforeYear = isIntern ? "" : ",";
+
     return `
       <div class="sup-item">
         <div class="sup-item__line">
@@ -89,7 +93,7 @@
           <div class="sup-item__content">
             <span class="sup-item__student">${student}</span>,
             <span class="sup-item__title">“${title}”</span>,
-            <span class="sup-item__school">${institution}</span>,
+            <span class="sup-item__school">${institution}</span>${commaBeforeYear}
             <span class="sup-item__meta">${period}</span><span class="sup-item__supervisor">${supervisor}</span>
           </div>
         </div>
