@@ -141,11 +141,13 @@ main{
 
 .year-pill__label{
   font-size:16px;
+  display: none;
   font-weight:600;
   color:#111;
 }
 
 .year-pill__select{
+    display: none;
   min-width:120px;
 }
 
@@ -181,10 +183,11 @@ main{
 }
 
 .sup-category__title{
-  margin:0 0 8px 0;
-  font-size:16px;
-  font-weight:600;
-  color:#2563eb;
+    margin: 0 0 8px 0;
+    font-size: 17px;
+    font-weight: 700;
+    color: #2563eb;
+    line-height: 1.2;
 }
 
 /* ===== List ===== */
@@ -229,7 +232,7 @@ main{
 
 .sup-item__title{
   color:#80350C;
-  font-style:italic;
+  /* font-style:italic; */
 }
 
 .sup-item__school{

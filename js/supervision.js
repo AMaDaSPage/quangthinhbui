@@ -7,9 +7,19 @@
 
   function normalizeType(type) {
     const t = String(type || "").toLowerCase().trim();
-    if (t === "doctoral" || t === "phd" || t === "doctor") return "doctoral";
-    if (t === "master" || t === "masters" || t === "master's") return "master";
-    if (t === "intern" || t === "research intern") return "intern";
+
+    if (t === "doctoral" || t === "phd" || t === "doctor" || t === "ph.d") {
+      return "doctoral";
+    }
+
+    if (t === "master" || t === "masters" || t === "master's" || t === "master’s") {
+      return "master";
+    }
+
+    if (t === "intern" || t === "research intern" || t === "internship") {
+      return "intern";
+    }
+
     return "all";
   }
 
@@ -20,20 +30,36 @@
     return "";
   }
 
+  function escapeHtml(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
   function extractSortYear(item) {
-    if (typeof item.year === "number") return item.year;
+    if (typeof item.year === "number" && Number.isFinite(item.year)) {
+      return item.year;
+    }
+
+    const yearFromString = Number(item.year);
+    if (Number.isFinite(yearFromString) && yearFromString > 0) {
+      return yearFromString;
+    }
 
     const text = String(item.period || "");
-    const m = text.match(/\b(20\d{2})\b/g);
-    if (!m || !m.length) return 0;
+    const matches = text.match(/\b(19|20)\d{2}\b/g);
+    if (!matches || !matches.length) return 0;
 
-    return Math.max(...m.map(Number));
+    return Math.max(...matches.map(Number));
   }
 
   function extractCodeNumber(code) {
     const text = String(code || "");
-    const m = text.match(/\d+/);
-    return m ? parseInt(m[0], 10) : -1;
+    const match = text.match(/\d+/);
+    return match ? parseInt(match[0], 10) : -1;
   }
 
   function compareByCodeDesc(a, b) {
@@ -49,17 +75,22 @@
   }
 
   function formatItem(item) {
-    const supervisorText = item.supervisor ? ` (${item.supervisor})` : "";
+    const code = escapeHtml(item.code || "");
+    const student = escapeHtml(item.student || "");
+    const title = escapeHtml(item.title || "");
+    const institution = escapeHtml(item.institution || "");
+    const period = escapeHtml(item.period || "");
+    const supervisor = item.supervisor ? ` (${escapeHtml(item.supervisor)})` : "";
 
     return `
       <div class="sup-item">
         <div class="sup-item__line">
-          <div class="sup-item__code">${item.code || ""}</div>
+          <div class="sup-item__code">${code}</div>
           <div class="sup-item__content">
-            <span class="sup-item__student">${item.student || ""}</span>, 
-            <span class="sup-item__title">“${item.title || ""}”</span>, 
-            <span class="sup-item__school">${item.institution || ""}</span>, 
-            <span class="sup-item__meta">${item.period || ""}</span><span class="sup-item__supervisor">${supervisorText}</span>
+            <span class="sup-item__student">${student}</span>,
+            <span class="sup-item__title">“${title}”</span>,
+            <span class="sup-item__school">${institution}</span>,
+            <span class="sup-item__meta">${period}</span><span class="sup-item__supervisor">${supervisor}</span>
           </div>
         </div>
       </div>
@@ -73,9 +104,10 @@
     }
 
     const typeOrder = ["doctoral", "master", "intern"];
-
     const visibleTypes =
-      currentType === "all" ? typeOrder : typeOrder.filter((t) => t === currentType);
+      currentType === "all"
+        ? typeOrder
+        : typeOrder.filter((type) => type === currentType);
 
     const html = visibleTypes
       .map((type) => {
@@ -99,13 +131,26 @@
     mountEl.innerHTML = html || `<p class="sup-empty">No supervision records found.</p>`;
   }
 
- 
   async function loadJson(url) {
     const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) {
       throw new Error(`Failed to load ${url} (${res.status})`);
     }
     return res.json();
+  }
+
+  function bindTabs(tabsEl, onChange) {
+    const tabs = Array.from(tabsEl.querySelectorAll(".sup-tab"));
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        tabs.forEach((t) => t.classList.remove("is-active"));
+        tab.classList.add("is-active");
+
+        const type = tab.dataset.type || "all";
+        onChange(type);
+      });
+    });
   }
 
   window.initSupervision = async function initSupervision(opts = {}) {
@@ -150,12 +195,18 @@
       }
 
       if (currentYear !== "all") {
-        filtered = filtered.filter((item) => String(extractSortYear(item)) === String(currentYear));
+        filtered = filtered.filter(
+          (item) => String(extractSortYear(item)) === String(currentYear)
+        );
       }
 
       renderListByCategory(filtered, targetEl, currentType);
-    
     }
+
+    bindTabs(tabsEl, (type) => {
+      currentType = type;
+      applyFilters();
+    });
 
     yearEl.addEventListener("change", () => {
       currentYear = yearEl.value;
