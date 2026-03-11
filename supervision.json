@@ -60,9 +60,29 @@
     "year": 2026,
     "supervisor": "with Dr. Pham The Anh Phu"
   },
-  
   {
     "code": "[M10]",
+    "type": "master",
+    "student": "Nguyen Hoang Han",
+    "title": "Utilizing Mobile Devices to Teach Perimeter and Area of Geometric Shapes in Real-Life Contexts for Grade 6 Students at Tam Hiep Secondary School, Dong Thap, Vietnam",
+    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Assoc. Prof. Tang Minh Dung"
+  },
+  
+  {
+    "code": "[M09]",
+    "type": "master",
+    "student": "Nguyen Thi Bao Anh",
+    "title": "Developing Students’ Competence in Using Mathematical Tools and Learning Aids through Practical and Experiential Activities in the Grade 8 Statistics Topic at My Long Secondary School, Dong Thap, Vietnam",
+    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Assoc. Prof. Tang Minh Dung"
+  },
+  {
+    "code": "[M08]",
     "type": "master",
     "student": "Huynh Nguyen Huy Phuc",
     "title": "Transformer-Based Models for Cardiac Arrhythmia Detection and Classification from ECG Signals",
@@ -72,7 +92,7 @@
     "supervisor": "with Dr. Nguyen Minh Hai"
   },
   {
-    "code": "[M09]",
+    "code": "[M07]",
     "type": "master",
     "student": "Tran Ngoc Nghia",
     "title": "Overlapping Community Detection in Networks via Clustering",
@@ -81,29 +101,6 @@
     "year": 2025,
     "supervisor": "with Dr. Nguyen Minh Hai"
   },
-
-  {
-    "code": "[M08]",
-    "type": "master",
-    "student": "Nguyen Hoang Han",
-    "title": "Utilizing Mobile Devices to Teach Perimeter and Area of Geometric Shapes in Real-Life Contexts for Grade 6 Students at Tam Hiep Secondary School, Dong Thap, Vietnam",
-    "institution": "Ho Chi Minh City University of Education (Vietnam)",
-    "period": "2025 – Ongoing",
-    "year": 2025,
-    "supervisor": "with Dr. Nguyen Minh Hai"
-  },
-  
-  {
-    "code": "[M07]",
-    "type": "master",
-    "student": "Nguyen Thi Bao Anh",
-    "title": "Developing Students’ Competence in Using Mathematical Tools and Learning Aids through Practical and Experiential Activities in the Grade 8 Statistics Topic at My Long Secondary School, Dong Thap, Vietnam",
-    "institution": "Ho Chi Minh City University of Education (Vietnam)",
-    "period": "2025 – Ongoing",
-    "year": 2025,
-    "supervisor": "with Assoc. Prof. Tang Minh Dung"
-  },
-  
   {
     "code": "[M06]",
     "type": "master",
