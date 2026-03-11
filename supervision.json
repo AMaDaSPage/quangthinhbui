@@ -60,6 +60,7 @@
     "year": 2026,
     "supervisor": "with Dr. Pham The Anh Phu"
   },
+  
   {
     "code": "[M08]",
     "type": "master",
@@ -70,18 +71,9 @@
     "year": 2025,
     "supervisor": "with Dr. Nguyen Minh Hai"
   },
+  
   {
     "code": "[M07]",
-    "type": "master",
-    "student": "To Duc Vinh Huy",
-    "title": "An Explainable Framework Based on KernelSHAP for Detecting Noisy Image Regions",
-    "institution": "Ho Chi Minh City University of Education (Vietnam)",
-    "period": "2025 – Ongoing",
-    "year": 2025,
-    "supervisor": "with Dr. Nguyen Viet Hung"
-  },
-  {
-    "code": "[M06]",
     "type": "master",
     "student": "Tran Ngoc Nghia",
     "title": "Overlapping Community Detection in Networks via Clustering",
@@ -89,6 +81,16 @@
     "period": "2025 – Ongoing",
     "year": 2025,
     "supervisor": "with Dr. Nguyen Minh Hai"
+  },
+  {
+    "code": "[M06]",
+    "type": "master",
+    "student": "To Duc Vinh Huy",
+    "title": "An Explainable Framework Based on KernelSHAP for Detecting Noisy Image Regions",
+    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Dr. Nguyen Viet Hung"
   },
   {
     "code": "[M05]",
