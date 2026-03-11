@@ -183,11 +183,11 @@ main{
 }
 
 .sup-category__title{
-    margin: 0 0 8px 0;
-    font-size: 17px;
-    font-weight: 700;
-    color: #2563eb;
-    line-height: 1.2;
+  margin: 0px 0px 10px;
+  font-size: 17px;
+  line-height: 1.7;
+  font-weight: 600;
+  color: #2563eb;
 }
 
 /* ===== List ===== */
@@ -232,6 +232,7 @@ main{
 
 .sup-item__title{
   color:#80350C;
+  line-height: 1.8;
   /* font-style:italic; */
 }
 
