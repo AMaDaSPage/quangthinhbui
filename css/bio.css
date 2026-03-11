@@ -117,11 +117,11 @@ main {
 }
 
 .bio-title {
-  margin: 0;
+  margin: 0px 0px 8px;
   font-size: 17px;
-  line-height: 1.7;
-  font-weight: 600;
-  color: #2563eb;
+  line-height: 1.2;
+  font-weight: 700;
+  color: rgb(37, 99, 235);
 }
 
 /* ===== Rows ===== */
