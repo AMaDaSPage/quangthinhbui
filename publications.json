@@ -1,5 +1,19 @@
 [
   {
+    "title": "A Novel Neutrosophic Fuzzy Decision-Making Approach Based on Distance from the Average Solution under Uncertainty",
+    "authors": "",
+    "venue": "Engineering Applications of Artificial Intelligence.",
+    "year": 2026,
+    "type": "journal",
+    "details": "",
+    "status": "1st/corr",
+    "tag": ["Journal"],
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
+    "url": "",
+    "Author":"Thanh Nha Nguyen, Quang-Thinh Bui, Bay Vo",
+    "order": 0
+  },
+  {
     "title": "A Novel Farm-level Dataset and Real-Time Detection Framework for Shrimp Black Spot Disease",
     "authors": "",
     "venue": "The 2026 IEEE-International Conference on Connected Innovation and Technology (IEEE-ICCITX.0 2026), France-Vietnam-Morocco.",
@@ -11,7 +25,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
     "url": "",
     "Author":"Minh-Huy Bui, Minh-Tien Nguyen, Tuong Le, Quang-Thinh Bui*",
-    "order": 0
+    "order": 1
   },
   {
     "title": "A Framework of Near-intuitionistic Fuzzy Soft Sets With Applications to Uncertainty-based Diagnosis",
@@ -25,7 +39,7 @@
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
     "url": "",
     "Author":"Thanh Nha Nguyen, Quang-Thinh Bui*",
-    "order": 1
+    "order": 2
   },
   {
     "title": "Graph-guided Hierarchical Multi-class Decomposition for Intuitionistic Fuzzy Weighted Least Squares Twin Support Vector Machine",
@@ -39,7 +53,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
     "url": "",
     "Author":"Quang-Thinh Bui*,  Lan T.T. Tran",
-    "order": 2
+    "order": 3
   },
   {
     "title": "Topology-Driven Rough Set Classification Using Ball Mapper Coverings for Healthcare Intelligence",
@@ -53,7 +67,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B"  },
     "url": "",
     "Author":"Quang-Thinh Bui*, Quang-Loc Pham, Minh-Khoi Pham, Minh-Huy Bui, Phu Pham, Bay Vo",
-    "order": 3
+    "order": 4
   },
 
   {
@@ -68,7 +82,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B" },
     "url": "",
     "Author":"Trang T.D. Nguyen, Loan T.T. Nguyen, Quang-Thinh Bui, Phu Pham, Bay Vo",
-    "order": 4
+    "order": 5
   },
 
   {
@@ -83,7 +97,7 @@
     "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
     "url": "",
     "Author":"Thanh-Nguyen Nguyen, Hiep Huynh, Duong Van Hieu, Thai-Son Nguyen, Song-Toan Tran, Quang-Thinh Bui*",
-    "order": 5
+    "order": 6
   },
 
   {
@@ -98,7 +112,7 @@
     "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
     "url": "",
     "Author":"Tam T.T. Nguyen, Minh-Huy Bui, My-Phuong Ngo, Quang-Thinh Bui*",
-    "order": 6
+    "order": 7
   },
 
   {
@@ -113,7 +127,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
     "url": "",
     "Author":"Khang L.N. Nguyen, Bay Vo, Quang-Thinh Bui*",
-    "order": 7
+    "order": 8
   },
 
 
