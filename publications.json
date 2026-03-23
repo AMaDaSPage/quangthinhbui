@@ -2,14 +2,15 @@
   {
     "title": "A Novel Neutrosophic Fuzzy Decision-Making Approach Based on Distance from the Average Solution under Uncertainty",
     "authors": "",
-    "venue": "Engineering Applications of Artificial Intelligence.",
+    "venue": "Engineering Applications of Artificial Intelligence",
     "year": 2026,
     "type": "journal",
-    "details": "",
+    "details": "Vol. 174, 114557, 2026",
+
     "status": "1st/corr",
     "tag": ["Journal"],
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
-    "url": "",
+    "url": "https://doi.org/10.1016/j.engappai.2026.114557",
     "Author":"Thanh Nha Nguyen, Quang-Thinh Bui, Bay Vo",
     "order": 0
   },
