@@ -345,7 +345,7 @@
     "status": "corr",
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
     "tag": ["Conference"],
-    "url": "",
+    "url": "https://doi.org/10.1109/CogMI67134.2025.00029",
     "Author": "Minh Nguyen, Kuheli Sai, Deepti Gupta, Quang-Thinh Bui*",
     "order": 4
   },
