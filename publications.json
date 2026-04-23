@@ -1,5 +1,20 @@
 [
   {
+    "title": "Optimizing Loss Function Choice With Autoloss in Classification Using Granular Ball Twin Support Vector Machine",
+    "authors": "",
+    "venue": "Journal of Science of HCMUE (Natural Sciences and Technology)",
+    "year": 2026,
+    "type": "journal",
+    "details": "[Vietnamese]",
+    "status": "1st/corr",
+    "tag": ["Journal"],
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "Q4"  },
+    "url": "",
+    "Author":"Quang-Thinh Bui*",
+    "order": 0
+  },
+
+  {
     "title": "Performance Evaluation of Extended Long Short-Term Memory Models for Financial Forecasting",
     "authors": "",
     "venue": "International Journal of Intelligent Information and Database Systems",
@@ -11,7 +26,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "Q4"  },
     "url": "",
     "Author":"The-Bang Nguyen, Hung C. Nguyen, Hiep Huynh, Quang-Thinh Bui*",
-    "order": 0
+    "order": 1
   },
   {
     "title": "A Novel Neutrosophic Fuzzy Decision-Making Approach Based on Distance from the Average Solution under Uncertainty",
@@ -26,7 +41,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
     "url": "https://doi.org/10.1016/j.engappai.2026.114557",
     "Author":"Thanh Nha Nguyen, Quang-Thinh Bui, Bay Vo",
-    "order": 1
+    "order": 2
   },
   {
     "title": "A Novel Farm-level Dataset and Real-Time Detection Framework for Shrimp Black Spot Disease",
@@ -40,7 +55,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
     "url": "",
     "Author":"Minh-Huy Bui, Minh-Tien Nguyen, Tuong Le, Quang-Thinh Bui*",
-    "order": 2
+    "order": 3
   },
   {
     "title": "A Framework of Near-intuitionistic Fuzzy Soft Sets With Applications to Uncertainty-based Diagnosis",
@@ -54,7 +69,7 @@
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
     "url": "",
     "Author":"Thanh Nha Nguyen, Quang-Thinh Bui*",
-    "order": 3
+    "order": 4
   },
   {
     "title": "Graph-guided Hierarchical Multi-class Decomposition for Intuitionistic Fuzzy Weighted Least Squares Twin Support Vector Machine",
@@ -68,7 +83,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
     "url": "",
     "Author":"Quang-Thinh Bui*,  Lan T.T. Tran",
-    "order": 4
+    "order": 5
   },
   {
     "title": "Topology-Driven Rough Set Classification Using Ball Mapper Coverings for Healthcare Intelligence",
@@ -82,7 +97,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B"  },
     "url": "",
     "Author":"Quang-Thinh Bui*, Quang-Loc Pham, Minh-Khoi Pham, Minh-Huy Bui, Phu Pham, Bay Vo",
-    "order": 5
+    "order": 6
   },
 
   {
@@ -97,7 +112,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B" },
     "url": "",
     "Author":"Trang T.D. Nguyen, Loan T.T. Nguyen, Quang-Thinh Bui, Phu Pham, Bay Vo",
-    "order": 6
+    "order": 7
   },
 
   {
@@ -112,7 +127,7 @@
     "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
     "url": "",
     "Author":"Thanh-Nguyen Nguyen, Hiep Huynh, Duong Van Hieu, Thai-Son Nguyen, Song-Toan Tran, Quang-Thinh Bui*",
-    "order": 7
+    "order": 8
   },
 
   {
@@ -127,7 +142,7 @@
     "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
     "url": "https://www.researchgate.net/publication/403521108_Hotspot_Detection_on_Distribution-Mapper_Graphs",
     "Author":"Tam T.T. Nguyen, Minh-Huy Bui, My-Phuong Ngo, Quang-Thinh Bui*",
-    "order": 8
+    "order": 9
   },
 
   {
@@ -142,7 +157,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
     "url": "https://doi.org/10.1007/978-3-032-21628-1_15",
     "Author":"Khang L.N. Nguyen, Bay Vo, Quang-Thinh Bui*",
-    "order": 9
+    "order": 10
   },
 
 
@@ -269,7 +284,7 @@
     "venue": "Journal of Science of HCMUE (Natural Sciences and Technology)",
     "year": 2017,
     "type": "journal",
-    "details": "Vol. 14, No. 06, 172—180, 2017. (Vietnamese)",
+    "details": "Vol. 14, No. 06, 172—180, 2017. [Vietnamese]",
     "status": "1st/corr",
     "tag": ["Journal"],
     "url": "https://journal.hcmue.edu.vn/index.php/hcmuejos/article/view/223",
@@ -434,7 +449,7 @@
   {
     "title": "Improving Mapper-based Coverings Through Derivative Transformations in Rough Set",
     "authors": "",
-    "venue": "The 10th Information and Communication Technology Conference (ICT 2025), Vietnam. (Vietnamese)",
+    "venue": "The 10th Information and Communication Technology Conference (ICT 2025), Vietnam. [Vietnamese]",
     "year": 2025,
     "type": "conference",
     "status": "1st/corr",

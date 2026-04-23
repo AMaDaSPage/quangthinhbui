@@ -155,11 +155,11 @@ function endsWithPunctuation(text) {
 function ensureEnding(text) {
   const s = String(text || "").trim();
   if (!s) return "";
+  return s;
+}
 
-  if (endsWithVietnameseNote(s)) return s;
-  if (endsWithPunctuation(s)) return s;
-
-  return `${s}.`;
+function isBracketNote(text) {
+  return /^\s*\[.*\]\s*$/.test(String(text || "").trim());
 }
 
 function publicationItem(pub) {
@@ -179,8 +179,9 @@ function publicationItem(pub) {
   let venueDetailsHtml = "";
 
   if (venue && details) {
+    const separator = isBracketNote(details) ? " " : ", ";
     venueDetailsHtml =
-      `. <em class="pub-item__venue">${venue}</em>, <span class="pub-item__details">${ensureEnding(details)}</span>`;
+      `. <em class="pub-item__venue">${venue}</em>${separator}<span class="pub-item__details">${ensureEnding(details)}</span>`;
   } else if (venue) {
     venueDetailsHtml =
       `. <em class="pub-item__venue">${ensureEnding(venue)}</em>`;
