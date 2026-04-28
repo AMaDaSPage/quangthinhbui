@@ -4,7 +4,7 @@
     "type": "doctoral",
     "student": "Nguyen Thanh Nha",
     "title": "Fuzzy Covering-Based Rough Sets with Applications in Machine Learning and Decision Making",
-    "institution": "HUTECH University (Vietnam)",
+    "institution": "HUTECH University",
     "period": "2025 – Ongoing",
     "year": 2025,
     "supervisor": "with Prof. Nguyen Hung Son"
@@ -14,7 +14,7 @@
     "type": "doctoral",
     "student": "Nguyen Thanh Dang",
     "title": "Improving Deep Learning Models Using Explainable AI (XAI) for Mammographic Data Analysis and Processing",
-    "institution": "HUTECH University (Vietnam)",
+    "institution": "HUTECH University",
     "period": "2025 – Ongoing",
     "year": 2025,
     "supervisor": "with Dr. Pham The Anh Phu"
@@ -25,47 +25,47 @@
     "type": "master",
     "student": "Le Nguyen Nguyen Khang",
     "title": "Integrating Topological Information into Deep Learning for Time Series Forecasting",
-    "institution": "HUTECH University (Vietnam)",
-    "period": "2026 – Ongoing",
+    "institution": "HUTECH University",
+    "period": "2026",
     "year": 2026,
-    "supervisor": "with Assoc. Prof. Vo Dinh Bay"
+    "supervisor": "with Assoc. Prof. Vo Dinh Bay*"
   },
   {
     "code": "[M14]",
     "type": "master",
     "student": "Huynh Van Hiep",
     "title": "Semi-Supervised Possibilistic Fuzzy Clustering with Reliability Control Based on Neighborhood Information",
-    "institution": "HUTECH University (Vietnam)",
-    "period": "2026 – Ongoing",
+    "institution": "HUTECH University",
+    "period": "2026",
     "year": 2026,
-    "supervisor": "with Assoc. Prof. Vo Dinh Bay"
+    "supervisor": "with Assoc. Prof. Vo Dinh Ba*"
   },
   {
     "code": "[M13]",
     "type": "master",
     "student": "Nguyen Tran Tuan Anh",
     "title": "Estimating the Frequency Distribution of Simplet Patterns in Simplicial Complexes",
-    "institution": "HUTECH University (Vietnam)",
-    "period": "2026 – Ongoing",
+    "institution": "HUTECH University",
+    "period": "2026",
     "year": 2026,
-    "supervisor": "with Dr. Pham The Anh Phu"
+    "supervisor": "with Dr. Pham The Anh Phu*"
   },
   {
     "code": "[M12]",
     "type": "master",
     "student": "Tran Minh Trong",
     "title": "Frequency Threshold Optimization for Pattern Mining on Simplicial Complexes",
-    "institution": "HUTECH University (Vietnam)",
-    "period": "2026 – Ongoing",
+    "institution": "HUTECH University",
+    "period": "2026",
     "year": 2026,
-    "supervisor": "with Dr. Pham The Anh Phu"
+    "supervisor": "with Dr. Pham The Anh Phu*"
   },
   {
     "code": "[M11]",
     "type": "master",
     "student": "Nguyen Hoang Han",
     "title": "Utilizing Mobile Devices to Teach Perimeter and Area of Geometric Shapes in Real-Life Contexts for Grade 6 Students at Tam Hiep Secondary School, Dong Thap, Vietnam",
-    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "institution": "Ho Chi Minh City University of Education",
     "period": "2025 – Ongoing",
     "year": 2025,
     "supervisor": "with Assoc. Prof. Tang Minh Dung"
@@ -76,7 +76,7 @@
     "type": "master",
     "student": "Nguyen Thi Bao Anh",
     "title": "Developing Students’ Competence in Using Mathematical Tools and Learning Aids through Practical and Experiential Activities in the Grade 8 Statistics Topic at My Long Secondary School, Dong Thap, Vietnam",
-    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "institution": "Ho Chi Minh City University of Education",
     "period": "2025 – Ongoing",
     "year": 2025,
     "supervisor": "with Assoc. Prof. Tang Minh Dung"
@@ -86,7 +86,7 @@
     "type": "master",
     "student": "Huynh Nguyen Huy Phuc",
     "title": "Transformer-Based Models for Cardiac Arrhythmia Detection and Classification from ECG Signals",
-    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "institution": "Ho Chi Minh City University of Education",
     "period": "2025 – Ongoing",
     "year": 2025,
     "supervisor": "with Dr. Nguyen Minh Hai"
@@ -96,17 +96,17 @@
     "type": "master",
     "student": "Tran Ngoc Nghia",
     "title": "Overlapping Community Detection in Networks via Clustering",
-    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "institution": "Ho Chi Minh City University of Education",
     "period": "2025 – Ongoing",
     "year": 2025,
-    "supervisor": "with Dr. Nguyen Minh Hai"
+    "supervisor": "with Dr. Nguyen Minh Hai*"
   },
   {
     "code": "[M07]",
     "type": "master",
     "student": "To Duc Vinh Huy",
     "title": "An Explainable Framework Based on KernelSHAP for Detecting Noisy Image Regions",
-    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "institution": "Ho Chi Minh City University of Education",
     "period": "2025 – Ongoing",
     "year": 2025,
     "supervisor": "with Dr. Nguyen Viet Hung"
@@ -116,8 +116,8 @@
     "type": "master",
     "student": "Tran Quyen Vu",
     "title": "A Deep Learning-Based Model for Diagnosing Lumbar Spine Degeneration from X-ray Images",
-    "institution": "HUTECH University (Vietnam)",
-    "period": "2025 – Ongoing",
+    "institution": "HUTECH University",
+    "period": "2026",
     "year": 2025,
     "supervisor": "with Dr. Pham The Anh Phu"
   },
@@ -126,8 +126,8 @@
     "type": "master",
     "student": "Nguyen Trung Tuyen",
     "title": "Enhancing Human Activity Recognition Models through Data Feature Stratification",
-    "institution": "HUTECH University (Vietnam)",
-    "period": "2025 – Ongoing",
+    "institution": "HUTECH University",
+    "period": "2026",
     "year": 2025,
     "supervisor": "with Dr. Pham The Anh Phu"
   },
@@ -136,7 +136,7 @@
     "type": "master",
     "student": "Nguyen Duc Thinh",
     "title": "The Integration of Mapper and Ball Mapper Algorithms in Topological Data Analysis",
-    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "institution": "Ho Chi Minh City University of Education",
     "period": "2024 – 2026",
     "year": 2025,
     "supervisor": "with Dr. Nguyen Le Chi Quyet"
@@ -146,30 +146,30 @@
     "type": "master",
     "student": "Nguyen Tien Thac",
     "title": "Interpretability of Deep Learning Models Based on the Mapper Algorithm",
-    "institution": "HUTECH University (Vietnam)",
+    "institution": "HUTECH University",
     "period": "2024 – 2025",
     "year": 2025,
-    "supervisor": "with Assoc. Prof. Vo Dinh Bay"
+    "supervisor": "with Assoc. Prof. Vo Dinh Bay*"
   },
   {
     "code": "[M02]",
     "type": "master",
     "student": "Ha Van Loi",
     "title": "Resolution Parameter Optimization for the Mapper Algorithm Based on Data Density Distribution",
-    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "institution": "Ho Chi Minh City University of Education",
     "period": "2023 – 2025",
     "year": 2025,
-    "supervisor": "with Dr. Nguyen Viet Hung"
+    "supervisor": "with Dr. Nguyen Viet Hung*"
   },
   {
     "code": "[M01]",
     "type": "master",
     "student": "Duong Thi Hoa Binh",
     "title": "Top-k Frequent Subgraph Mining in a Single Large Graph",
-    "institution": "Ho Chi Minh City University of Education (Vietnam)",
+    "institution": "Ho Chi Minh City University of Education",
     "period": "2023 – 2025",
     "year": 2025,
-    "supervisor": "with Dr. Nguyen Viet Hung"
+    "supervisor": "with Dr. Nguyen Viet Hung*"
   },
 
   {

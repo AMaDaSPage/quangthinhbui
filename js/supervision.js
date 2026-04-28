@@ -80,7 +80,13 @@
     const title = escapeHtml(item.title || "");
     const institution = escapeHtml(item.institution || "");
     const period = escapeHtml(item.period || "");
-    const supervisor = item.supervisor ? ` (${escapeHtml(item.supervisor)})` : "";
+    const rawSupervisor = String(item.supervisor || "").trim();
+    const hasAsterisk = /\s*\*$/.test(rawSupervisor);
+    const cleanSupervisor = rawSupervisor.replace(/\s*\*$/, "");
+
+    const supervisor = cleanSupervisor
+      ? ` (${escapeHtml(cleanSupervisor)})${hasAsterisk ? "*" : ""}`
+      : "";
 
     return `
       <div class="sup-item">
