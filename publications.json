@@ -1,4 +1,19 @@
 [
+
+  {
+    "title": "Multi-view Extensions of Neutrosophic C-means Variants for Clustering Analysis",
+    "authors": "",
+    "venue": "The 8th International Conference on Intelligent and Fuzzy Systems (INFUS 2026), Turkey",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "1st/corr",
+    "tag": ["Conference"],
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
+    "url": "",
+    "Author":"Duc-Bao Dang, Hung C. Nguyen, Huong Bui, Quang-Thinh Bui*",
+    "order": -1
+  },
   {
     "title": "Optimizing Loss Function Choice With Autoloss in Classification Using Granular Ball Twin Support Vector Machine",
     "authors": "",
