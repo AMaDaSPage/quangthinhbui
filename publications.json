@@ -1,6 +1,5 @@
 [
-
-   {
+  {
     "title": "A Comparative Study of Topological Representations for Clustering Noisy Time Series",
     "authors": "",
     "venue": "The 15th Conference on Information Technology and its Applications (CITA 2026), Vietnam",
@@ -12,7 +11,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
     "url": "",
     "Author":"Minh-Khoi Pham, Quang-Loc Pham, Quyet Le Chi Nguyen, Quang-Thinh Bui*",
-    "order": -2
+    "order": 0
   },
   {
     "title": "Multi-view Extensions of Neutrosophic C-means Variants for Clustering Analysis",
@@ -26,7 +25,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
     "url": "",
     "Author":"Duc-Bao Dang, Hung C. Nguyen, Huong Bui, Quang-Thinh Bui*",
-    "order": -1
+    "order": 1
   },
   {
     "title": "Optimizing Loss Function Choice With Autoloss in Classification Using Granular Ball Twin Support Vector Machine",
@@ -40,7 +39,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "Q4"  },
     "url": "",
     "Author":"Quang-Thinh Bui*",
-    "order": 0
+    "order": 2
   },
 
   {
@@ -55,7 +54,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "Q4"  },
     "url": "",
     "Author":"The-Bang Nguyen, Hung C. Nguyen, Hiep Huynh, Quang-Thinh Bui*",
-    "order": 1
+    "order": 3
   },
   {
     "title": "A Novel Neutrosophic Fuzzy Decision-Making Approach Based on Distance from the Average Solution under Uncertainty",
@@ -70,7 +69,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
     "url": "https://doi.org/10.1016/j.engappai.2026.114557",
     "Author":"Thanh Nha Nguyen, Quang-Thinh Bui, Bay Vo",
-    "order": 2
+    "order": 4
   },
   {
     "title": "A Novel Farm-level Dataset and Real-Time Detection Framework for Shrimp Black Spot Disease",
@@ -84,7 +83,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
     "url": "",
     "Author":"Minh-Huy Bui, Minh-Tien Nguyen, Tuong Le, Quang-Thinh Bui*",
-    "order": 3
+    "order": 5
   },
   {
     "title": "A Framework of Near-intuitionistic Fuzzy Soft Sets With Applications to Uncertainty-based Diagnosis",
@@ -98,7 +97,7 @@
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q2" },
     "url": "https://journals.sagepub.com/doi/10.1177/18758967261435701",
     "Author":"Thanh Nha Nguyen, Quang-Thinh Bui*",
-    "order": 4
+    "order": 6
   },
   {
     "title": "Graph-guided Hierarchical Multi-class Decomposition for Intuitionistic Fuzzy Weighted Least Squares Twin Support Vector Machine",
@@ -112,7 +111,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
     "url": "",
     "Author":"Quang-Thinh Bui*,  Lan T.T. Tran",
-    "order": 5
+    "order": 7
   },
   {
     "title": "Topology-Driven Rough Set Classification Using Ball Mapper Coverings for Healthcare Intelligence",
@@ -126,7 +125,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B"  },
     "url": "",
     "Author":"Quang-Thinh Bui*, Quang-Loc Pham, Minh-Khoi Pham, Minh-Huy Bui, Phu Pham, Bay Vo",
-    "order": 6
+    "order": 8
   },
 
   {
@@ -141,7 +140,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B" },
     "url": "",
     "Author":"Trang T.D. Nguyen, Loan T.T. Nguyen, Quang-Thinh Bui, Phu Pham, Bay Vo",
-    "order": 7
+    "order": 9
   },
 
   {
@@ -156,7 +155,7 @@
     "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
     "url": "",
     "Author":"Thanh-Nguyen Nguyen, Hiep Huynh, Duong Van Hieu, Thai-Son Nguyen, Song-Toan Tran, Quang-Thinh Bui*",
-    "order": 8
+    "order": 10
   },
 
   {
@@ -171,7 +170,7 @@
     "indexing": { "scopus": false, "wos": "", "jcr_q": "" },
     "url": "https://www.researchgate.net/publication/403521108_Hotspot_Detection_on_Distribution-Mapper_Graphs",
     "Author":"Tam T.T. Nguyen, Minh-Huy Bui, My-Phuong Ngo, Quang-Thinh Bui*",
-    "order": 9
+    "order": 11
   },
 
   {
@@ -186,7 +185,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
     "url": "https://doi.org/10.1007/978-3-032-21628-1_15",
     "Author":"Khang L.N. Nguyen, Bay Vo, Quang-Thinh Bui*",
-    "order": 10
+    "order": 12
   },
 
 
@@ -318,8 +317,6 @@
     "tag": ["Journal"],
     "url": "https://journal.hcmue.edu.vn/index.php/hcmuejos/article/view/223",
     "Author":"Quang-Thinh Bui*, Ha Thanh Nguyen"
-
-    
   },
 
 
