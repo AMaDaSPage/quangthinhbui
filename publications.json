@@ -1,5 +1,19 @@
 [
 
+   {
+    "title": "A Comparative Study of Topological Representations for Clustering Noisy Time Series",
+    "authors": "",
+    "venue": "The 15th Conference on Information Technology and its Applications (CITA 2026), Vietnam",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "1st/corr",
+    "tag": ["Conference"],
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": ""  },
+    "url": "",
+    "Author":"Minh-Khoi Pham, Quang-Loc Pham, Quyet Le Chi Nguyen, Quang-Thinh Bui*",
+    "order": -2
+  },
   {
     "title": "Multi-view Extensions of Neutrosophic C-means Variants for Clustering Analysis",
     "authors": "",
