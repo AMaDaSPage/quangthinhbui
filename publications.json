@@ -1,4 +1,18 @@
-[
+[{
+    "title": "A Relational Approach Based on Near Intuitionistic Fuzzy Soft Sets for Multi-Criteria Decision Making",
+    "authors": "",
+    "venue": "New Mathematics and Natural Computation",
+    "year": 2026,
+    "type": "journal",
+    "details": "",
+    "status": "1st/corr",
+    "tag": ["Journal"],
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "Q4"  },
+    "url": "https://doi.org/10.1142/S1793005728500597",
+    "Author":"Thanh Nha Nguyen, Quang-Thinh Bui*",
+    "order": -1
+  },
+
   {
     "title": "A Comparative Study of Topological Representations for Clustering Noisy Time Series",
     "authors": "",
