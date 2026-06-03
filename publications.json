@@ -473,19 +473,6 @@
     "order": 10
   },
   {
-    "title": "Improving Mapper-based Coverings Through Derivative Transformations in Rough Set",
-    "authors": "",
-    "venue": "The 10th Information and Communication Technology Conference (ICT 2025), Vietnam.",
-    "year": 2025,
-    "type": "conference",
-    "status": "1st/corr",
-    "details": "[Vietnamese]",
-    "tag": ["Conference"],
-    "url": "https://ebook365.vn/ict2025-information-and-communication-technology-ky-yeu-hoi-thao-khoa-hoc-cong-nghe-thong-tin-va-truyen-thong-nam-2025-lam-dong-thang-7-nam-2025-bm1VW.html",
-    "Author": "Quang-Thinh Bui*, Quang-Loc Pham, Duong Van Hieu",
-    "order": 11
-  },
-  {
     "title": "Topological Framework for Exploring Imbalanced Time Series",
     "authors": "",
     "venue": "The 17th International Conference on Computational Collective Intelligence (ICCCI 2025), Vietnam",
@@ -497,7 +484,7 @@
     "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "B" },
     "url": "https://doi.org/10.1007/978-3-032-10202-7_23",
     "Author": "Minh Nguyen, Farzana Nasrin, Quang-Thinh Bui*",
-    "order": 12
+    "order": 11
   },
   {
     "title": "Novel Neutrosophic Fuzzy Max-Min-Based Similarities and Their Application in Clustering for Educational Decision-Making Support",
@@ -511,7 +498,7 @@
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q1" },
     "url": "https://doi.org/10.1007/s12190-025-02520-1",
     "Author": "Quang-Thinh Bui, Vaclav Snasel, Witold Pedrycz, Bay Vo",
-    "order": 13
+    "order": 12
   },
   {
     "title": "Enhanced Medical Image Generation through Advanced Latent Space Diffusion",
@@ -524,7 +511,7 @@
     "tag": ["Journal"],
     "url": "https://doi.org/10.1142/S3060932125500037",
     "Author": "Khoi M. Nguyen, Hung C. Nguyen, H. Huy Nguyen, The-Bang Nguyen, Phuoc-Thinh Nguyen, Vu Tran, Phu Pham, Quang-Thinh Bui*",
-    "order": 14
+    "order": 13
   },
   {
     "title": "Novel Distances for Fermatean Fuzzy Sets in Multi-Attribute Decision-Making Using Covering-Based Rough Sets",
@@ -538,7 +525,7 @@
     "url": "https://doi.org/10.1007/978-981-96-4603-6_6",
     "indexing": { "scopus": true, "wos": "", "jcr_q": "" },
     "Author": "Quang-Thinh Bui, Thao Tran-Phuong, Thanh Nha Nguyen, Bao Huynh, Bay Vo",
-    "order": 15
+    "order": 14
   },
   {
     "title": "Graph-induced Topological Space: From Topologies to Separation Axioms",
@@ -552,7 +539,7 @@
     "indexing": { "scopus": false, "wos": "SCIE", "jcr_q": "Q3" },
     "url": "https://doi.org/10.1007/s00500-025-10633-9",
     "Author": "Quang-Thinh Bui, Thanh Nha Nguyen, Tzung-Pei Hong, Bay Vo",
-    "order": 16
+    "order": 15
   },
 
 
