@@ -1,4 +1,19 @@
-[{
+[
+  {
+    "title": "NS-ACUTE: An Efficient Topology-Aware Clustering Method for Geospatial Data in Network Space",
+    "authors": "",
+    "venue": "Transactions in GIS",
+    "year": 2026,
+    "type": "journal",
+    "details": "",
+    "status": "1st/corr",
+    "tag": ["Journal"],
+    "indexing": { "scopus": true, "wos": "", "jcr_q": "", "scopus_q": "Q4"  },
+    "url": "",
+    "Author":"TTrang T.D. Nguyen, Loan T.T. Nguyen, Quang-Thinh Bui, Thuy T.T Pham, Witold Pedrycz, Bay Vo",
+    "order": -2
+  },
+  {
     "title": "A Relational Approach Based on Near Intuitionistic Fuzzy Soft Sets for Multi-Criteria Decision Making",
     "authors": "",
     "venue": "New Mathematics and Natural Computation",
