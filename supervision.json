@@ -1,5 +1,15 @@
 [
   {
+    "code": "[P03]",
+    "type": "doctoral",
+    "student": "Le Xuan Manh",
+    "title": "A Parallel and Deep Learning Approach for Spectral Clustering on Large-Scale Attributed Graphs",
+    "institution": "HUTECH University",
+    "period": "2025 – Ongoing",
+    "year": 2025,
+    "supervisor": "with Assoc. Prof. Vo Dinh Bay"
+  },
+  {
     "code": "[P02]",
     "type": "doctoral",
     "student": "Nguyen Thanh Nha",
@@ -7,7 +17,7 @@
     "institution": "HUTECH University",
     "period": "2025 – Ongoing",
     "year": 2025,
-    "supervisor": "with Prof. Nguyen Hung Son"
+    "supervisor": "with Prof. Nguyen Hung Son*"
   },
   {
     "code": "[P01]",
@@ -19,7 +29,36 @@
     "year": 2025,
     "supervisor": "with Dr. Pham The Anh Phu"
   },
-
+  {
+    "code": "[M18]",
+    "type": "master",
+    "student": "Le Van Sac",
+    "title": "A Reliability-Aware Single-Valued Neutrosophic Fuzzy Soft Relation for Multi-Criteria Decision-Making",
+    "institution": "HUTECH University",
+    "period": "2026",
+    "year": 2026,
+    "supervisor": "with Dr. Bui Danh Huong*"
+  },
+  {
+    "code": "[M17]",
+    "type": "master",
+    "student": "Nguyen Minh Tien",
+    "title": "Black Spot Disease Detection System for Whiteleg Shrimp in Aquatic Environments",
+    "institution": "HUTECH University",
+    "period": "2026",
+    "year": 2026,
+    "supervisor": "with Dr. Le Cung Tuong*"
+  },
+  {
+    "code": "[M16]",
+    "type": "master",
+    "student": "Le Minh Quan",
+    "title": "Density Peak Clustering Based on Ellipsoidal Granules with an Adaptive Control Mechanism",
+    "institution": "HUTECH University",
+    "period": "2026",
+    "year": 2026,
+    "supervisor": "with Assoc. Prof. Vo Dinh Bay*"
+  },
   {
     "code": "[M15]",
     "type": "master",

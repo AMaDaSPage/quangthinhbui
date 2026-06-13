@@ -39,6 +39,15 @@
       .replace(/'/g, "&#39;");
   }
 
+  function formatPeriod(period) {
+    const safePeriod = escapeHtml(period || "");
+
+    return safePeriod.replace(
+      /\b(Ongoing|On\s*going)\b/gi,
+      '<strong class="sup-ongoing">$1</strong>'
+    );
+  }
+
   function extractSortYear(item) {
     if (typeof item.year === "number" && Number.isFinite(item.year)) {
       return item.year;
@@ -79,7 +88,8 @@
     const student = escapeHtml(item.student || "");
     const title = escapeHtml(item.title || "");
     const institution = escapeHtml(item.institution || "");
-    const period = escapeHtml(item.period || "");
+    const period = formatPeriod(item.period || "");
+
     const rawSupervisor = String(item.supervisor || "").trim();
     const hasAsterisk = /\s*\*$/.test(rawSupervisor);
     const cleanSupervisor = rawSupervisor.replace(/\s*\*$/, "");
@@ -110,6 +120,7 @@
     }
 
     const typeOrder = ["doctoral", "master", "intern"];
+
     const visibleTypes =
       currentType === "all"
         ? typeOrder
@@ -134,14 +145,17 @@
       })
       .join("");
 
-    mountEl.innerHTML = html || `<p class="sup-empty">No supervision records found.</p>`;
+    mountEl.innerHTML =
+      html || `<p class="sup-empty">No supervision records found.</p>`;
   }
 
   async function loadJson(url) {
     const res = await fetch(url, { cache: "no-store" });
+
     if (!res.ok) {
       throw new Error(`Failed to load ${url} (${res.status})`);
     }
+
     return res.json();
   }
 
@@ -168,6 +182,7 @@
     if (!targetEl || !yearEl || !tabsEl) return;
 
     let data = [];
+
     try {
       data = await loadJson(jsonUrl);
     } catch (err) {
@@ -183,7 +198,8 @@
         }))
       : [];
 
-    const years = [...new Set(cleanData.map(extractSortYear).filter(Boolean))].sort((a, b) => b - a);
+    const years = [...new Set(cleanData.map(extractSortYear).filter(Boolean))]
+      .sort((a, b) => b - a);
 
     yearEl.innerHTML = `
       <option value="all">All</option>
