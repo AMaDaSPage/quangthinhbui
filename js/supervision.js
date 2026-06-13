@@ -39,12 +39,27 @@
       .replace(/'/g, "&#39;");
   }
 
+  function injectOngoingStyle() {
+    if (document.getElementById("sup-ongoing-style")) return;
+
+    const style = document.createElement("style");
+    style.id = "sup-ongoing-style";
+    style.textContent = `
+      .sup-ongoing {
+        color: red;
+        font-weight: 400;
+        text-transform: lowercase;
+      }
+    `;
+    document.head.appendChild(style);
+  }
+
   function formatPeriod(period) {
     const safePeriod = escapeHtml(period || "");
 
     return safePeriod.replace(
       /\b(Ongoing|On\s*going)\b/gi,
-      '<strong class="sup-ongoing">$1</strong>'
+      '<span class="sup-ongoing">ongoing</span>'
     );
   }
 
@@ -174,6 +189,8 @@
   }
 
   window.initSupervision = async function initSupervision(opts = {}) {
+    injectOngoingStyle();
+
     const targetEl = $(opts.targetId || "supList");
     const yearEl = $(opts.yearId || "supYear");
     const tabsEl = $(opts.typeTabsId || "supTypeTabs");
