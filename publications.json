@@ -1,5 +1,24 @@
 [
   {
+    "title": "Granular Representation Learning via Fuzzy Covering Rough Sets for Uncertainty-Aware Classification",
+    "authors": "",
+    "venue": "The 2026 IEEE International Conference on Systems, Man, and Cybernetics (SMC 2026), USA",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "",
+    "tag": ["Conference"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": ""
+    },
+    "url": "",
+    "Author": "Thanh Nha Nguyen, Quang-Thinh Bui, Bao-Huynh, Hung Son Nguyen, Ngoc Thanh Nguyen, Robert Kozma, Bay Vo",
+    "order": -1
+  },
+  {
     "title": "NS-ACUTE: An Efficient Topology-Aware Clustering Method for Geospatial Data in Network Space",
     "authors": "",
     "venue": "Transactions in GIS",
