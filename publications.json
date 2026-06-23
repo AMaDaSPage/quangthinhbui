@@ -1,5 +1,24 @@
 [
   {
+    "title": "Structure-Aware Adaptive Multi-Chain Sampling for Reliable Simplet Frequency Distribution Estimation",
+    "authors": "",
+    "venue": "The 8th International Conference on Green Technology And Sustainable Development (GTSD 2026), Vietnam",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "",
+    "tag": ["Conference"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": ""
+    },
+    "url": "",
+    "Author": "Tuan-Anh Tran, My-Phuong Ngo, Phu Pham, Quang-Thinh Bui",
+    "order": -2
+  },
+  {
     "title": "Granular Representation Learning via Fuzzy Covering Rough Sets for Uncertainty-Aware Classification",
     "authors": "",
     "venue": "The 2026 IEEE International Conference on Systems, Man, and Cybernetics (SMC 2026), USA",
