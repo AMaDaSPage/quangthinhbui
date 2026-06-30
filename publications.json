@@ -1,5 +1,43 @@
 [
   {
+    "title": "A Representation-Driven Three-way Decision Model Using Fuzzy Covering Rough Sets",
+    "authors": "",
+    "venue": "The 12th International Symposium on Integrated Uncertainty in Knowledge Modelling and Decision Making (IUKM 2026), Vietnam",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "",
+    "tag": ["Conference"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": "2"
+    },
+    "url": "",
+    "Author": "Minh-Huy Bui, Quang-Loc Pham, Hiep Huynh, Bay Vo, Quang-Thinh Bui*",
+    "order": -4
+  },
+  {
+    "title": "A Meta-Heuristic Optimization Framework for Mapper-Based Rough Set Parameter Selection",
+    "authors": "",
+    "venue": "The 12th International Symposium on Integrated Uncertainty in Knowledge Modelling and Decision Making (IUKM 2026), Vietnam",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "",
+    "tag": ["Conference"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": "2"
+    },
+    "url": "",
+    "Author": "Thanh Nha Nguyen, Thao Tran-Phuong, Hung Son Nguyen, Quang-Thinh Bui*",
+    "order": -3
+  },
+  {
     "title": "Structure-Aware Adaptive Multi-Chain Sampling for Reliable Simplet Frequency Distribution Estimation",
     "authors": "",
     "venue": "The 8th International Conference on Green Technology And Sustainable Development (GTSD 2026), Vietnam",
