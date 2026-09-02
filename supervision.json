@@ -139,19 +139,8 @@
     "year": 2026,
     "supervisor": "with Dr. Pham The Anh Phu*"
   },
-  
   {
     "code": "[M08]",
-    "type": "master",
-    "student": "Tran Quyen Vu",
-    "title": "A Deep Learning-Based Model for Diagnosing Lumbar Spine Degeneration from X-ray Images",
-    "institution": "HUTECH University",
-    "period": "2026",
-    "year": 2025,
-    "supervisor": "with Dr. Pham The Anh Phu"
-  },
-  {
-    "code": "[M07]",
     "type": "master",
     "student": "Nguyen Thi Bao Anh",
     "title": "Developing Students’ Competence in Using Mathematical Tools and Learning Aids through Practical and Experiential Activities in the Grade 8 Statistics Topic at My Long Secondary School, Dong Thap, Vietnam",
@@ -161,7 +150,7 @@
     "supervisor": "with Assoc. Prof. Tang Minh Dung"
   },
   {
-    "code": "[M06]",
+    "code": "[M07]",
     "type": "master",
     "student": "Nguyen Hoang Han",
     "title": "Utilizing Mobile Devices to Teach Perimeter and Area of Geometric Shapes in Real-Life Contexts for Grade 6 Students at Tam Hiep Secondary School, Dong Thap, Vietnam",
@@ -171,17 +160,7 @@
     "supervisor": "with Assoc. Prof. Tang Minh Dung"
   },
   {
-    "code": "[M05]",
-    "type": "master",
-    "student": "Nguyen Trung Tuyen",
-    "title": "Enhancing Human Activity Recognition Models through Data Feature Stratification",
-    "institution": "HUTECH University",
-    "period": "2025 - 2026",
-    "year": 2025,
-    "supervisor": "with Dr. Pham The Anh Phu"
-  },
-  {
-    "code": "[M04]",
+    "code": "[M06]",
     "type": "master",
     "student": "Nguyen Duc Thinh",
     "title": "The Integration of Mapper and Ball Mapper Algorithms in Topological Data Analysis",
@@ -190,6 +169,27 @@
     "year": 2025,
     "supervisor": "with Dr. Nguyen Le Chi Quyet *"
   },
+  {
+    "code": "[M05]",
+    "type": "master",
+    "student": "Tran Quyen Vu",
+    "title": "A Deep Learning-Based Model for Diagnosing Lumbar Spine Degeneration from X-ray Images",
+    "institution": "HUTECH University",
+    "period": "2026",
+    "year": 2025,
+    "supervisor": "with Dr. Pham The Anh Phu"
+  },
+  {
+    "code": "[M04]",
+    "type": "master",
+    "student": "Nguyen Trung Tuyen",
+    "title": "Enhancing Human Activity Recognition Models through Data Feature Stratification",
+    "institution": "HUTECH University",
+    "period": "2025 - 2026",
+    "year": 2025,
+    "supervisor": "with Dr. Pham The Anh Phu"
+  },
+  
   {
     "code": "[M03]",
     "type": "master",
