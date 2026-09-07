@@ -1,4 +1,42 @@
 [
+   {
+    "title": "Adaptive Quality-Gated Granular-Ellipsoid Density Peak Clustering for Anisotropic Data",
+    "authors": "",
+    "venue": "The 18th International Conference on Knowledge and Systems Engineering (KSE 2026), Japan",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "",
+    "tag": ["Conference"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": "2"
+    },
+    "url": "",
+    "Author": "Minh-Quan Le, Trang T.D. Nguyen, Bay Vo, Quang-Thinh Bui*",
+    "order": -6
+  },
+  {
+    "title": "Scalable Hierarchical Signature-Based Estimation of Large Simplets in Simplicial Complexes",
+    "authors": "",
+    "venue": "The 18th International Conference on Knowledge and Systems Engineering (KSE 2026), Japan",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "",
+    "tag": ["Conference"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": "2"
+    },
+    "url": "",
+    "Author": "Hiep Huynh, My-Phuong Ngo, Son P. Nguyen, Loan T.T. Nguyen, Quang-Thinh Bui*",
+    "order": -5
+  },
   {
     "title": "A Representation-Driven Three-way Decision Model Using Fuzzy Covering Rough Sets",
     "authors": "",
