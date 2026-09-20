@@ -1,5 +1,24 @@
 [
-   {
+  {
+    "title": "A Novel Farm-Level Dataset and Real-Time Detection Framework for Shrimp Black Spot Disease",
+    "authors": "",
+    "venue": "The 3rd International Conference on Connected Innovation and Technology (ICCITX), Vietnam",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "",
+    "tag": ["Conference"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": "2"
+    },
+    "url": "",
+    "Author": "Minh-Huy Bui, Minh-Tien Nguyen, Tuong Le, Quang-Thinh Bui*",
+    "order": -7
+  },
+  {
     "title": "Adaptive Quality-Gated Granular-Ellipsoid Density Peak Clustering for Anisotropic Data",
     "authors": "",
     "venue": "The 18th International Conference on Knowledge and Systems Engineering (KSE 2026), Japan",
