@@ -322,6 +322,8 @@ a.pub-item__title:focus-visible{
 }
 
 .pub-search__input {
-  padding: 0.5rem;
-width: 13rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    width: 13rem;
+    border-radius: 10px;
 }
