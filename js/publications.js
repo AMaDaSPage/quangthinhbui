@@ -10,8 +10,18 @@ function escapeHtml(str) {
 async function loadPublications(jsonUrl) {
   const url = jsonUrl || "/publications.json";
   const res = await fetch(url, { cache: "no-store" });
-  if (!res.ok) throw new Error("Cannot load publications.json");
-  return await res.json();
+
+  if (!res.ok) {
+    throw new Error("Cannot load publications.json");
+  }
+
+  const data = await res.json();
+
+  if (!Array.isArray(data)) {
+    throw new Error("publications.json must contain an array");
+  }
+
+  return data;
 }
 
 function normalizeTags(pub) {
@@ -22,9 +32,14 @@ function normalizeTags(pub) {
   for (const t of [...a, ...b]) {
     const v = String(t ?? "").trim();
     if (!v) continue;
-    const exists = out.some((x) => x.toLowerCase() === v.toLowerCase());
+
+    const exists = out.some(
+      (x) => x.toLowerCase() === v.toLowerCase()
+    );
+
     if (!exists) out.push(v);
   }
+
   return out;
 }
 
@@ -33,9 +48,22 @@ function getPubType(pub) {
   const type = String(pub?.type ?? "").trim().toLowerCase();
   const venue = String(pub?.venue ?? "").toLowerCase();
 
-  if (tags.includes("preprint") || type === "preprint" || venue.includes("arxiv")) return "preprint";
-  if (tags.includes("conference") || type === "conference") return "conference";
-  if (tags.includes("journal") || type === "journal") return "journal";
+  if (
+    tags.includes("preprint") ||
+    type === "preprint" ||
+    venue.includes("arxiv")
+  ) {
+    return "preprint";
+  }
+
+  if (tags.includes("conference") || type === "conference") {
+    return "conference";
+  }
+
+  if (tags.includes("journal") || type === "journal") {
+    return "journal";
+  }
+
   return "other";
 }
 
@@ -47,8 +75,12 @@ function safeOrder(pub) {
 function compareWithinSameYear(a, b) {
   const oa = safeOrder(a);
   const ob = safeOrder(b);
+
   if (oa !== ob) return oa - ob;
-  return String(a.title || "").localeCompare(String(b.title || ""));
+
+  return String(a?.title || "").localeCompare(
+    String(b?.title || "")
+  );
 }
 
 function compareForDisplay(a, b) {
@@ -59,9 +91,12 @@ function compareForDisplay(a, b) {
 
   const oa = safeOrder(a);
   const ob = safeOrder(b);
+
   if (oa !== ob) return oa - ob;
 
-  return String(a?.title || "").localeCompare(String(b?.title || ""));
+  return String(a?.title || "").localeCompare(
+    String(b?.title || "")
+  );
 }
 
 function assignCodesForType(pubs, typeName, prefix) {
@@ -85,7 +120,9 @@ function assignDisplayCodes(pubs) {
   assignCodesForType(pubs, "preprint", "P");
 
   pubs.forEach((p) => {
-    if (!p._displayCode) p._displayCode = "[…]";
+    if (!p._displayCode) {
+      p._displayCode = "[…]";
+    }
   });
 
   return pubs;
@@ -124,7 +161,10 @@ function formatAuthors(pub) {
     html = html.replace(
       new RegExp(`${escapedName}(\\s*\\*)?`, "g"),
       (_match, starPart) => {
-        return `<span class="pub-item__author-me">${escapedName}</span>${starPart || ""}`;
+        return (
+          `<span class="pub-item__author-me">` +
+          `${escapedName}</span>${starPart || ""}`
+        );
       }
     );
   }
@@ -137,29 +177,23 @@ function formatAuthors(pub) {
 }
 
 function formatVenue(pub) {
-  return escapeHtml(String(pub?.venue || "").trim());
+  return escapeHtml(
+    String(pub?.venue || "").trim()
+  );
 }
 
 function formatDetails(pub) {
   return escapeHtml(getDetails(pub));
 }
 
-function endsWithVietnameseNote(text) {
-  return /\(Vietnamese\)\s*$/i.test(String(text || "").trim());
-}
-
-function endsWithPunctuation(text) {
-  return /[.!?]$/.test(String(text || "").trim());
-}
-
 function ensureEnding(text) {
-  const s = String(text || "").trim();
-  if (!s) return "";
-  return s;
+  return String(text || "").trim();
 }
 
 function isBracketNote(text) {
-  return /^\s*\[.*\]\s*$/.test(String(text || "").trim());
+  return /^\s*\[.*\]\s*$/.test(
+    String(text || "").trim()
+  );
 }
 
 function publicationItem(pub) {
@@ -170,24 +204,34 @@ function publicationItem(pub) {
   const details = formatDetails(pub);
 
   const rawTitle = String(pub?.title || "").trim();
-  const titleText = rawTitle ? `“${escapeHtml(rawTitle)}”` : "";
+  const titleText = rawTitle
+    ? `“${escapeHtml(rawTitle)}”`
+    : "";
 
   const titleHtml = href
-    ? `<a class="pub-item__title" href="${escapeHtml(href)}" target="_blank" rel="noreferrer">${titleText}</a>`
+    ? `<a class="pub-item__title" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${titleText}</a>`
     : `<span class="pub-item__title">${titleText}</span>`;
 
   let venueDetailsHtml = "";
 
   if (venue && details) {
-    const separator = isBracketNote(details) ? " " : ", ";
+    const separator = isBracketNote(details)
+      ? " "
+      : ", ";
+
     venueDetailsHtml =
-      `. <em class="pub-item__venue">${venue}</em>${separator}<span class="pub-item__details">${ensureEnding(details)}</span>`;
+      `. <em class="pub-item__venue">${venue}</em>` +
+      `${separator}` +
+      `<span class="pub-item__details">` +
+      `${ensureEnding(details)}</span>`;
   } else if (venue) {
     venueDetailsHtml =
-      `. <em class="pub-item__venue">${ensureEnding(venue)}</em>`;
+      `. <em class="pub-item__venue">` +
+      `${ensureEnding(venue)}</em>`;
   } else if (details) {
     venueDetailsHtml =
-      `. <span class="pub-item__details">${ensureEnding(details)}</span>`;
+      `. <span class="pub-item__details">` +
+      `${ensureEnding(details)}</span>`;
   }
 
   return `
@@ -203,17 +247,61 @@ function publicationItem(pub) {
   `;
 }
 
+function normalizeSearchText(value) {
+  return String(value ?? "")
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/đ/g, "d")
+    .replace(/Đ/g, "D")
+    .replace(/[-–—]/g, " ")
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, " ");
+}
+
+function filterByAuthor(pubs, query) {
+  const searchName = normalizeSearchText(query);
+  if (!searchName) return pubs;
+
+  return pubs.filter((pub) => {
+    // Mỗi tên tác giả trong dữ liệu được ngăn bằng dấu phẩy.
+    const authorNames = getAuthors(pub)
+      .split(/\s*[,;]\s*/)
+      .map(normalizeSearchText)
+      .filter(Boolean);
+
+    // Toàn bộ cụm tìm kiếm phải nằm trong CÙNG MỘT tên tác giả.
+    return authorNames.some((name) => name.includes(searchName));
+  });
+}
+
 function filterByYear(pubs, yearValue) {
-  if (!yearValue || yearValue === "all") return pubs;
-  if (yearValue === "unknown") return pubs.filter((p) => !p.year);
+  if (!yearValue || yearValue === "all") {
+    return pubs;
+  }
+
+  if (yearValue === "unknown") {
+    return pubs.filter((p) => {
+      const y = Number(p?.year);
+      return !Number.isFinite(y) || y <= 0;
+    });
+  }
 
   const y = Number(yearValue);
-  return pubs.filter((p) => Number(p.year) === y);
+
+  return pubs.filter(
+    (p) => Number(p?.year) === y
+  );
 }
 
 function filterByType(pubs, typeValue) {
-  if (!typeValue || typeValue === "all") return pubs;
-  return pubs.filter((p) => getPubType(p) === typeValue);
+  if (!typeValue || typeValue === "all") {
+    return pubs;
+  }
+
+  return pubs.filter(
+    (p) => getPubType(p) === typeValue
+  );
 }
 
 function sortPubs(pubs) {
@@ -229,9 +317,13 @@ function getUniqueYears(pubsAll, typeValue = "all") {
   const pubs = filterByType(pubsAll, typeValue);
 
   for (const p of pubs) {
-    const y = Number(p.year);
-    if (Number.isFinite(y) && y > 0) years.add(y);
-    else hasUnknown = true;
+    const y = Number(p?.year);
+
+    if (Number.isFinite(y) && y > 0) {
+      years.add(y);
+    } else {
+      hasUnknown = true;
+    }
   }
 
   return {
@@ -244,26 +336,46 @@ function populateYearSelect(yearEl, pubsAll, activeType = "all") {
   if (!yearEl) return;
 
   const currentValue = yearEl.value || "all";
-  const { years, hasUnknown } = getUniqueYears(pubsAll, activeType);
+  const { years, hasUnknown } = getUniqueYears(
+    pubsAll,
+    activeType
+  );
 
   yearEl.innerHTML =
     `<option value="all">All</option>` +
-    years.map((y) => `<option value="${y}">${y}</option>`).join("") +
-    (hasUnknown ? `<option value="unknown">Unknown</option>` : "");
+    years
+      .map((y) => `<option value="${y}">${y}</option>`)
+      .join("") +
+    (
+      hasUnknown
+        ? `<option value="unknown">Unknown</option>`
+        : ""
+    );
 
-  const availableValues = ["all", ...years.map(String), ...(hasUnknown ? ["unknown"] : [])];
+  const availableValues = [
+    "all",
+    ...years.map(String),
+    ...(hasUnknown ? ["unknown"] : [])
+  ];
 
-  yearEl.value = availableValues.includes(currentValue) ? currentValue : "all";
+  yearEl.value = availableValues.includes(currentValue)
+    ? currentValue
+    : "all";
 }
 
 function groupByYear(pubs) {
   const map = new Map();
 
   for (const p of pubs) {
-    const y = Number(p.year);
-    const key = Number.isFinite(y) && y > 0 ? String(y) : "unknown";
+    const y = Number(p?.year);
+    const key = Number.isFinite(y) && y > 0
+      ? String(y)
+      : "unknown";
 
-    if (!map.has(key)) map.set(key, []);
+    if (!map.has(key)) {
+      map.set(key, []);
+    }
+
     map.get(key).push(p);
   }
 
@@ -276,12 +388,18 @@ function groupByYear(pubs) {
   return keys.map((key) => {
     const items = map.get(key) || [];
     items.sort(compareWithinSameYear);
-    return { yearKey: key, items };
+
+    return {
+      yearKey: key,
+      items
+    };
   });
 }
 
 function yearSection(yearKey, items) {
-  const label = yearKey === "unknown" ? "Unknown" : yearKey;
+  const label = yearKey === "unknown"
+    ? "Unknown"
+    : yearKey;
 
   return `
     <section class="pub-year-group" aria-label="Year ${escapeHtml(label)}">
@@ -299,37 +417,64 @@ function renderPublications(targetEl, items) {
   if (!targetEl) return;
 
   if (!items.length) {
-    targetEl.innerHTML = `<p class="pub-empty">No publications found.</p>`;
+    targetEl.innerHTML =
+      `<p class="pub-empty">No publications found.</p>`;
     return;
   }
 
   const groups = groupByYear(items);
-  targetEl.innerHTML = groups.map((g) => yearSection(g.yearKey, g.items)).join("");
+
+  targetEl.innerHTML = groups
+    .map((g) => yearSection(g.yearKey, g.items))
+    .join("");
 }
 
 function activateTab(tabContainer, activeType) {
   if (!tabContainer) return;
-  const buttons = tabContainer.querySelectorAll("[data-type]");
+
+  const buttons = tabContainer.querySelectorAll(
+    "[data-type]"
+  );
 
   buttons.forEach((btn) => {
     const isActive = btn.dataset.type === activeType;
+
     btn.classList.toggle("is-active", isActive);
-    btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+
+    btn.setAttribute(
+      "aria-pressed",
+      isActive ? "true" : "false"
+    );
   });
 }
 
 window.initPublications = async function initPublications(options) {
   const opt = options || {};
 
-  const target = document.getElementById(opt.targetId || "pubList");
-  const yearEl = document.getElementById(opt.yearId || "pubYear");
-  const typeTabsEl = document.getElementById(opt.typeTabsId || "pubTypeTabs");
+  const target = document.getElementById(
+    opt.targetId || "pubList"
+  );
+
+  const yearEl = document.getElementById(
+    opt.yearId || "pubYear"
+  );
+
+  const typeTabsEl = document.getElementById(
+    opt.typeTabsId || "pubTypeTabs"
+  );
+
+  const authorSearchEl = document.getElementById(
+    opt.authorSearchId || "pubAuthorSearch"
+  );
 
   if (!target) return;
 
   try {
-    let pubsAll = await loadPublications(opt.jsonUrl || "/publications.json");
-    pubsAll = assignDisplayCodes(pubsAll);
+    const pubsAll = assignDisplayCodes(
+      await loadPublications(
+        opt.jsonUrl || "/publications.json"
+      )
+    );
 
     let activeType = "all";
 
@@ -338,29 +483,71 @@ window.initPublications = async function initPublications(options) {
 
     const redraw = () => {
       const yearValue = yearEl?.value || "all";
+      const authorQuery = authorSearchEl?.value || "";
 
-      let filtered = filterByType(pubsAll, activeType);
-      filtered = filterByYear(filtered, yearValue);
+      let filtered = filterByType(
+        pubsAll,
+        activeType
+      );
+
+      filtered = filterByYear(
+        filtered,
+        yearValue
+      );
+
+      filtered = filterByAuthor(
+        filtered,
+        authorQuery
+      );
+
       filtered = sortPubs(filtered);
 
-      renderPublications(target, filtered);
+      renderPublications(
+        target,
+        filtered
+      );
     };
 
-    yearEl?.addEventListener("change", redraw);
+    yearEl?.addEventListener(
+      "change",
+      redraw
+    );
 
-    typeTabsEl?.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-type]");
-      if (!btn) return;
+    authorSearchEl?.addEventListener(
+      "input",
+      redraw
+    );
 
-      activeType = btn.dataset.type || "all";
-      activateTab(typeTabsEl, activeType);
-      populateYearSelect(yearEl, pubsAll, activeType);
-      redraw();
-    });
+    typeTabsEl?.addEventListener(
+      "click",
+      (event) => {
+        const btn = event.target.closest(
+          "[data-type]"
+        );
+
+        if (!btn || !typeTabsEl.contains(btn)) {
+          return;
+        }
+
+        activeType = btn.dataset.type || "all";
+
+        activateTab(typeTabsEl, activeType);
+
+        populateYearSelect(
+          yearEl,
+          pubsAll,
+          activeType
+        );
+
+        redraw();
+      }
+    );
 
     redraw();
-  } catch (e) {
-    console.error(e);
-    target.innerHTML = `<p class="pub-empty">Cannot load publications.json</p>`;
+  } catch (error) {
+    console.error(error);
+
+    target.innerHTML =
+      `<p class="pub-empty">Cannot load publications.json</p>`;
   }
 };

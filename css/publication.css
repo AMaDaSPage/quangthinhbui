@@ -320,3 +320,8 @@ a.pub-item__title:focus-visible{
     max-width:1200px;
   }
 }
+
+.pub-search__input {
+  padding: 0.5rem;
+width: 13rem;
+}
