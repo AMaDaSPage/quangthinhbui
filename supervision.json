@@ -220,7 +220,16 @@
     "year": 2025,
     "supervisor": "with Dr. Nguyen Viet Hung*"
   },
-
+   {
+    "code": "[I05]",
+    "type": "intern",
+    "student": "Matteo Neucin",
+    "title": "Robust and Faithful Explainable AI for 12-Lead ECG Classification",
+    "institution": "La Réunion University (France)",
+    "period": "2027",
+    "year": 202,
+    "supervisor": ""
+  },
   {
     "code": "[I04]",
     "type": "intern",
