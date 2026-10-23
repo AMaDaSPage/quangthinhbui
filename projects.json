@@ -1,6 +1,37 @@
 [
   {
-    "id": "p6",
+    "id": "p09",
+    "name": "Weighted Frequent Subgraph Mining Based on Weighted Average Features and Search Space Pruning",
+    "year": 2026,
+    "period": "2026-2029",
+    "funding": { "agency": "TGU", "code": "TN.CB-2526.xx" },
+    "pi": ["Bui Quang Thinh, Ph.D."],
+    "role": "Key Member",
+    "status": "",
+    "links": {}
+  },
+  {
+    "id": "p08",
+    "name": "Three-way Decision Models Based on Mapper-induced Rough Sets",
+    "year": 2026,
+    "period": "2026-2029",
+    "funding": { "agency": "DIRCP", "code": "Vietnam Institute for Advanced Study in Mathematics (VIASM)" },
+    "pi": ["Bui Quang Thinh, Ph.D."],
+    "status": "",
+    "links": {}
+  },
+  {
+    "id": "p07",
+    "name": "Research and Development of Artificial Intelligence (AI) Models to Support Breast Cancer Diagnosis from Mammograms and Preliminary Evaluation of Its Effectiveness in Dong Thap Province",
+    "year": 2026,
+    "period": "2026-2029",
+    "funding": { "agency": "Dong Thap Provincial People's Committee", "code": "ĐTCN 07/26" },
+    "pi": ["Bui Quang Thinh, Ph.D."],
+    "status": "",
+    "links": {}
+  },
+  {
+    "id": "p06",
     "name": "Classification Using Intuitionistic Fuzzy Weighted Least Squares Twin Support Vector Machines",
     "year": 2025,
     "period": "2025-2026",
@@ -10,7 +41,7 @@
     "links": {}
   },
   {
-    "id": "p5",
+    "id": "p05",
     "name": "Near Intuitionistic Fuzzy Soft Sets and Decision Making Problems Under Uncertainty",
     "year": 2025,
     "period": "2025-2026",
@@ -20,7 +51,7 @@
     "links": {}
   },
   {
-    "id": "p4",
+    "id": "p04",
     "name": "Topology-based Deep Learning for Multimedia Data Classification Problem",
     "year": 2025,
     "period": "2025-2028",
@@ -30,7 +61,7 @@
     "links": {}
   },
   {
-    "id": "p3",
+    "id": "p03",
     "name": "Topological Data Analysis for Data Clustering Problem",
     "year": 2023,
     "period": "2023-2025",
@@ -40,7 +71,7 @@
     "links": {}
   },
   {
-    "id": "p2",
+    "id": "p02",
     "name": "Multi-criteria Decision-making Problems in Neutrosophic Fuzzy Environment",
     "year": 2023,
     "period": "2023-2025",
@@ -50,7 +81,7 @@
     "links": {}
   },
   {
-    "id": "p1",
+    "id": "p01",
     "name": "Deep Learning-oriented Topological Data Analysis on Graphs",
     "year": 2023,
     "period": "2023",

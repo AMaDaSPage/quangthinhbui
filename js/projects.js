@@ -78,7 +78,7 @@ function fundingDisplayText(funding) {
 
 function normalizeRoleFromPi(piText) {
   const s = String(piText || "").toLowerCase();
-  return s.includes("thinh") ? "PI" : "member";
+  return s.includes("thinh") ? "PI" : "Key Member";
 }
 
 function projectItem(p) {
