@@ -48,6 +48,7 @@
     "funding": { "agency": "TGU", "code": "TN.CB-2425.03" },
     "pi": ["Thanh Nha Nguyen, M.Sc."],
     "status": "In progress",
+    "role": "Key Member",
     "links": {}
   },
   {
@@ -58,6 +59,7 @@
     "funding": { "agency": "NAFOSTED", "code": "102.05-2024.15" },
     "pi": ["Pham The Anh Phu, Ph.D."],
     "status": "In progress",
+    "role": "Key Member",
     "links": {}
   },
   {
@@ -68,6 +70,7 @@
     "funding": { "agency": "NAFOSTED", "code": "102.05-2021.08" },
     "pi": ["Assoc. Prof. Vo Dinh Bay, Ph.D."],
     "status": "Finished",
+    "role": "Key Member",
     "links": {}
   },
   {
@@ -88,6 +91,7 @@
     "funding": { "agency": "VIASM", "code": "" },
     "pi": ["Assoc. Prof. Vo Dinh Bay, Ph.D.", "Prof. Nguyen Xuan Hung, Ph.D."],
     "status": "Finished",
+    "role": "Key Member",
     "links": {}
   }
 ]

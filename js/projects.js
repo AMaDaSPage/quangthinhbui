@@ -91,9 +91,9 @@ function projectItem(p) {
   const agency = escapeHtml(fullAgencyName(p.funding?.agency || ""));
   const period = escapeHtml(p.period || "");
 
-  const pi = joinNice(p.pi);
-  const role = pi ? normalizeRoleFromPi(pi) : "";
-  // const role = p.role || "";
+  // const pi = joinNice(p.pi);
+  // const role = pi ? normalizeRoleFromPi(pi) : "";
+  const role = p.role || "";
 
   const contentParts = [
     `<span class="proj-title">${title}</span>`,
