@@ -241,7 +241,17 @@
     "year": 2025,
     "supervisor": "with Dr. Nguyen Viet Hung*"
   },
-   {
+  {
+    "code": "[I06]",
+    "type": "intern",
+    "student": "Alex Zibin",
+    "title": "Semantic and Rule-Based Explainability for 12-Lead ECG Classification",
+    "institution": "La Réunion University (France)",
+    "period": "2027",
+    "year": 202,
+    "supervisor": ""
+  },
+  {
     "code": "[I05]",
     "type": "intern",
     "student": "Matteo Neucin",
