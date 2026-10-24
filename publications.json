@@ -1,5 +1,43 @@
 [
   {
+    "title": "A Comparative and Explainable Framework for ECG Image Classification Using Lead-Preserving Structured Representations",
+    "authors": "",
+    "venue": "The 1st International Conference on Autonomous Machine Intelligence (AMI 2026), Vietnam",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "",
+    "tag": ["Conference"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": "2"
+    },
+    "url": "",
+    "Author": "Phuc H. N. Huynh, Hiep Huynh, Nguyen Trung Tuyen, Nguyen Minh Hai, Quang-Thinh Bui*",
+    "order": -8
+  },
+  {
+    "title": "Topology-Aware Analysis of Pediatric Heart Rate Variability via Euler Characteristic Curves",
+    "authors": "",
+    "venue": "The 1st International Conference on Autonomous Machine Intelligence (AMI 2026), Vietnam",
+    "year": 2026,
+    "type": "conference",
+    "details": "",
+    "status": "",
+    "tag": ["Conference"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": "2"
+    },
+    "url": "",
+    "Author": "Thao Tran-Phuong, Thao H. M. Tran, My-Phuong Ngo, Hung C. Nguyen, Quang-Thinh Bui*",
+    "order": -7
+  },
+  {
     "title": "Adaptive Quality-Gated Granular-Ellipsoid Density Peak Clustering for Anisotropic Data",
     "authors": "",
     "venue": "The 18th International Conference on Knowledge and Systems Engineering (KSE 2026), Japan",
