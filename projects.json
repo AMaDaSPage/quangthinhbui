@@ -18,6 +18,7 @@
     "funding": { "agency": "IRCP", "code": "Vietnam Institute for Advanced Study in Mathematics (VIASM)" },
     "pi": ["Bui Quang Thinh, Ph.D."],
     "status": "",
+    "role": "PI",
     "links": {}
   },
   {
@@ -28,6 +29,7 @@
     "funding": { "agency": "Dong Thap Provincial People's Committee", "code": "ĐTCN 07/26" },
     "pi": ["Bui Quang Thinh, Ph.D."],
     "status": "",
+    "role": "PI",
     "links": {}
   },
   {
@@ -38,6 +40,8 @@
     "funding": { "agency": "TGU", "code": "TN.CB-2425.20" },
     "pi": ["Bui Quang Thinh, Ph.D."],
     "status": "",
+    "role": "PI",
+
     "links": {}
   },
   {
@@ -81,6 +85,8 @@
     "funding": { "agency": "TGU", "code": "TN.CB-2223.05" },
     "pi": ["Bui Quang Thinh, Ph.D."],
     "status": "Finished",
+    "role": "PI",
+
     "links": {}
   },
   {
