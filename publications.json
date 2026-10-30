@@ -1,5 +1,24 @@
 [
   {
+    "title": "Efficient Multi-Class Classification with Granular Ball Twin Support Vector Machine Using Novel Decomposition Strategies. Journal of Computer Science and Cybernetics",
+    "authors": "",
+    "venue": "Journal of Computer Science and Cybernetics",
+    "year": 2027,
+    "type": "journal",
+    "details": "",
+    "status": "",
+    "tag": ["journal"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": "2"
+    },
+    "url": "",
+    "Author": "Hiep Huynh, Hung C. Nguyen, Quang-Thinh Bui*",
+    "order": -9
+  },
+  {
     "title": "A Comparative and Explainable Framework for ECG Image Classification Using Lead-Preserving Structured Representations",
     "authors": "",
     "venue": "The 1st International Conference on Autonomous Machine Intelligence (AMI 2027), Vietnam",
