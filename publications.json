@@ -1,4 +1,43 @@
 [
+
+  {
+    "title": "A Relational Framework of Inclusion and Preference on Neutrosophic Fuzzy Sets for Decision Analysis",
+    "authors": "",
+    "venue": "Journal of Uncertain Systems",
+    "year": 2026,
+    "type": "journal",
+    "details": "",
+    "status": "",
+    "tag": ["journal"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": ""
+    },
+    "url": "",
+    "Author": "Quang-Thinh Bui*",
+    "order": -11
+  },
+  {
+    "title": "DBCMO-Mapper: A Metaheuristic Framework for Distribution-Guided Parameter Optimization in Topological Data Analysis",
+    "authors": "",
+    "venue": "Vietnam Journal of Computer Science",
+    "year": 2026,
+    "type": "journal",
+    "details": "",
+    "status": "",
+    "tag": ["journal"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": ""
+    },
+    "url": "",
+    "Author": "Quang-Thinh Bui, Loi Ha, Minh-Huy Bui, Hung Nguyen",
+    "order": -10
+  },
   {
     "title": "Efficient Multi-Class Classification with Granular Ball Twin Support Vector Machine Using Novel Decomposition Strategies",
     "authors": "",
