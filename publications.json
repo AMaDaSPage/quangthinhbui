@@ -1,8 +1,27 @@
 [
- {
+  {
+    "title": "BM-GraphSAGE: A Topology-Aware Graph Learning Framework for Blockchain Security Analytics",
+    "authors": "",
+    "venue": "International Journal of Information and Computer Security",
+    "year": 2026,
+    "type": "journal",
+    "details": "",
+    "status": "",
+    "tag": ["journal"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": ""
+    },
+    "url": "",
+    "Author": "Quang-Thinh Bui*",
+    "order": -13
+  },
+  {
     "title": "TopoProtoNet: Topology-Enhanced and Clinically Guided Prototype Learning for Interpretable Mammography Classification",
     "authors": "",
-    "venue": "Journal of Engineering and Technology",
+    "venue": "VNUHCM Journal of Engineering and Technology",
     "year": 2026,
     "type": "journal",
     "details": "",
