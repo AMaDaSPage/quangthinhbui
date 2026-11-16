@@ -1,5 +1,23 @@
 [
-
+ {
+    "title": "TopoProtoNet: Topology-Enhanced and Clinically Guided Prototype Learning for Interpretable Mammography Classification",
+    "authors": "",
+    "venue": "Journal of Engineering and Technology",
+    "year": 2026,
+    "type": "journal",
+    "details": "",
+    "status": "",
+    "tag": ["journal"],
+    "indexing": {
+      "scopus": true,
+      "wos": "",
+      "jcr_q": "",
+      "scopus_q": ""
+    },
+    "url": "",
+    "Author": "Hiep Huynh, Minh-Quan Le, Ai Linh Nguyen, My-Phuong Ngo, Quang-Thinh Bui*",
+    "order": -12
+  },
   {
     "title": "A Relational Framework of Inclusion and Preference on Neutrosophic Fuzzy Sets for Decision Analysis",
     "authors": "",
@@ -15,7 +33,7 @@
       "jcr_q": "",
       "scopus_q": ""
     },
-    "url": "",
+    "url": "https://doi.org/10.1142/S175289092650025X",
     "Author": "Quang-Thinh Bui*",
     "order": -11
   },
