@@ -63,6 +63,9 @@ function getPubType(pub) {
   if (tags.includes("journal") || type === "journal") {
     return "journal";
   }
+  if (tags.includes("arxiv") || type === "arxiv") {
+    return "arxiv";
+  }
 
   return "other";
 }
